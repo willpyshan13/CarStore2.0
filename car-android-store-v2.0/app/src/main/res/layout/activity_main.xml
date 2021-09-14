@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#F3F0F3"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.MainActivity">
+
+    <com.yanxin.store.ui.NoScrollViewPager
+        android:id="@+id/main_vp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <RadioGroup
+        android:id="@+id/main_btn_group"
+        android:layout_width="match_parent"
+        android:background="@color/white"
+        android:layout_height="56dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/main_faxian"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:checked="true"
+            android:drawableTop="@drawable/select_main_btn_find"
+            android:gravity="center"
+            android:paddingTop="8dp"
+            android:text="共享知识"
+            android:textColor="@color/select_main_btn_text_color"
+            android:textSize="10sp" />
+
+        <RadioButton
+            android:id="@+id/main_fuwu"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/select_main_btn_serving"
+            android:gravity="center"
+            android:paddingTop="8dp"
+            android:text="现场支持"
+            android:textColor="@color/select_main_btn_text_color"
+            android:textSize="10sp" />
+
+        <RadioButton
+            android:id="@+id/main_shangcheng"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/select_main_btn_mall"
+            android:gravity="center"
+            android:paddingTop="8dp"
+            android:text="共享商城"
+            android:textColor="@color/select_main_btn_text_color"
+            android:textSize="10sp" />
+
+        <RadioButton
+            android:id="@+id/main_xiaoxi"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/select_main_btn_msg"
+            android:gravity="center"
+            android:paddingTop="8dp"
+            android:text="消息提醒"
+            android:textColor="@color/select_main_btn_text_color"
+            android:textSize="10sp" />
+
+        <RadioButton
+            android:id="@+id/main_wode"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/select_main_btn_mine"
+            android:gravity="center"
+            android:paddingTop="8dp"
+            android:text="我的"
+            android:textColor="@color/select_main_btn_text_color"
+            android:textSize="10sp" />
+
+    </RadioGroup>
+</LinearLayout>

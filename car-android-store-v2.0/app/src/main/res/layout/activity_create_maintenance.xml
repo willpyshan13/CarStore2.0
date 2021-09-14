@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/parent_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/status_bar"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/white" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/white"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="提交维修方案"
+            android:textColor="#130903"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:onClick="onBackFinish"
+            android:scaleType="center"
+            android:src="@drawable/store_button_back_pressed" />
+    </RelativeLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:padding="10dp"
+                android:text="！鉴于线下的不可控因素，平台不承担线下服务的任何担保和责任，一切线下服务问题由接单主体承担请接单主体注意并确保在线下服务过程中的使用标准. 操作规范.时刻保持安全为前提的义务和责任！"
+                android:textColor="#FF0000"
+                android:textSize="13sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/shape_register_item_white_bg"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingTop="10dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="现场检查情况描述："
+                    android:textColor="#424242"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/mt_fault_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/shape_quiz_dialog_type"
+                    android:gravity="left"
+                    android:hint="请描述现场检查情况描述"
+                    android:padding="6dp"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/shape_register_item_white_bg"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingTop="10dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="检查数据："
+                    android:textColor="#424242"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/mt_inspect_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/shape_quiz_dialog_type"
+                    android:gravity="left"
+                    android:hint="请输入检查数据"
+                    android:padding="6dp"
+                    android:textSize="12sp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/mt_rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:spanCount="3" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/shape_register_item_white_bg"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingTop="10dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="建议维修方案："
+                    android:textColor="#424242"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/mt_solution_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/shape_quiz_dialog_type"
+                    android:gravity="left"
+                    android:hint="请提交建议维修方案"
+                    android:padding="6dp"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/shape_register_item_white_bg"
+                android:orientation="vertical"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp">
+
+                <com.yanxin.store.ui.OptionalEditLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    app:content_tv_color="#333333"
+                    app:desc_content="费用明细"
+                    app:desc_tv_color="#333333"
+                    app:input_type="number"
+                    app:is_content_center_gravity="true"
+                    app:is_desc_bold="true"
+                    app:is_input_type="textile"
+                    app:is_mandatory="false"
+                    app:is_more_show="false" />
+
+                <com.yanxin.store.ui.OptionalEditLayout
+                    android:id="@+id/mt_inspect_amount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    app:content_hint="请输入检查费用"
+                    app:content_tv_color="#333333"
+                    app:desc_content="检查费用:"
+                    app:desc_tv_color="#333333"
+                    app:input_type="number"
+                    app:is_content_center_gravity="true"
+                    app:is_input_type="edition"
+                    app:is_mandatory="false"
+                    app:is_more_show="false" />
+
+                <com.yanxin.store.ui.OptionalEditLayout
+                    android:id="@+id/mt_repair_amount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    app:content_hint="请输入修复费用"
+                    app:content_tv_color="#333333"
+                    app:desc_content="修复费用:"
+                    app:desc_tv_color="#333333"
+                    app:input_type="number"
+                    app:is_content_center_gravity="true"
+                    app:is_input_type="edition"
+                    app:is_mandatory="false"
+                    app:is_more_show="false" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp">
+
+                    <TextView
+                        android:id="@+id/mt_other_hint"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:drawableRight="@drawable/grab_xunwen"
+                        android:drawablePadding="5dp"
+                        android:gravity="center_vertical"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:text="其他费用:"
+                        android:textColor="#424242"
+                        android:textSize="14sp" />
+
+                    <EditText
+                        android:id="@+id/mt_other_amount"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="23dp"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:gravity="right"
+                        android:hint="请输入其他费用"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <com.yanxin.store.ui.OptionalEditLayout
+                android:id="@+id/all_amount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/shape_register_item_white_bg"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                app:content_text="¥0.0"
+                app:content_tv_color="#FF0000"
+                app:desc_content="总费用"
+                app:desc_tv_color="#333333"
+                app:is_content_center_gravity="true"
+                app:is_input_type="textile"
+                app:is_mandatory="false"
+                app:is_more_show="false" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <Button
+        android:id="@+id/mt_submit"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/shape_grab_detail_btn_bg"
+        android:stateListAnimator="@null"
+        android:text="提交给客户确认"
+        android:textColor="@color/select_login_submit_text_color"
+        android:textSize="17sp" />
+</LinearLayout>

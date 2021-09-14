@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.car.order.web.mapper.groupbuy.OrderGroupbuyMapper">
+
+    <select id="queryOrderGroupbuyList" parameterType="com.car.order.client.request.order.groupbuy.QueryOrderGroupbuyListReq" resultType="com.car.order.client.response.order.groupbuy.OrderGroupbuyRes">
+        SELECT 	
+	        og.*,
+	        s.store_name,
+	        oi.evaluate_Sts
+        FROM order_groupbuy og
+	        LEFT JOIN groupbuy g on g.uuid = og.groupbuy_uuid
+	        LEFT JOIN store_user sa on sa.uuid = g.user_uuid
+	        LEFT JOIN  store s on s.uuid = sa.store_uuid
+	        left join order_info oi on oi.order_uuid = og.uuid and oi.order_type=14
+        WHERE og.sts = 0
+        
+        <if test="uuid != null and uuid !=''">
+            AND og.uuid  = #{uuid}
+        </if>
+        <if test="groupbuyUuid != null and groupbuyUuid !=''">
+            AND og.groupbuy_Uuid  = #{groupbuyUuid}
+        </if>
+        <if test="userUuid != null and userUuid !=''">
+            AND og.user_Uuid  = #{userUuid}
+        </if>
+        <if test="storeNameLike != null and storeNameLike !=''">
+            AND s.store_name like concat('%', #{storeNameLike},'%')
+        </if>
+        <if test="orderNum != null and orderNum !=''">
+            AND og.order_Num  = #{orderNum}
+        </if>
+        <if test="groupUserUuid != null and groupUserUuid !=''">
+            AND g.user_uuid  = #{groupUserUuid}
+        </if>
+        <if test="storeUuid != null and storeUuid !=''">
+            AND og.store_Uuid  = #{storeUuid}
+        </if>
+        <if test="orderSts != null and orderSts.size() >0">
+        	<foreach collection="orderSts" open=" and og.order_Sts in(" separator="," close=")" item="st">#{st}</foreach>
+        </if>
+        <if test="afterSaleSts != null and afterSaleSts.size() >0">
+        	<foreach collection="afterSaleSts" open=" and og.after_Sale_Sts in(" separator="," close=")" item="st">#{st}</foreach>
+        </if>
+        <if test="refundSts != null and refundSts.size() >0">
+        	<foreach collection="refundSts" open=" and og.refund_Sts in(" separator="," close=")" item="st">#{st}</foreach>
+        </if>
+        <if test="payType != null and payType.size() >0">
+        	<foreach collection="payType" open=" and og.pay_Type in(" separator="," close=")" item="st">#{st}</foreach>
+        </if>
+        <if test="receiveMethod != null and receiveMethod.size() >0">
+        	<foreach collection="receiveMethod" open=" and g.receive_Method in(" separator="," close=")" item="st">#{st}</foreach>
+        </if>
+        <if test="groupSts != null and groupSts.size() >0">
+        	<foreach collection="groupSts" open=" and g.group_Sts in(" separator="," close=")" item="st">#{st}</foreach>
+        </if>
+        order by og.created_time desc
+    </select>
+
+	<update id="updateGroupbuyEnd1To7">
+		update order_groupbuy set order_sts = 7,after_sale_sts=0 where  order_sts = 1 and sts = 0
+	</update>
+	<update id="updateGroupbuyEnd0To2">
+		update order_groupbuy set order_sts = 2 where  order_sts = 0 and sts = 0
+	</update>
+</mapper>

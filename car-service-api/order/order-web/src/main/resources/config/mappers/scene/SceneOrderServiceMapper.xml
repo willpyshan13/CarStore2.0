@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.car.order.web.mapper.scene.SceneOrderServicesMapper">
+    <select id="sceneOrderStatisticsNum" resultType="java.util.Map">
+        SELECT
+        tbl._date AS dayTime,
+        IFNULL( tbr.totalnum, 0 ) AS totalNum
+        FROM
+        (
+        SELECT
+        @s := @s + 1 AS _index,
+        DATE( DATE_SUB( CURRENT_DATE, INTERVAL @s DAY ) ) AS _date
+        FROM
+        information_schema.TABLES,
+        mysql.help_topic,
+        ( SELECT @s := - 1 ) temp
+        ORDER BY
+        _date DESC
+        ) AS tbl
+        LEFT JOIN ( SELECT count( * ) AS totalnum, DATE( created_time ) createdate FROM scene_order WHERE buyer_uuid = #{uuId} GROUP BY createdate ) AS tbr ON tbl._date = tbr.createdate
+        WHERE
+        YEAR(_date) = #{year}
+        and MONTH(_date) = #{month}
+
+    </select>
+
+
+    <select id="statisticsSceneOrder" resultType="java.lang.Integer">
+      	SELECT count(uuid) from scene_order  WHERE buyer_uuid = #{uuId}
+    </select>
+</mapper>

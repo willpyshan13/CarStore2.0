@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="top"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="@dimen/dp_10"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingTop="2dp"
+    android:paddingBottom="2dp">
+
+    <EditText
+        android:id="@+id/item_name"
+        android:layout_width="0dp"
+        android:layout_height="28dp"
+        android:layout_weight="4"
+        android:background="@drawable/shape_quiz_dialog_type"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:singleLine="true"
+        android:hint="商品名称"
+        android:textColor="#333333"
+        android:textSize="12sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="28dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text=":"
+        android:textColor="#333333"
+        android:textSize="12sp" />
+
+    <EditText
+        android:id="@+id/item_price"
+        android:layout_width="0dp"
+        android:layout_height="28dp"
+        android:layout_weight="3"
+        android:background="@drawable/shape_quiz_dialog_type"
+        android:gravity="center_vertical"
+        android:hint="价格"
+        android:inputType="number"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:singleLine="true"
+        android:textColor="#333333"
+        android:textSize="12sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="28dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="5dp"
+        android:text="元"
+        android:textColor="#333333"
+        android:textSize="12sp" />
+
+    <ImageView
+        android:id="@+id/item_add"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="15dp"
+        android:src="@drawable/btn_add" />
+</LinearLayout>

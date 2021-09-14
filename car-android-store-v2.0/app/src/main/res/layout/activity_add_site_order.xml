@@ -1,0 +1,769 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/parent_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/status_bar"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/white" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/white"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="现场支持下单"
+            android:textColor="#130903"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:onClick="onBackFinish"
+            android:scaleType="center"
+            android:src="@drawable/store_button_back_pressed" />
+    </RelativeLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/shape_register_item_white_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="20dp"
+                android:paddingTop="10dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="10dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="服务时间"
+                    android:textColor="#424242"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/site_time"
+                    android:layout_width="0dp"
+                    android:layout_height="28dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_weight="5"
+                    android:background="@drawable/shape_quiz_dialog_type"
+                    android:drawableRight="@drawable/dialog_type_more_icon"
+                    android:gravity="center_vertical"
+                    android:hint="请选择服务时间"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:textColor="#999999"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/shape_register_item_white_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="20dp"
+                android:paddingTop="10dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="10dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="地址"
+                    android:textColor="#424242"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/site_city"
+                    android:layout_width="0dp"
+                    android:layout_height="28dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_weight="5"
+                    android:background="@drawable/shape_quiz_dialog_type"
+                    android:drawableRight="@drawable/dialog_type_more_icon"
+                    android:gravity="center_vertical"
+                    android:hint="请选择所在地区"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:textColor="#999999"
+                    android:textSize="12sp" />
+
+                <ImageView
+                    android:id="@+id/map"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="10dp"
+                    android:scaleType="center"
+                    android:src="@drawable/case_address_icon" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/site_address"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/shape_register_item_white_bg"
+                android:gravity="center_vertical|right"
+                android:hint="请输入详细地址"
+                android:paddingLeft="20dp"
+                android:paddingTop="10dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="10dp"
+                android:singleLine="true"
+                android:textColor="#424242"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/shape_register_item_white_bg"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:text="年款"
+                        android:textColor="#424242"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/site_year"
+                        android:layout_width="0dp"
+                        android:layout_height="28dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_weight="5"
+                        android:background="@drawable/shape_quiz_dialog_type"
+                        android:drawableRight="@drawable/dialog_type_more_icon"
+                        android:gravity="center_vertical"
+                        android:hint="选择年款"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:textColor="#999999"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:text="品牌"
+                        android:textColor="#424242"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/site_brand"
+                        android:layout_width="0dp"
+                        android:layout_height="28dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_weight="5"
+                        android:background="@drawable/shape_quiz_dialog_type"
+                        android:drawableRight="@drawable/dialog_type_more_icon"
+                        android:gravity="center_vertical"
+                        android:hint="选择故障汽车品牌"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:textColor="#999999"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:text="型号"
+                        android:textColor="#424242"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/site_mode"
+                        android:layout_width="0dp"
+                        android:layout_height="28dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_weight="5"
+                        android:background="@drawable/shape_quiz_dialog_type"
+                        android:drawableRight="@drawable/dialog_type_more_icon"
+                        android:gravity="center_vertical"
+                        android:hint="请选择故障车辆型号"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:textColor="#999999"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:text="发动机排量"
+                        android:textColor="#424242"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/site_engine"
+                        android:layout_width="0dp"
+                        android:layout_height="28dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_weight="5"
+                        android:background="@drawable/shape_quiz_dialog_type"
+                        android:drawableRight="@drawable/dialog_type_more_icon"
+                        android:gravity="center_vertical"
+                        android:hint="请选择发动机排量"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:textColor="#999999"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:text="驱动方式"
+                        android:textColor="#424242"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/site_driving"
+                        android:layout_width="0dp"
+                        android:layout_height="28dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_weight="5"
+                        android:background="@drawable/shape_quiz_dialog_type"
+                        android:drawableRight="@drawable/dialog_type_more_icon"
+                        android:gravity="center_vertical"
+                        android:hint="请选择驱动方式"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:textColor="#999999"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:text="增压系统"
+                        android:textColor="#424242"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/site_supercharging"
+                        android:layout_width="0dp"
+                        android:layout_height="28dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_weight="5"
+                        android:background="@drawable/shape_quiz_dialog_type"
+                        android:drawableRight="@drawable/dialog_type_more_icon"
+                        android:gravity="center_vertical"
+                        android:hint="请选择增压系统"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:textColor="#999999"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:text="保修状态"
+                        android:textColor="#424242"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/site_warranty_status"
+                        android:layout_width="0dp"
+                        android:layout_height="28dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_weight="5"
+                        android:background="@drawable/shape_quiz_dialog_type"
+                        android:drawableRight="@drawable/dialog_type_more_icon"
+                        android:gravity="center_vertical"
+                        android:hint="请选择保修状态"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:textColor="#999999"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:text="变速器"
+                        android:textColor="#424242"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/site_transmission"
+                        android:layout_width="0dp"
+                        android:layout_height="28dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_weight="5"
+                        android:background="@drawable/shape_quiz_dialog_type"
+                        android:drawableRight="@drawable/dialog_type_more_icon"
+                        android:gravity="center_vertical"
+                        android:hint="选择变速器"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:textColor="#999999"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:text="二级变速器"
+                        android:textColor="#424242"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/site_transmission_child"
+                        android:layout_width="0dp"
+                        android:layout_height="28dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_weight="5"
+                        android:background="@drawable/shape_quiz_dialog_type"
+                        android:drawableRight="@drawable/dialog_type_more_icon"
+                        android:gravity="center_vertical"
+                        android:hint="选择二级变速器"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:textColor="#999999"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <com.yanxin.store.ui.OptionalEditLayout
+                    android:id="@+id/site_yam"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    app:content_hint="请输入造车年月(如:2010.06)"
+                    app:desc_content="造车年月"
+                    app:is_content_center_gravity="true"
+                    app:is_input_type="edition"
+                    app:is_mandatory="false"
+                    app:is_more_show="false" />
+
+                <com.yanxin.store.ui.OptionalEditLayout
+                    android:id="@+id/site_vin"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    app:content_hint="请输入车架号"
+                    app:desc_content="VIN"
+                    app:is_content_center_gravity="true"
+                    app:is_input_type="edition"
+                    app:is_mandatory="false"
+                    app:is_more_show="false" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/shape_register_item_white_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="20dp"
+                android:paddingTop="10dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="10dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="维修类型"
+                    android:textColor="#424242"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/site_technician_type"
+                    android:layout_width="0dp"
+                    android:layout_height="28dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_weight="5"
+                    android:background="@drawable/shape_quiz_dialog_type"
+                    android:drawableRight="@drawable/dialog_type_more_icon"
+                    android:gravity="center_vertical"
+                    android:hint="选择维修类型"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:textColor="#999999"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/shape_register_item_white_bg"
+                android:orientation="horizontal"
+                android:paddingLeft="20dp"
+                android:paddingTop="10dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="10dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="其它状态"
+                    android:textColor="#424242"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/site_status_content"
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_weight="3"
+                    android:background="@drawable/shape_quiz_dialog_type"
+                    android:gravity="left"
+                    android:hint="例如该问题是在进店前就存在还是检修或者事故后才产生的问题"
+                    android:padding="6dp"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/shape_register_item_white_bg"
+                android:orientation="horizontal"
+                android:paddingLeft="20dp"
+                android:paddingTop="10dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="10dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="故障描述"
+                    android:textColor="#424242"
+                    android:textSize="14sp" />
+
+                <LinearLayout
+
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_weight="3"
+                    android:background="@drawable/shape_quiz_dialog_type"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/site_fault"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:layout_weight="3"
+                        android:background="@null"
+                        android:gravity="left"
+                        android:hint="请输入故障描述"
+                        android:padding="6dp"
+                        android:textSize="12sp" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/site_fault_img"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                        app:spanCount="2" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/shape_register_item_white_bg"
+                android:orientation="horizontal"
+                android:paddingLeft="20dp"
+                android:paddingTop="10dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="10dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="检验过程"
+                    android:textColor="#424242"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/site_inspection_process"
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_weight="3"
+                    android:background="@drawable/shape_quiz_dialog_type"
+                    android:gravity="left"
+                    android:hint="请输入检验过程"
+                    android:padding="6dp"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/shape_register_item_white_bg"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingTop="10dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_register_item_white_bg"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="是否有DTC故障代码"
+                        android:textColor="#424242"
+                        android:textSize="14sp" />
+
+                    <EditText
+                        android:id="@+id/site_dtc_all"
+                        android:layout_width="0dp"
+                        android:layout_height="120dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_weight="3"
+                        android:background="@drawable/shape_quiz_dialog_type"
+                        android:gravity="left"
+                        android:hint="请输入DTC故障代码, 有多个用' , '分割"
+                        android:padding="6dp"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="DTC图片"
+                        android:textColor="#424242"
+                        android:textSize="14sp" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/site_dtc_imgs"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3"
+                        android:padding="10dp"
+                        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                        app:spanCount="2" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/shape_register_item_white_bg"
+                android:orientation="vertical">
+
+                <com.yanxin.store.ui.OptionalEditLayout
+                    android:id="@+id/site_base_fee"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    app:content_text="¥0"
+                    app:content_tv_color="#FF0000"
+                    app:desc_content="基础上门费用"
+                    app:is_content_center_gravity="true"
+                    app:is_input_type="textile"
+                    app:is_mandatory="false"
+                    app:is_more_show="false" />
+
+                <com.yanxin.store.ui.OptionalEditLayout
+                    android:id="@+id/site_base_service_fee"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    app:content_text="¥0"
+                    app:content_tv_color="#FF0000"
+                    app:desc_content="包含平台服务费"
+                    app:is_content_center_gravity="true"
+                    app:is_input_type="textile"
+                    app:is_mandatory="false"
+                    app:is_more_show="false" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="10dp"
+                    android:text="此费用为技师预约费用和简单检查费用，现场实际维修费请与技师洽谈，您确认技师到达现场后，基础上门费将结算，无法退还。"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/shape_register_item_white_bg"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingTop="10dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="10dp"
+                android:text="维修费用：现场确认"
+                android:textColor="#333333"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/site_submit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/register_submit"
+                android:stateListAnimator="@null"
+                android:text="发布"
+                android:textColor="@color/select_login_submit_text_color"
+                android:textSize="17sp" />
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

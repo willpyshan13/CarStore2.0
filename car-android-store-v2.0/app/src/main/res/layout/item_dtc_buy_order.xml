@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dp"
+    android:layout_margin="10dp"
+    android:background="@drawable/shape_register_item_white_bg"
+    android:orientation="vertical">
+
+    <com.yanxin.store.ui.OptionalEditLayout
+        android:id="@+id/dtc_buy_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:content_text="购买时间:-"
+        android:layout_marginTop="10dp"
+        app:content_tv_color="#424242"
+        app:desc_content="故障代码前缀"
+        app:is_content_center_gravity="true"
+        app:is_mandatory="false"
+        app:is_more_show="false" />
+
+    <com.yanxin.store.ui.OptionalEditLayout
+        android:id="@+id/dtc_buy_amount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:content_tv_color="#FF0000"
+        android:layout_marginBottom="10dp"
+        app:desc_tv_color="#09AFFF"
+        app:is_content_center_gravity="true"
+        app:is_mandatory="false"
+        app:is_more_show="false" />
+</LinearLayout>

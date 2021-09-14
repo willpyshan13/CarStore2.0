@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.car.account.web.mapper.banner.BannerMapper">
+
+    <select id="queryBannerList" parameterType="com.car.account.client.request.banner.QueryBannerListReq" resultType="com.car.account.client.response.banner.BannerRes">
+      	select * 
+      	from  banner g
+        where g.sts = 0
+        <if test="bannerType !=null">and g.banner_Type = #{bannerType}</if>
+        <if test="bannerSts !=null">and g.banner_Sts = #{bannerSts}</if>
+        <if test="cnameLike !=null and cnameLike !=''">and g.cname like concat('%', #{cnameLike},'%')</if>
+        order by g.created_time desc
+    </select>
+
+
+</mapper>

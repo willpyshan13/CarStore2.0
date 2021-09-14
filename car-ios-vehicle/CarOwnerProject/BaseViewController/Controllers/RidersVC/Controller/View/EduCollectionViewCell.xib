@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EduCollectionViewCell" id="gTV-IL-0wX" customClass="EduCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="140" height="138"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="140" height="138"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DO6-CX-bDi">
+                        <rect key="frame" x="0.0" y="0.0" width="140" height="95"/>
+                        <color key="backgroundColor" systemColor="systemGray4Color"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="DO6-CX-bDi" secondAttribute="height" multiplier="1:0.68" id="CGS-qE-Jzg"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="宝马教程" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fu8-BS-wPa">
+                        <rect key="frame" x="0.0" y="108" width="140" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="SEy-5g-ep8"/>
+            <constraints>
+                <constraint firstItem="DO6-CX-bDi" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="20W-Tq-cXZ"/>
+                <constraint firstItem="Fu8-BS-wPa" firstAttribute="top" secondItem="DO6-CX-bDi" secondAttribute="bottom" constant="13" id="5WR-om-xON"/>
+                <constraint firstItem="Fu8-BS-wPa" firstAttribute="centerX" secondItem="DO6-CX-bDi" secondAttribute="centerX" id="98f-71-t2y"/>
+                <constraint firstAttribute="trailing" secondItem="Fu8-BS-wPa" secondAttribute="trailing" id="Q8h-6p-O9a"/>
+                <constraint firstItem="Fu8-BS-wPa" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="e9V-Q6-MFI"/>
+                <constraint firstItem="DO6-CX-bDi" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="mdq-XQ-KgN"/>
+                <constraint firstAttribute="trailing" secondItem="DO6-CX-bDi" secondAttribute="trailing" id="qTF-gE-oZ1"/>
+            </constraints>
+            <size key="customSize" width="140" height="138"/>
+            <connections>
+                <outlet property="carImg" destination="DO6-CX-bDi" id="cfn-HF-vj4"/>
+                <outlet property="nameLab" destination="Fu8-BS-wPa" id="lu8-wx-Gmn"/>
+            </connections>
+            <point key="canvasLocation" x="76.811594202898561" y="85.714285714285708"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

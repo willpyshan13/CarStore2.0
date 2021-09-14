@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="2dp"
+    android:layout_marginRight="2dp"
+    android:layout_marginBottom="@dimen/dp_10"
+    android:orientation="horizontal"
+    app:cardCornerRadius="12dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp">
+
+        <androidx.constraintlayout.utils.widget.ImageFilterView
+            android:id="@+id/item_mall_tab_employee_icon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:roundPercent="1"
+            tools:src="@drawable/pic_card_upload_negative" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/item_mall_tab_employee_icon_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="65dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="65dp" />
+
+        <TextView
+            android:id="@+id/item_mall_tab_employee_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="19dp"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textColor="#ff333333"
+            android:textSize="16sp"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintLeft_toRightOf="@id/item_mall_tab_employee_icon_guideline"
+            app:layout_constraintRight_toLeftOf="@id/item_mall_tab_employee_price"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="标题是什么呀标题是什么呀标题在多内标题在多内…" />
+
+        <TextView
+            android:id="@+id/item_mall_tab_employee_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#ffe02020"
+            android:textSize="14sp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="¥99.99" />
+
+        <TextView
+            android:id="@+id/item_mall_tab_employee_install_way"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:singleLine="true"
+            android:textColor="#ff999999"
+            android:textSize="12sp"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintLeft_toLeftOf="@id/item_mall_tab_employee_name"
+            app:layout_constraintRight_toLeftOf="@id/item_mall_tab_employee_pay_state"
+            app:layout_constraintTop_toBottomOf="@id/item_mall_tab_employee_name"
+            tools:text="工位名称：上海一号工位" />
+
+        <TextView
+            android:id="@+id/item_mall_tab_employee_pay_state"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textColor="#ff999999"
+            android:textSize="14sp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/item_mall_tab_employee_name"
+            tools:text="未支付已取消" />
+
+        <TextView
+            android:id="@+id/item_mall_tab_employee_time"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:singleLine="true"
+            android:textColor="#ff999999"
+            android:textSize="12sp"
+            app:layout_constraintLeft_toLeftOf="@id/item_mall_tab_employee_install_way"
+            app:layout_constraintTop_toBottomOf="@id/item_mall_tab_employee_install_way"
+            tools:text="使用时间：2020.10.19 12:02" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.cardview.widget.CardView>

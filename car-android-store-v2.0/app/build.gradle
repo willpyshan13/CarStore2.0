@@ -1,0 +1,149 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'com.mob.sdk'
+}
+MobSDK {
+    appKey "340250a7666a4"
+    appSecret "1ab44fe60c4bedc52092adb3c76762ef"
+    ShareSDK {
+        loopShare true
+        devInfo {
+            Wechat {
+                appId "wx4868b35061f87885"
+                appSecret "64020361b8ec4c99936c0e3999a9f249"
+                userName "gh_afb25ac019c9"
+                path "pages/index/index.html?id=1"
+                withShareTicket true
+                miniprogramType 2
+            }
+            WechatMoments {
+                appId "wx4868b35061f87885"
+                appSecret "64020361b8ec4c99936c0e3999a9f249"
+            }
+        }
+    }
+}
+android {
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+    compileSdkVersion 30
+    signingConfigs {
+        signing {
+            keyAlias KEY_ALIAS
+            keyPassword KEY_PASSWORD
+            storeFile file(STORE_FILE)
+            storePassword STORE_PASSWORD
+        }
+    }
+    packagingOptions {
+        exclude 'classes.dex'
+        exclude '**.**'
+    }
+    defaultConfig {
+        applicationId "com.yanxin.store"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        ndk {
+            //选择要添加的对应 cpu 类型的 .so 库。
+            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a', "x86", "mips"
+            // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
+        }
+        manifestPlaceholders = [
+                JPUSH_PKGNAME: applicationId,
+                JPUSH_APPKEY : "b2da0fc3e515ad53ccdb9661", //JPush 上注册的包名对应的 Appkey.
+                JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
+        ]
+        multiDexEnabled true //解决65536
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            buildConfigField 'String', 'SERVER_URL', DEBUG_HTTP_BASE_URL
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        release {
+            minifyEnabled false
+            buildConfigField 'String', 'SERVER_URL', RELEASE_HTTP_BASE_URL
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.signing
+        }
+        pro {
+            minifyEnabled false
+            buildConfigField 'String', 'SERVER_URL', PRO_HTTP_BASE_URL
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.signing
+        }
+    }
+    buildFeatures {
+        dataBinding = true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'androidx.appcompat:appcompat:1.3.0'
+    implementation 'com.google.android.material:material:1.3.0'
+    implementation 'com.android.support:multidex:1.0.3'//解决65536
+
+    //沉浸式状态栏
+    implementation 'com.gyf.immersionbar:immersionbar:2.3.3-beta04'
+    //网络框架
+    implementation 'com.squareup.retrofit2:retrofit:2.0.0-beta3'
+    implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.8.0'
+    //rx
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.4'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
+    implementation 'com.trello.rxlifecycle2:rxlifecycle-components:2.1.0'
+    implementation 'com.android.support:design:30'
+    implementation 'com.android.support:cardview-v7:30'
+    //    Adapter
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
+    implementation 'com.github.HuanTanSheng:EasyPhotos:3.1.3' //androidx版本，支持android 10、11，永久维护
+    implementation 'cn.jzvd:jiaozivideoplayer:7.7.0'
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
+    implementation 'com.github.lygttpod:SuperTextView:2.4.6'
+    //    glide
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    implementation project(path: ':base_module:mvvmwill')
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    implementation 'pub.devrel:easypermissions:3.0.0'
+    implementation 'org.greenrobot:eventbus:3.1.1'
+//    implementation 'cn.yipianfengye.android:zxing-library:2.2'
+    implementation 'com.contrarywind:Android-PickerView:4.1.9'
+    implementation 'com.lzy.widget:imagepicker:0.6.1'
+    implementation 'com.google.android:flexbox:1.0.0'
+    //高德地图
+    implementation 'com.amap.api:map2d:latest.integration'
+    implementation 'com.amap.api:search:latest.integration'
+    implementation 'com.amap.api:location:latest.integration'
+    //极光推送
+    implementation 'cn.jiguang.sdk:jpush:3.8.5'  // 此处以JPush 3.8.5 版本为例。
+    implementation 'cn.jiguang.sdk:jcore:2.5.5'  // 此处以JCore 2.5.5 版本为例。
+    // 支付宝
+    implementation(name: 'alipaysdk', ext: 'aar')
+    //微信
+    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
+    implementation 'com.tencent.bugly:crashreport:latest.release'
+    implementation 'com.tencent.bugly:nativecrashreport:latest.release'
+    implementation rootProject.ext.dependencies["kotlin-stdlib-jdk7"]
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+}

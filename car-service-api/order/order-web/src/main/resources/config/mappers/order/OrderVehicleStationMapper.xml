@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.car.order.web.mapper.order.OrderVehicleStationMapper">
+
+	<select id="queryOrderVehicleStationList" resultType="com.car.order.client.response.order.OrderVehicleStationRes">
+		select g.* ,
+			vz.config_name as vehicleBrandName,
+			vs.config_name as vehicleModelName,
+			vu.user_name as vehicleUserName,
+			su.user_name as storeUserName,
+			s.store_name as storeName,
+			oi.evaluate_sts
+		from order_vehicle_station g
+			left join vehicle_config vz on g.vehicle_brand = vz.uuid
+			left join vehicle_config vs on g.vehicle_model = vs.uuid
+			left join vehicle_user vu on vu.uuid=g.vehicle_user_uuid
+			left join store_user su on su.uuid=g.store_user_uuid
+			left join store s on su.store_uuid=s.uuid
+			left join order_info oi on oi.order_uuid=g.uuid and oi.order_type=13
+		where g.sts = 0
+		<if test="uuid !=null and uuid !=''"> and g.uuid =#{uuid}</if>
+		<if test="storeUserUuid !=null and storeUserUuid !=''"> and g.store_User_Uuid =#{storeUserUuid}</if>
+		<if test="vehicleUserUuid !=null and vehicleUserUuid !=''"> and g.vehicle_User_Uuid =#{vehicleUserUuid}</if>
+		<if test="orderSts !=null and orderSts.size()>0">
+			<foreach collection="orderSts" open="and g.order_Sts in(" separator="," close=")" item="st">#{st}</foreach>
+		</if>
+		<if test="afterSaleSts !=null and afterSaleSts.size()>0">
+			<foreach collection="afterSaleSts" open="and g.after_Sale_Sts in(" separator="," close=")" item="st">#{st}</foreach>
+		</if>
+		<if test="storeSameCity !=null">
+			<if test="storeSameCity ==0">and s.company_address_city !=g.address_city</if>
+			<if test="storeSameCity ==1">and s.company_address_city =g.address_city</if>
+		</if>
+	    order by g.created_time desc
+	</select>
+
+</mapper>

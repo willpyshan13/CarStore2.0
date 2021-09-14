@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.yanxin.store.mvvm.viewmodel.MineInfoItem" />
+
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp130"
+        android:layout_marginTop="@dimen/dp10"
+        android:background="@drawable/shape_mine_item_bg">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/mine_info_info_name"
+            android:layout_width="wrap_content"
+            android:layout_marginStart="@dimen/dp10"
+            android:layout_height="wrap_content"
+            android:text="姓名"
+            android:textColor="@color/color_999999"
+            android:textSize="@dimen/sp14"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/mine_info_name_value1"
+            app:layout_constraintTop_toTopOf="@+id/mine_info_name_value1" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/mine_info_store_tel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="手机号"
+            android:textColor="@color/color_999999"
+            android:textSize="@dimen/sp14"
+            app:layout_constraintStart_toStartOf="@+id/mine_info_info_name"
+            app:layout_constraintTop_toTopOf="@+id/mine_info_tel_value1"
+            app:layout_constraintBottom_toBottomOf="@+id/mine_info_tel_value1"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp15"
+            android:text="人员类型"
+            android:textColor="@color/color_999999"
+            android:textSize="@dimen/sp14"
+            app:layout_constraintStart_toStartOf="@+id/mine_info_store_tel"
+            app:layout_constraintTop_toBottomOf="@+id/mine_info_store_tel" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/mine_info_name_value1"
+            android:layout_width="@dimen/dp250"
+            android:layout_height="@dimen/dp30"
+            android:layout_marginTop="@dimen/dp20"
+            android:gravity="end|center_vertical"
+            android:background="@null"
+            android:text="@={viewModel.nameText}"
+            android:layout_marginEnd="@dimen/dp40"
+            tools:text="188888888888"
+            android:textColor="@color/color_333333"
+            android:textSize="@dimen/sp14"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/mine_info_tel_value1"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp30"
+            android:gravity="end|center_vertical"
+            android:background="@null"
+            android:inputType="phone"
+            android:text="@={viewModel.telText}"
+            tools:text="4s店"
+            android:textColor="@color/color_333333"
+            android:textSize="@dimen/sp14"
+            app:layout_constraintStart_toStartOf="@id/mine_info_name_value1"
+            app:layout_constraintEnd_toEndOf="@+id/mine_info_name_value1"
+            app:layout_constraintTop_toBottomOf="@+id/mine_info_name_value1" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp15"
+            android:drawablePadding="@dimen/dp10"
+            tools:text="5分"
+            android:text="@{viewModel.typeText}"
+            app:onClickCommand="@{viewModel.onTypeClick}"
+            android:textColor="@color/color_333333"
+            android:textSize="@dimen/sp14"
+            app:layout_constraintEnd_toEndOf="@+id/mine_info_tel_value1"
+            app:layout_constraintTop_toBottomOf="@+id/mine_info_tel_value1" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

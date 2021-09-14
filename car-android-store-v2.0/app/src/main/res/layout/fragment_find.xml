@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_find_top_bg">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/find_tab"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="10dp"
+            app:tabIndicatorColor="@color/white"
+            app:tabIndicatorFullWidth="false"
+            app:tabMode="fixed"
+            app:tabRippleColor="@android:color/transparent"
+            app:tabSelectedTextColor="@color/white"
+            app:tabTextColor="#99FFFFFF" />
+
+        <RadioGroup
+            android:id="@+id/quiz_tab_group"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/find_tab"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/quiz_tab_rush"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:button="@null"
+                android:checked="true"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="待抢答"
+                android:textColor="@color/select_fragment_find_top"
+                android:textSize="14sp" />
+
+            <RadioButton
+                android:id="@+id/quiz_tab_my_rush"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:button="@null"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="已抢答"
+                android:textColor="@color/select_fragment_find_top"
+                android:textSize="14sp" />
+
+            <RadioButton
+                android:id="@+id/quiz_tab_ask"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:button="@null"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="回答"
+                android:textColor="@color/select_fragment_find_top"
+                android:textSize="14sp" />
+
+            <RadioButton
+                android:id="@+id/quiz_tab_square"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:button="@null"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="知识广场"
+                android:textColor="@color/select_fragment_find_top"
+                android:textSize="14sp" />
+        </RadioGroup>
+
+        <LinearLayout
+            android:id="@+id/find_dtc_layout"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/find_tab"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/find_dtc_brand"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="30dp"
+                android:drawableRight="@drawable/type_more_icon_white"
+                android:gravity="center"
+                android:text="按品牌"
+                android:textColor="@color/white" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:background="@drawable/shape_search_dtc_bg"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/find_dtc"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:hint="请输入故障代码前缀进行查询"
+                    android:paddingLeft="15sp"
+                    android:paddingRight="15dp"
+                    android:singleLine="true"
+                    android:textSize="13sp" />
+
+                <ImageView
+                    android:id="@+id/dtc_search"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:scaleType="center"
+                    android:src="@drawable/dtc_search_icon" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <com.yanxin.store.ui.NoScrollViewPager
+        android:id="@+id/find_vp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>

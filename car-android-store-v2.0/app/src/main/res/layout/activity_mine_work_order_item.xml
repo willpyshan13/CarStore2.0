@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.yanxin.store.mvvm.viewmodel.MineWorkOrderItem" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/dp15"
+        android:background="@drawable/shape_mine_item_bg"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/work_order_item_image"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_margin="@dimen/dp15"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="@dimen/dp75"
+            android:layout_height="@dimen/dp75"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/work_order_item_title"
+            app:layout_constraintTop_toTopOf="@id/work_order_item_image"
+            app:layout_constraintStart_toEndOf="@id/work_order_item_image"
+            app:layout_constraintEnd_toStartOf="@id/work_order_item_status"
+            android:layout_width="0dp"
+            android:ellipsize="end"
+            tools:text="商品标题是什么啊品标…"
+            android:textSize="@dimen/sp14"
+            android:textStyle="bold"
+            android:layout_marginStart="@dimen/dp15"
+            android:layout_marginEnd="@dimen/dp20"
+            android:layout_height="wrap_content"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/work_order_item_status"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="已完成"
+            android:textSize="@dimen/sp14"
+            android:textColor="@color/color_F7B500"
+            android:layout_marginEnd="@dimen/dp15"
+            app:layout_constraintTop_toTopOf="@+id/work_order_item_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/work_order_item_way"
+            android:layout_marginTop="@dimen/dp10"
+            app:layout_constraintStart_toStartOf="@+id/work_order_item_title"
+            tools:text="配送方式：到店安装"
+            android:textColor="@color/color_999999"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="@dimen/dp15"
+            app:layout_constraintTop_toBottomOf="@+id/work_order_item_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/work_order_item_consume_id"
+            android:layout_marginTop="@dimen/dp10"
+            app:layout_constraintStart_toStartOf="@+id/work_order_item_title"
+            tools:text="客户：72076-27–2727"
+            android:textColor="@color/color_999999"
+            android:layout_marginEnd="@dimen/dp15"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/work_order_item_way"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/work_order_item_pay_title"
+            android:layout_marginTop="@dimen/dp10"
+            app:layout_constraintStart_toStartOf="@+id/work_order_item_title"
+            android:text="实付："
+            android:textColor="@color/color_999999"
+            android:layout_marginEnd="@dimen/dp15"
+            app:layout_constraintTop_toBottomOf="@+id/work_order_item_consume_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/work_order_item_pay_money"
+            android:layout_marginTop="@dimen/dp10"
+            app:layout_constraintStart_toEndOf="@+id/work_order_item_pay_title"
+            android:text="¥500.00"
+            android:textColor="@color/color_E02020"
+            android:layout_marginEnd="@dimen/dp15"
+            app:layout_constraintTop_toBottomOf="@+id/work_order_item_consume_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

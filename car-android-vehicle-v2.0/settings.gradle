@@ -1,0 +1,4 @@
+include ':app'
+rootProject.name = "CarTechnicianProject"
+include ':common_res'
+include ':mvvmwill'

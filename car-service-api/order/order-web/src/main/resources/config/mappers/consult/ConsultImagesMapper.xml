@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.car.order.web.mapper.consult.ConsultImagesMapper">
+
+    <insert id="batchInsertConsultImages">
+        insert into consult_images(uuid,consult_uuid,img_url,img_type,sts,created_by,created_time)
+        values
+        <foreach collection="insertList" item="item" index="index" separator=",">
+            (
+            #{item.uuid},
+            #{item.consultUuid},
+            #{item.imgUrl},
+            #{item.imgType},
+            #{item.sts},
+            #{item.createdBy},
+            #{item.createdTime}
+            )
+        </foreach>
+    </insert>
+
+
+    <select id="getImgList" resultType="java.lang.String">
+        SELECT
+            img_url
+        FROM
+            consult_images
+        WHERE
+            consult_uuid =#{consultUuid}
+            and sts=0
+    </select>
+
+    <select id="getTypeImgList" resultType="java.lang.String">
+        SELECT
+            img_url
+        FROM
+            consult_images
+        WHERE
+            consult_uuid =#{consultUuid}
+            and sts=0
+            and img_type=#{type}
+    </select>
+
+    <select id="accomplishConsult" resultType="java.lang.Integer">
+        SELECT
+            count(*)
+        FROM
+            consult_order
+        WHERE
+            consult_uuid=#{consultUuid}
+            AND car_owner_uuid=#{carOwnerUuid}
+            AND order_sts = 1
+            AND order_type = 4
+            AND sts =0
+    </select>
+</mapper>

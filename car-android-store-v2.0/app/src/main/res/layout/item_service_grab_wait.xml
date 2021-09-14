@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginBottom="5dp"
+    android:background="@drawable/shape_register_item_white_bg"
+    android:elevation="1dp"
+    android:orientation="vertical">
+
+    <com.yanxin.store.ui.OptionalEditLayout
+        android:id="@+id/item_brand"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        app:desc_content="品牌"
+        app:is_content_center_gravity="true"
+        app:is_mandatory="false"
+        app:is_more_show="false" />
+
+    <com.yanxin.store.ui.OptionalEditLayout
+        android:id="@+id/item_model"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        app:desc_content="车型"
+        app:is_content_center_gravity="true"
+        app:is_mandatory="false"
+        app:is_more_show="false" />
+
+    <com.yanxin.store.ui.OptionalEditLayout
+        android:id="@+id/item_desc"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        app:desc_content="需求描述"
+        app:is_content_center_gravity="true"
+        app:is_mandatory="false"
+        app:is_more_show="false" />
+
+
+    <com.yanxin.store.ui.OptionalEditLayout
+        android:id="@+id/item_amount"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        app:desc_content="使用费用"
+        app:is_content_center_gravity="true"
+        app:is_mandatory="false"
+        app:is_more_show="false" />
+
+
+    <com.yanxin.store.ui.OptionalEditLayout
+        android:id="@+id/item_time"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        app:desc_content="使用时间"
+        app:is_content_center_gravity="true"
+        app:is_mandatory="false"
+        app:is_more_show="false" />
+</LinearLayout>

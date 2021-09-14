@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.car.order.web.mapper.dtc.DtcOrderMapper">
+    <select id="list" resultType="com.car.order.client.response.dtc.QueryDtcOrderListRes">
+        select do.uuid,do.order_num,do.order_amount,do.pay_type,do.order_sts,do.read_count,dod.dtc_explain,do.dtc_uuid,
+               do.buyer_uuid,do.buyer_name,do.buyer_mobile,do.created_time,do.dtc_issuer_type,dod.dtc_code,dod.dtc_code2,dod.dtc_code3,
+                d.dtc_brand_uuid,       
+		        vc.config_name as dtcBrandUuidName ,
+		        d.dtc_model_uuid,
+		        vc2.config_name as dtcModelUuidName
+        from dtc_order do
+        left join dtc_order_detail dod on do.uuid = dod.order_uuid
+        left join dtc d on d.uuid = do.dtc_uuid
+        left join vehicle_config vc on d.dtc_brand_uuid = vc.uuid
+        left join vehicle_config vc2 on d.dtc_model_uuid = vc2.uuid
+        where do.sts = 0
+        <if test="userUuid != null and userUuid != ''">
+            AND do.buyer_uuid = #{userUuid}
+        </if>
+        <if test="req.consultantName != null and req.consultantName != ''">
+            AND do.buyer_name LIKE CONCAT('%',#{req.consultantName},'%')
+        </if>
+
+        <if test="req.consultantMobile != null and req.consultantMobile != ''">
+            AND do.buyer_mobile LIKE CONCAT('%',#{req.consultantMobile},'%')
+        </if>
+
+        <if test="req.startDate != null and req.startDate != ''">
+            <![CDATA[ AND do.created_time  >= #{req.startDate} ]]>
+        </if>
+
+        <if test="req.endDate != null and req.endDate != ''">
+            <![CDATA[ AND do.created_time  <= #{req.endDate} ]]>
+        </if>
+
+        <if test="req.orderSts != null">
+            AND do.order_sts  = #{req.orderSts}
+        </if>
+
+        <if test="req.releaseName != null and req.releaseName != ''">
+            AND do.issuer_name LIKE CONCAT('%',#{req.releaseName},'%')
+        </if>
+        <if test="req.releaseMobile != null and req.releaseMobile != ''">
+            AND do.issuer_mobile LIKE CONCAT('%',#{req.releaseMobile},'%')
+        </if>
+        order by do.created_time desc
+
+    </select>
+
+    <select id="myList" resultType="com.car.order.client.response.dtc.QueryDtcOrderListRes">
+        select do.uuid,do.dtc_uuid,do.order_num,do.order_amount,do.pay_type,do.order_sts,do.read_count,dod.dtc_explain,
+        do.buyer_uuid,do.buyer_name,do.buyer_mobile,do.created_time,do.dtc_issuer_type,dod.dtc_code,dod.dtc_code2,dod.dtc_code3,
+	         d.dtc_brand_uuid,       
+	        vc.config_name as dtcBrandUuidName ,
+	        d.dtc_model_uuid,
+	        vc2.config_name as dtcModelUuidName,
+	        dc.dtc_explain,
+            dc.dtc_reasons,
+            dc.dtc_diagnose,
+            d.dtc_definition
+        from dtc_order do
+	        left join dtc_order_detail dod on do.uuid = dod.order_uuid
+	        left join dtc d on d.uuid = do.dtc_uuid
+	        LEFT JOIN dtc_content dc ON dc.dtc_uuid = d.uuid
+	        left join vehicle_config vc on d.dtc_brand_uuid = vc.uuid
+	        left join vehicle_config vc2 on d.dtc_model_uuid = vc2.uuid
+        where do.sts = 0
+       	 	and 3 > do.read_count and do.order_sts in(1,6)
+        <if test="userUuid != null and userUuid != ''">
+            AND do.buyer_uuid = #{userUuid}
+        </if>
+        <if test="req.consultantName != null and req.consultantName != ''">
+            AND do.buyer_name LIKE CONCAT('%',#{req.consultantName},'%')
+        </if>
+
+        <if test="req.consultantMobile != null and req.consultantMobile != ''">
+            AND do.buyer_mobile LIKE CONCAT('%',#{req.consultantMobile},'%')
+        </if>
+
+        <if test="req.startDate != null and req.startDate != ''">
+            <![CDATA[ AND do.created_time  >= #{req.startDate} ]]>
+        </if>
+
+        <if test="req.endDate != null and req.endDate != ''">
+            <![CDATA[ AND do.created_time  <= #{req.endDate} ]]>
+        </if>
+
+        <if test="req.orderSts != null">
+            AND do.order_sts  = #{req.orderSts}
+        </if>
+
+        <if test="req.releaseName != null and req.releaseName != ''">
+            AND do.issuer_name LIKE CONCAT('%',#{req.releaseName},'%')
+        </if>
+        <if test="req.releaseMobile != null and req.releaseMobile != ''">
+            AND do.issuer_mobile LIKE CONCAT('%',#{req.releaseMobile},'%')
+        </if>
+        order by do.created_time desc
+
+    </select>
+
+    <select id="overdueDtcList" resultType="com.car.order.client.response.dtc.QueryDtcOrderListRes">
+        select do.uuid,do.dtc_uuid,do.order_num,do.order_amount,do.pay_type,do.order_sts,do.read_count,dod.dtc_explain,
+        	do.buyer_uuid,do.buyer_name,do.buyer_mobile,do.created_time,do.dtc_issuer_type,dod.dtc_code,dod.dtc_code2,dod.dtc_code3,
+         	d.dtc_brand_uuid,       
+	        vc.config_name as dtcBrandUuidName ,
+	        d.dtc_model_uuid,
+	        vc2.config_name as dtcModelUuidName,
+	        dc.dtc_explain,
+            dc.dtc_reasons,
+            dc.dtc_diagnose,
+            d.dtc_definition
+        from dtc_order do
+	        left join dtc_order_detail dod on do.uuid = dod.order_uuid
+	        left join dtc d on d.uuid = do.dtc_uuid
+	        LEFT JOIN dtc_content dc ON dc.dtc_uuid = d.uuid
+	        left join vehicle_config vc on d.dtc_brand_uuid = vc.uuid
+	        left join vehicle_config vc2 on d.dtc_model_uuid = vc2.uuid
+	        left join dtc_order mgd on mgd.sts = 0 and mgd.order_sts in(1,6) and 3 > mgd.read_count
+	        						 and mgd.uuid!=do.uuid and mgd.buyer_uuid=do.buyer_uuid and mgd.dtc_uuid=do.dtc_uuid
+        where do.sts = 0
+        	and do.read_count >= 3
+        	and mgd.uuid is null
+        <if test="userUuid != null and userUuid != ''">
+            AND do.buyer_uuid = #{userUuid}
+        </if>
+        <if test="req.consultantName != null and req.consultantName != ''">
+            AND do.buyer_name LIKE CONCAT('%',#{req.consultantName},'%')
+        </if>
+
+        <if test="req.consultantMobile != null and req.consultantMobile != ''">
+            AND do.buyer_mobile LIKE CONCAT('%',#{req.consultantMobile},'%')
+        </if>
+
+        <if test="req.startDate != null and req.startDate != ''">
+            <![CDATA[ AND do.created_time  >= #{req.startDate} ]]>
+        </if>
+
+        <if test="req.endDate != null and req.endDate != ''">
+            <![CDATA[ AND do.created_time  <= #{req.endDate} ]]>
+        </if>
+
+        <if test="req.orderSts != null">
+            AND do.order_sts  = #{req.orderSts}
+        </if>
+
+        <if test="req.releaseName != null and req.releaseName != ''">
+            AND do.issuer_name LIKE CONCAT('%',#{req.releaseName},'%')
+        </if>
+        <if test="req.releaseMobile != null and req.releaseMobile != ''">
+            AND do.issuer_mobile LIKE CONCAT('%',#{req.releaseMobile},'%')
+        </if>
+        order by do.created_time desc
+
+    </select>
+
+    <select id="getById" resultType="com.car.order.client.response.dtc.QueryDtcOrderInfoRes">
+        select
+	        do.*,
+	        dod.*,
+	        d.dtc_type,
+	        vc.config_name as dtcBrandName,
+	        d.dtc_model_uuid,
+	        vc2.config_name as dtcModelUuidName
+        from  dtc_order do
+	        left join dtc_order_detail dod on do.uuid = dod.order_uuid
+	        left join dtc d on d.uuid = do.dtc_uuid
+	        left join vehicle_config vc on d.dtc_brand_uuid = vc.uuid
+	        left join vehicle_config vc2 on d.dtc_model_uuid = vc2.uuid
+        where do.uuid = #{orderUuid}
+    </select>
+
+    <select id="queryPurchaseOrder" resultType="com.car.order.web.model.dtc.DtcOrder">
+        select * from dtc_order 
+        where
+         buyer_uuid = #{userUuid} 
+         and dtc_uuid = #{dtcUuid} 
+         and sts = 0 
+         and 3>read_count 
+      	 and order_sts in(1,6)
+    </select>
+
+    <select id="getOverdueDtcNumber" resultType="java.lang.Integer">
+        SELECT
+            COUNT(*)
+        FROM
+            dtc_order
+            LEFT JOIN dtc_order_detail ON dtc_order.uuid = dtc_order_detail.order_uuid
+        WHERE
+            buyer_uuid = #{userUuid}
+            AND dtc_order.sts = 0
+            AND dtc_order.read_count >=3
+    </select>
+
+    <select id="getDtcNumber" resultType="java.lang.Integer">
+        SELECT
+            COUNT(*)
+        FROM
+            dtc_order
+            LEFT JOIN dtc_order_detail ON dtc_order.uuid = dtc_order_detail.order_uuid
+        WHERE
+            buyer_uuid = #{userUuid}
+            AND dtc_order.sts = 0
+            AND  3 > dtc_order.read_count
+    </select>
+
+    <select id="getAdditionalRecording" resultType="com.car.order.client.response.dtc.QueryDtcOrderListRes">
+        SELECT
+            d.*,
+            d.uuid as dtcUuid,
+            dc.dtc_explain,
+            dc.dtc_reasons,
+            dc.dtc_diagnose,
+            vc.config_name as dtcBrandUuidName ,
+	        vc2.config_name as dtcModelUuidName
+        FROM
+            dtc d
+            LEFT JOIN dtc_content dc ON dc.dtc_uuid = d.uuid
+            left join vehicle_config vc on d.dtc_brand_uuid = vc.uuid
+        	left join vehicle_config vc2 on d.dtc_model_uuid = vc2.uuid
+        WHERE
+            d.dtc_issuer_uuid = #{userUuid}
+    </select>
+
+    <select id="dtcOrderList" resultType="com.car.order.client.response.dtc.QueryDtcOrderListRes">
+        SELECT
+             dtc.dtc_code,
+             dtc.dtc_code2,
+             dtc.dtc_code3,
+             dtc_order.order_num,
+             dtc_order.order_amount,
+             dtc_order.created_time
+        FROM
+            dtc_order
+            LEFT JOIN dtc ON dtc.uuid = dtc_order.dtc_uuid
+            where buyer_uuid=#{userUuid}
+    </select>
+    <select id="getUsetDtcNumber" resultType="java.lang.Integer">
+                    SELECT
+                count( uuid )
+            FROM
+                dtc_order
+            WHERE
+                dtc_uuid = #{dtcUuid}
+                AND buyer_uuid = #{userUuid}
+                AND order_sts IN (
+                1,
+                6)
+    </select>
+
+</mapper>

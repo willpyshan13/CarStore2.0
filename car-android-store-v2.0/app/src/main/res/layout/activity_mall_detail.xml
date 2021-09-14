@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/status_bar"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/white" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/white"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/detail_toolbar_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="商品详情"
+            android:textColor="#130903"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:onClick="onBackFinish"
+            android:scaleType="center"
+            android:src="@drawable/store_button_back_pressed" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#999999" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:padding="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/mall_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="50dp"
+                        android:text="商品ID"
+                        android:textColor="#424242"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/mall_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="类型"
+                        android:textColor="#424242"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/mall_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15sp"
+                        android:text="创建时间"
+                        android:textColor="#999999"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/mall_reject_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="驳回理由"
+                        android:textColor="#424242"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/mall_reject_content"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="-"
+                        android:textColor="#FF0000"
+                        android:textSize="13sp"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/mall_status_icon"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/success_icon" />
+
+                    <TextView
+                        android:id="@+id/mall_status_content"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="已上架"
+                        android:textColor="#424242"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <com.yanxin.store.ui.OptionalEditLayout
+                android:id="@+id/mall_title"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/shape_register_item_white_bg"
+                app:is_desc_bold="true"
+                app:is_mandatory="false"
+                app:is_more_show="false" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:orientation="vertical">
+
+                <com.yanxin.store.ui.OptionalEditLayout
+                    android:id="@+id/mall_one_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:background="@drawable/shape_register_item_white_bg"
+                    app:content_tv_color="#333333"
+                    app:desc_content="一级分类"
+                    app:desc_tv_color="#999999"
+                    app:is_content_center_gravity="true"
+                    app:is_mandatory="false"
+                    app:is_more_show="false" />
+
+                <com.yanxin.store.ui.OptionalEditLayout
+                    android:id="@+id/mall_two_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:background="@drawable/shape_register_item_white_bg"
+                    app:content_tv_color="#333333"
+                    app:desc_content="二级分类"
+                    app:desc_tv_color="#999999"
+                    app:is_content_center_gravity="true"
+                    app:is_mandatory="false"
+                    app:is_more_show="false" />
+
+                <com.yanxin.store.ui.OptionalEditLayout
+                    android:id="@+id/mall_brand"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:background="@drawable/shape_register_item_white_bg"
+                    app:content_tv_color="#333333"
+                    app:desc_content="适用品牌"
+                    app:desc_tv_color="#999999"
+                    app:is_content_center_gravity="true"
+                    app:is_mandatory="false"
+                    app:is_more_show="false" />
+
+                <com.yanxin.store.ui.OptionalEditLayout
+                    android:id="@+id/mall_model"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:background="@drawable/shape_register_item_white_bg"
+                    app:content_tv_color="#333333"
+                    app:desc_content="适用车型"
+                    app:desc_tv_color="#999999"
+                    app:is_content_center_gravity="true"
+                    app:is_mandatory="false"
+                    app:is_more_show="false" />
+
+                <com.yanxin.store.ui.OptionalEditLayout
+                    android:id="@+id/mall_wuliao"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:background="@drawable/shape_register_item_white_bg"
+                    app:content_tv_color="#333333"
+                    app:desc_content="物料名称"
+                    app:desc_tv_color="#999999"
+                    app:is_content_center_gravity="true"
+                    app:is_mandatory="false"
+                    app:is_more_show="false" />
+            </LinearLayout>
+
+            <com.yanxin.store.ui.OptionalEditLayout
+                android:id="@+id/mall_service_amount"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/shape_register_item_white_bg"
+                app:content_tv_color="#333333"
+                app:desc_content="平台服务费"
+                app:desc_tv_color="#999999"
+                app:is_content_center_gravity="true"
+                app:is_mandatory="false"
+                app:is_more_show="false" />
+
+            <com.yanxin.store.ui.OptionalEditLayout
+                android:id="@+id/mall_peisong_type"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/shape_register_item_white_bg"
+                app:content_tv_color="#333333"
+                app:desc_content="配送方式"
+                app:desc_tv_color="#999999"
+                app:is_content_center_gravity="true"
+                app:is_mandatory="false"
+                app:is_more_show="false" />
+
+            <com.yanxin.store.ui.OptionalEditLayout
+                android:id="@+id/mall_address"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/shape_register_item_white_bg"
+                android:visibility="gone"
+                app:content_tv_color="#333333"
+                app:desc_content="到店地址"
+                app:desc_tv_color="#999999"
+                app:is_content_center_gravity="true"
+                app:is_mandatory="false"
+                app:is_more_show="false" />
+
+            <com.yanxin.store.ui.OptionalEditLayout
+                android:id="@+id/mall_kucun"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/shape_register_item_white_bg"
+                android:visibility="gone"
+                app:content_tv_color="#333333"
+                app:desc_content="库存"
+                app:desc_tv_color="#999999"
+                app:is_content_center_gravity="true"
+                app:is_mandatory="false"
+                app:is_more_show="false" />
+
+
+            <com.yanxin.store.ui.OptionalEditLayout
+                android:id="@+id/mall_shangmen_amount"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/shape_register_item_white_bg"
+                android:visibility="gone"
+                app:content_tv_color="#333333"
+                app:desc_content="上门费"
+                app:desc_tv_color="#999999"
+                app:is_content_center_gravity="true"
+                app:is_mandatory="false"
+                app:is_more_show="false" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/shape_register_item_white_bg"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingTop="15dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="15dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="商品描述"
+                        android:textColor="#9B9B9B"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/mall_desc"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:textColor="#9B9B9B"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="商品主图"
+                        android:textColor="#9B9B9B"
+                        android:textSize="15sp" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2">
+
+                        <ImageView
+                            android:id="@+id/mall_zhutu"
+                            android:layout_width="90dp"
+                            android:layout_height="90dp"
+                            android:textColor="#9B9B9B"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="商品图"
+                        android:textColor="#9B9B9B"
+                        android:textSize="15sp" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/mall_pic_rv"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                        app:spanCount="3" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="适用预约时间段"
+                android:textColor="#424242"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:orientation="vertical">
+
+                <com.yanxin.store.ui.OptionalEditLayout
+                    android:id="@+id/mall_am_count"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:background="@drawable/shape_register_item_white_bg"
+                    app:content_tv_color="#333333"
+                    app:desc_content="上午"
+                    app:desc_tv_color="#999999"
+                    app:is_content_center_gravity="true"
+                    app:is_mandatory="false"
+                    app:is_more_show="false" />
+
+                <com.yanxin.store.ui.OptionalEditLayout
+                    android:id="@+id/mall_pm_count"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:background="@drawable/shape_register_item_white_bg"
+                    app:content_tv_color="#333333"
+                    app:desc_content="下午"
+                    app:desc_tv_color="#999999"
+                    app:is_content_center_gravity="true"
+                    app:is_mandatory="false"
+                    app:is_more_show="false" />
+
+                <com.yanxin.store.ui.OptionalEditLayout
+                    android:id="@+id/mall_nm_count"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:background="@drawable/shape_register_item_white_bg"
+                    app:content_tv_color="#333333"
+                    app:desc_content="晚上"
+                    app:desc_tv_color="#999999"
+                    app:is_content_center_gravity="true"
+                    app:is_mandatory="false"
+                    app:is_more_show="false" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/mall_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="44dp"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/shape_blue_btn"
+            android:gravity="center"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp"
+            android:text="编辑"
+            android:textColor="#0091FF"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/mall_submit"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape_login_submit_btn"
+            android:gravity="center"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp"
+            android:text="下架"
+            android:textColor="@color/white"
+            android:textSize="17sp" />
+    </LinearLayout>
+</LinearLayout>

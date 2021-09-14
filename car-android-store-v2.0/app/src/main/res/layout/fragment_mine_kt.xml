@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.yanxin.store.mvvm.viewmodel.FragmentMineViewModel" />
+
+        <import type="android.view.View" />
+
+        <import type="com.yanxin.store.R" />
+
+        <import type="androidx.core.content.ContextCompat" />
+
+    </data>
+
+    <com.scwang.smart.refresh.layout.SmartRefreshLayout
+        android:layout_width="match_parent"
+        app:onRefreshCommand="@{viewModel.onRefreshCommand}"
+        app:srlEnableRefresh="true"
+        app:refreshStatus="@={viewModel.refreshStatus}"
+        android:layout_height="match_parent">
+        <com.scwang.smart.refresh.header.ClassicsHeader
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/color_F3F3F3"
+                android:orientation="vertical">
+
+
+                <View
+                    android:id="@+id/mine_top_bg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="185dp"
+                    android:alpha="0.25"
+                    android:background="@drawable/shape_mine_top_bg"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/mine_header"
+                    android:layout_width="@dimen/dp80"
+                    android:layout_height="@dimen/dp80"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="63dp"
+                    app:imagePlaceholder="@{ContextCompat.getDrawable(context, R.mipmap.icon_logo)}"
+                    app:imageUrl="@{viewModel.imageHeader}"
+                    app:isCircle="@{true}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:onClickCommand="@{viewModel.infoClick}"
+                    tools:src="@mipmap/icon_logo" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="@dimen/dp21"
+                    android:layout_height="@dimen/dp21"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="@dimen/dp20"
+                    android:src="@mipmap/icon_setting"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/mine_header"
+                    app:onClickCommand="@{viewModel.settingClick}" />
+
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintStart_toEndOf="@+id/mine_header"
+                    app:layout_constraintTop_toTopOf="@+id/mine_header">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="18dp"
+                        android:gravity="center_vertical">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{viewModel.userName}"
+                            android:textSize="@dimen/sp16"
+                            android:textStyle="bold" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:background="@drawable/shape_mine_item_bg"
+                            android:paddingStart="6dp"
+                            android:paddingTop="2dp"
+                            android:paddingEnd="6dp"
+                            android:paddingBottom="2dp"
+                            android:text="@{viewModel.nameDesc1}"
+                            android:textColor="@color/color_0091ff"
+                            android:textSize="@dimen/sp14"
+                            android:textStyle="bold"
+                            tools:text="技师" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:background="@drawable/shape_fa_square_tab_radiogroup_right_check"
+                            android:paddingStart="6dp"
+                            android:paddingTop="2dp"
+                            android:paddingEnd="6dp"
+                            android:paddingBottom="2dp"
+                            android:text="@{viewModel.nameDesc2}"
+                            android:textColor="@color/color_FFFFFF"
+                            android:textSize="@dimen/sp14"
+                            android:textStyle="bold"
+                            tools:text="专家技师" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="5dp">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="服务评分："
+                            android:textColor="@color/color_FFFFFF_40"
+                            android:textSize="@dimen/sp16"
+                            android:textStyle="bold" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="2dp"
+                            android:text="@{viewModel.score}"
+                            android:textColor="@color/color_E02020"
+                            android:textSize="@dimen/sp16"
+                            tools:text="4.4" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="2dp"
+                            android:text="分"
+                            android:textColor="@color/color_FFFFFF_40"
+                            android:textSize="@dimen/sp16" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <View
+                    android:id="@+id/mine_wallet_bg"
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_margin="10dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/shape_mine_item_bg"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/mine_header" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/mine_wallet_money"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="19dp"
+                    android:text="@{viewModel.walletMoney}"
+                    android:textColor="@color/color_424242"
+                    android:textSize="@dimen/sp20"
+                    app:layout_constraintStart_toStartOf="@+id/mine_wallet_bg"
+                    app:layout_constraintTop_toTopOf="@+id/mine_wallet_bg" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp36"
+                    android:text="提现 >"
+                    android:textColor="@color/color_0091FF"
+                    android:textSize="@dimen/sp12"
+                    app:layout_constraintBottom_toBottomOf="@+id/mine_wallet_money"
+                    app:layout_constraintStart_toEndOf="@+id/mine_wallet_money"
+                    app:layout_constraintTop_toTopOf="@+id/mine_wallet_money"
+                    app:onClickCommand="@{viewModel.withDrawClick}" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="12dp"
+                    android:drawableStart="@mipmap/icon_mine_wallet"
+                    android:drawablePadding="10dp"
+                    android:gravity="center_vertical"
+                    android:text="钱包"
+                    android:textColor="@color/color_424242"
+                    android:textSize="@dimen/sp12"
+                    app:layout_constraintStart_toStartOf="@+id/mine_wallet_bg"
+                    app:layout_constraintTop_toBottomOf="@+id/mine_wallet_money"
+                    app:onClickCommand="@{viewModel.walletClick}" />
+
+                <View
+                    android:id="@+id/mine_wallet_bg_divider"
+                    android:layout_width="1dp"
+                    android:layout_height="0dp"
+                    android:layout_margin="13dp"
+                    android:background="@color/color_F2F2F2"
+                    app:layout_constraintBottom_toBottomOf="@id/mine_wallet_bg"
+                    app:layout_constraintEnd_toEndOf="@+id/mine_wallet_bg"
+                    app:layout_constraintStart_toStartOf="@id/mine_wallet_bg"
+                    app:layout_constraintTop_toTopOf="@id/mine_wallet_bg" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/mine_wallet_order"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="19dp"
+                    android:text="@{viewModel.orderCount}"
+                    android:textColor="@color/color_424242"
+                    android:textSize="@dimen/sp20"
+                    app:layout_constraintStart_toStartOf="@+id/mine_wallet_bg_divider"
+                    app:layout_constraintTop_toTopOf="@+id/mine_wallet_bg"
+                    tools:text="1999.0" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:drawableStart="@mipmap/icon_mine_order"
+                    android:drawablePadding="10dp"
+                    android:gravity="center_vertical"
+                    android:text="订单"
+                    android:textColor="@color/color_424242"
+                    android:textSize="@dimen/sp12"
+                    app:layout_constraintStart_toStartOf="@+id/mine_wallet_order"
+                    app:layout_constraintTop_toBottomOf="@+id/mine_wallet_money"
+                    app:onClickCommand="@{viewModel.orderClick}" />
+
+                <View
+                    android:id="@+id/mine_wallet_bg2"
+                    android:layout_width="0dp"
+                    android:layout_height="200dp"
+                    android:layout_margin="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/shape_mine_item_bg"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/mine_wallet_bg" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/mine_order_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp40"
+                    android:layout_marginTop="25dp"
+                    android:src="@mipmap/icon_mine_order_now"
+                    app:layout_constraintStart_toStartOf="@id/mine_wallet_bg2"
+                    app:layout_constraintTop_toTopOf="@id/mine_wallet_bg2"
+                    app:onClickCommand="@{viewModel.orderNowClick}" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="现场支持订单"
+                    android:textColor="@color/color_333333"
+                    android:textSize="@dimen/sp12"
+                    app:layout_constraintEnd_toEndOf="@+id/mine_order_1"
+                    app:layout_constraintStart_toStartOf="@+id/mine_order_1"
+                    app:layout_constraintTop_toBottomOf="@+id/mine_order_1"
+                    app:onClickCommand="@{viewModel.orderNowClick}" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/mine_order_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/icon_mine_order_store"
+                    android:visibility="@{viewModel.showShop?View.VISIBLE:View.INVISIBLE}"
+                    app:layout_constraintEnd_toEndOf="@id/mine_wallet_bg2"
+                    app:layout_constraintStart_toStartOf="@id/mine_wallet_bg2"
+                    app:layout_constraintTop_toTopOf="@id/mine_order_1"
+                    app:onClickCommand="@{viewModel.orderStoreClick}" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="商城订单"
+                    android:textColor="@color/color_333333"
+                    android:textSize="@dimen/sp12"
+                    android:visibility="@{viewModel.showShop?View.VISIBLE:View.INVISIBLE}"
+                    app:layout_constraintEnd_toEndOf="@+id/mine_order_2"
+                    app:layout_constraintStart_toStartOf="@+id/mine_order_2"
+                    app:layout_constraintTop_toBottomOf="@+id/mine_order_2"
+                    app:onClickCommand="@{viewModel.orderStoreClick}" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/mine_order_6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/icon_mine_order_tech"
+                    android:visibility="@{viewModel.showShop?View.GONE:View.VISIBLE}"
+                    app:layout_constraintEnd_toEndOf="@id/mine_wallet_bg2"
+                    app:layout_constraintStart_toStartOf="@id/mine_wallet_bg2"
+                    app:layout_constraintTop_toTopOf="@id/mine_order_1"
+                    app:onClickCommand="@{viewModel.techOrderClick}" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="共享技师订单"
+                    android:textColor="@color/color_333333"
+                    android:textSize="@dimen/sp12"
+                    android:visibility="@{viewModel.showShop?View.GONE:View.VISIBLE}"
+                    app:layout_constraintEnd_toEndOf="@+id/mine_order_6"
+                    app:layout_constraintStart_toStartOf="@+id/mine_order_6"
+                    app:layout_constraintTop_toBottomOf="@+id/mine_order_6"
+                    app:onClickCommand="@{viewModel.techOrderClick}" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/mine_order_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dp40"
+                    android:src="@mipmap/icon_mine_dtc"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/mine_order_1"
+                    app:onClickCommand="@{viewModel.dtcClick}" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="DTC查询"
+                    android:textColor="@color/color_333333"
+                    android:textSize="@dimen/sp12"
+                    app:layout_constraintEnd_toEndOf="@+id/mine_order_3"
+                    app:layout_constraintStart_toStartOf="@+id/mine_order_3"
+                    app:layout_constraintTop_toBottomOf="@+id/mine_order_3"
+                    app:onClickCommand="@{viewModel.dtcClick}" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/mine_order_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="45dp"
+                    android:src="@mipmap/icon_mine_example"
+                    app:layout_constraintStart_toStartOf="@id/mine_order_1"
+                    app:layout_constraintTop_toBottomOf="@id/mine_order_1"
+                    app:onClickCommand="@{viewModel.exampleClick}" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="我的案例"
+                    android:textColor="@color/color_333333"
+                    android:textSize="@dimen/sp12"
+                    app:layout_constraintEnd_toEndOf="@+id/mine_order_4"
+                    app:layout_constraintStart_toStartOf="@+id/mine_order_4"
+                    app:layout_constraintTop_toBottomOf="@+id/mine_order_4"
+                    app:onClickCommand="@{viewModel.exampleClick}" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/mine_order_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="45dp"
+                    android:src="@mipmap/icon_mine_answer"
+                    app:layout_constraintEnd_toEndOf="@+id/mine_order_2"
+                    app:layout_constraintStart_toStartOf="@+id/mine_order_2"
+                    app:layout_constraintTop_toBottomOf="@+id/mine_order_2"
+                    app:onClickCommand="@{viewModel.questionClick}" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="知识问答"
+                    android:textColor="@color/color_333333"
+                    android:textSize="@dimen/sp12"
+                    app:layout_constraintEnd_toEndOf="@+id/mine_order_5"
+                    app:layout_constraintStart_toStartOf="@+id/mine_order_5"
+                    app:layout_constraintTop_toBottomOf="@+id/mine_order_5"
+                    app:onClickCommand="@{viewModel.questionClick}" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/mine_desc"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/icon_mine_desc"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/mine_wallet_bg2"
+                    app:onClickCommand="@{viewModel.shareClick}" />
+
+                <com.will.habit.widget.banner.BannerView
+                    android:id="@+id/mine_desc_banner"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/dp110"
+                    android:layout_margin="10dp"
+                    app:itemBinding="@{viewModel.itemBinding}"
+                    app:items="@{viewModel.items}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/mine_desc" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+
+</layout>

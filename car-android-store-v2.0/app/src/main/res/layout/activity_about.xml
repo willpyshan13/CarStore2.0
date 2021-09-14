@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.yanxin.store.mvvm.viewmodel.AboutViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_F9F9F9"
+        android:orientation="vertical">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:src="@mipmap/icon_about_top"
+                    android:layout_marginTop="@dimen/dp20"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:text="@{viewModel.versionText}"
+                    tools:text="100"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:background="@drawable/shape_mine_item_bg"
+                    android:text="服务协议"
+                    android:layout_margin="@dimen/dp10"
+                    android:paddingTop="@dimen/dp10"
+                    android:paddingBottom="@dimen/dp10"
+                    android:paddingStart="@dimen/dp20"
+                    android:paddingEnd="@dimen/dp20"
+                    android:drawableEnd="@mipmap/icon_right_arrow"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:background="@drawable/shape_mine_item_bg"
+                    android:text="隐私权政策"
+                    android:layout_margin="@dimen/dp10"
+                    android:paddingTop="@dimen/dp10"
+                    android:paddingBottom="@dimen/dp10"
+                    android:paddingStart="@dimen/dp20"
+                    android:paddingEnd="@dimen/dp20"
+                    android:drawableEnd="@mipmap/icon_right_arrow"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:background="@drawable/shape_mine_item_bg"
+                    android:text="版权声明"
+                    android:layout_margin="@dimen/dp10"
+                    android:paddingTop="@dimen/dp10"
+                    android:paddingBottom="@dimen/dp10"
+                    android:paddingStart="@dimen/dp20"
+                    android:paddingEnd="@dimen/dp20"
+                    android:drawableEnd="@mipmap/icon_right_arrow"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:background="@drawable/shape_mine_item_bg"
+                    android:text="资质证书"
+                    android:layout_margin="@dimen/dp10"
+                    android:paddingTop="@dimen/dp10"
+                    android:paddingBottom="@dimen/dp10"
+                    android:paddingStart="@dimen/dp20"
+                    android:paddingEnd="@dimen/dp20"
+                    android:drawableEnd="@mipmap/icon_right_arrow"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:background="@drawable/shape_mine_item_bg"
+                    android:text="客服服务"
+                    android:layout_margin="@dimen/dp10"
+                    android:paddingTop="@dimen/dp10"
+                    android:paddingBottom="@dimen/dp10"
+                    android:paddingStart="@dimen/dp20"
+                    android:paddingEnd="@dimen/dp20"
+                    android:drawableEnd="@mipmap/icon_right_arrow"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:background="@drawable/shape_mine_item_bg"
+                    android:text="退出"
+                    android:gravity="center"
+                    app:onClickCommand="@{viewModel.exitClick}"
+                    android:layout_margin="@dimen/dp10"
+                    android:paddingTop="@dimen/dp10"
+                    android:paddingBottom="@dimen/dp10"
+                    android:paddingStart="@dimen/dp20"
+                    android:paddingEnd="@dimen/dp20"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:gravity="center"
+                    android:text="Copyright @ 上海嘟灵科技服务有限公司\ndlvehicle.com\n备案号：沪ICP备2021003020号"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

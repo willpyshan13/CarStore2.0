@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ShareAlertView">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a2U-Er-zAK">
+                    <rect key="frame" x="0.0" y="682" width="414" height="180"/>
+                    <subviews>
+                        <button opaque="NO" tag="62" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U30-xd-aNw" customClass="FSCustomButton">
+                            <rect key="frame" x="20" y="5" width="177" height="107"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="微信好友" image="share_weixin_icon">
+                                <color key="titleColor" red="0.199973762" green="0.2000150383" blue="0.19997116919999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="shareBtnClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="Gkb-fu-QYZ"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="63" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tys-pd-Lm0" customClass="FSCustomButton">
+                            <rect key="frame" x="217" y="5" width="177" height="107"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="朋友圈" image="share_weixinpyq_icon">
+                                <color key="titleColor" red="0.199973762" green="0.2000150383" blue="0.19997116919999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="shareBtnClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="xhy-Rq-zs0"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JhL-sH-47K">
+                            <rect key="frame" x="0.0" y="122" width="414" height="58"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="58" id="hiJ-Ep-7Ld"/>
+                            </constraints>
+                            <state key="normal" title="取消">
+                                <color key="titleColor" red="0.199973762" green="0.2000150383" blue="0.19997116919999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="closeBtnClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="Kdz-hh-ndo"/>
+                            </connections>
+                        </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nHa-pt-507">
+                            <rect key="frame" x="0.0" y="117" width="414" height="5"/>
+                            <color key="backgroundColor" red="0.93323183060000003" green="0.93339174989999996" blue="0.93322181699999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="5" id="FIA-lZ-w0l"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="nHa-pt-507" secondAttribute="trailing" id="2yZ-kw-3B8"/>
+                        <constraint firstItem="Tys-pd-Lm0" firstAttribute="height" secondItem="U30-xd-aNw" secondAttribute="height" id="6hh-ga-7H4"/>
+                        <constraint firstItem="JhL-sH-47K" firstAttribute="top" secondItem="nHa-pt-507" secondAttribute="bottom" id="80T-g0-nFQ"/>
+                        <constraint firstAttribute="trailing" secondItem="JhL-sH-47K" secondAttribute="trailing" id="8aV-2b-gZZ"/>
+                        <constraint firstAttribute="trailing" secondItem="Tys-pd-Lm0" secondAttribute="trailing" constant="20" id="Czg-GA-ZB8"/>
+                        <constraint firstItem="U30-xd-aNw" firstAttribute="leading" secondItem="a2U-Er-zAK" secondAttribute="leading" constant="20" id="GBF-Rw-hdH"/>
+                        <constraint firstItem="nHa-pt-507" firstAttribute="leading" secondItem="a2U-Er-zAK" secondAttribute="leading" id="Hay-LC-0g4"/>
+                        <constraint firstItem="nHa-pt-507" firstAttribute="top" secondItem="Tys-pd-Lm0" secondAttribute="bottom" constant="5" id="KCw-Rf-iYQ"/>
+                        <constraint firstItem="Tys-pd-Lm0" firstAttribute="leading" secondItem="U30-xd-aNw" secondAttribute="trailing" constant="20" id="MdB-G5-tbz"/>
+                        <constraint firstAttribute="height" constant="180" id="NtP-kY-3Ek"/>
+                        <constraint firstItem="JhL-sH-47K" firstAttribute="leading" secondItem="a2U-Er-zAK" secondAttribute="leading" id="PJb-ce-Djw"/>
+                        <constraint firstItem="Tys-pd-Lm0" firstAttribute="width" secondItem="U30-xd-aNw" secondAttribute="width" id="ZyV-Z4-PpR"/>
+                        <constraint firstItem="Tys-pd-Lm0" firstAttribute="baseline" secondItem="U30-xd-aNw" secondAttribute="baseline" id="dW9-V1-WRH"/>
+                        <constraint firstItem="Tys-pd-Lm0" firstAttribute="top" secondItem="a2U-Er-zAK" secondAttribute="top" constant="5" id="dym-WD-dTC"/>
+                        <constraint firstAttribute="bottom" secondItem="JhL-sH-47K" secondAttribute="bottom" id="sdB-ZB-r6d"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="a2U-Er-zAK" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="6gQ-H1-wJB"/>
+                <constraint firstItem="a2U-Er-zAK" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="by0-WQ-rsR"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="a2U-Er-zAK" secondAttribute="trailing" id="wIJ-cJ-zAh"/>
+            </constraints>
+            <connections>
+                <outlet property="bgView" destination="a2U-Er-zAK" id="d2r-sN-fsQ"/>
+                <outlet property="weixinBtn" destination="U30-xd-aNw" id="LkN-HI-U8P"/>
+                <outlet property="weixinFriendsBtn" destination="Tys-pd-Lm0" id="W3L-8g-jie"/>
+            </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="127.90178571428571"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="share_weixin_icon" width="45" height="45"/>
+        <image name="share_weixinpyq_icon" width="45" height="45"/>
+    </resources>
+</document>

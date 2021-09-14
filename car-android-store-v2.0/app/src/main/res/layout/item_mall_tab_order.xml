@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parent_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/dp_10"
+    android:orientation="horizontal"
+    app:cardCornerRadius="10dp"
+    android:layout_marginLeft="2dp"
+    android:layout_marginRight="2dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp">
+
+        <ImageView
+            android:id="@+id/mall_tab_item_icon"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_marginRight="15dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/case_default_icon" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/mall_tab_item_icon_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="75dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="90dp" />
+
+        <TextView
+            android:id="@+id/mall_tab_item_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="19dp"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textColor="#ff333333"
+            android:textSize="14sp"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintLeft_toRightOf="@id/mall_tab_item_icon_guideline"
+            app:layout_constraintRight_toLeftOf="@id/mall_tab_item_state"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="标题是什么呀标题是什么呀标题在多内标题在多内…" />
+
+        <TextView
+            android:id="@+id/mall_tab_item_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#ffe02020"
+            android:textSize="14sp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="已下架" />
+
+        <TextView
+            android:id="@+id/mall_tab_item_install_way"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:singleLine="true"
+            android:textColor="#ff999999"
+            android:textSize="12sp"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintLeft_toLeftOf="@id/mall_tab_item_title"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/mall_tab_item_title"
+            tools:text="配送方式：到店安装" />
+
+        <TextView
+            android:id="@+id/mall_tab_item_price"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:singleLine="true"
+            android:textColor="#ff999999"
+            android:textSize="12sp"
+            app:layout_constraintLeft_toLeftOf="@id/mall_tab_item_install_way"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/mall_tab_item_install_way"
+            tools:text="拼团价：¥500.00" />
+
+        <TextView
+            android:id="@+id/mall_tab_item_customer_number"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:singleLine="true"
+            android:textColor="#ff999999"
+            android:textSize="12sp"
+            app:layout_constraintLeft_toLeftOf="@id/mall_tab_item_price"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/mall_tab_item_price"
+            tools:text="成团人数：2人" />
+
+
+        <TextView
+            android:id="@+id/mall_tab_item_online"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_10"
+            android:background="@drawable/mall_tab_item_btn"
+            android:text="上架"
+            android:textColor="#fff"
+            android:textSize="14sp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/mall_tab_item_customer_number" />
+
+        <TextView
+            android:id="@+id/mall_tab_item_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_10"
+            android:background="@drawable/mall_tab_item_btn_hollow"
+            android:text="编 辑"
+            android:textColor="#0091ff"
+            android:textSize="14sp"
+            app:layout_constraintHorizontal_bias="0.945"
+            app:layout_constraintLeft_toLeftOf="@id/mall_tab_item_icon_guideline"
+            app:layout_constraintRight_toLeftOf="@id/mall_tab_item_online"
+            app:layout_constraintTop_toBottomOf="@id/mall_tab_item_customer_number" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.cardview.widget.CardView>

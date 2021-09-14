@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SelectRidersAlertView">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ocM-Gl-9Hp">
+                    <rect key="frame" x="102" y="318" width="210" height="260"/>
+                    <subviews>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TZe-Sy-Btz">
+                            <rect key="frame" x="0.0" y="0.0" width="210" height="260"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        </tableView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="TZe-Sy-Btz" secondAttribute="bottom" id="PyJ-Re-S26"/>
+                        <constraint firstAttribute="width" constant="210" id="Qbe-i1-YB8"/>
+                        <constraint firstItem="TZe-Sy-Btz" firstAttribute="top" secondItem="ocM-Gl-9Hp" secondAttribute="top" id="WZS-MJ-08r"/>
+                        <constraint firstAttribute="height" constant="260" id="dap-lz-Hfb"/>
+                        <constraint firstAttribute="trailing" secondItem="TZe-Sy-Btz" secondAttribute="trailing" id="oeq-sg-YcX"/>
+                        <constraint firstItem="TZe-Sy-Btz" firstAttribute="leading" secondItem="ocM-Gl-9Hp" secondAttribute="leading" id="vRY-gT-YYy"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="secondaryLabelColor"/>
+            <constraints>
+                <constraint firstItem="ocM-Gl-9Hp" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="HfQ-aS-AZu"/>
+                <constraint firstItem="ocM-Gl-9Hp" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Hg3-4E-vtl"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="bgView" destination="ocM-Gl-9Hp" id="n7a-eS-pQW"/>
+                <outlet property="listTab" destination="TZe-Sy-Btz" id="LJe-9t-9CK"/>
+            </connections>
+            <point key="canvasLocation" x="-146.37681159420291" y="73.660714285714278"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

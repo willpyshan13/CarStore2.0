@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.car.account.web.mapper.groupbuy.GroupbuyMapper">
+    <select id="queryGroupbuyList" parameterType="com.car.account.client.request.groupbuy.QueryGroupbuyListReq" resultType="com.car.account.client.response.groupbuy.GroupbuyRes">
+      	select DISTINCT
+      		g.*,
+      		s.store_name ,
+      		s.score as storeScore,
+      		s.store_type
+      	from  groupbuy g 
+      		left join store s on s.uuid = g.store_uuid
+      		left join groupbuy_goods gg on g.uuid = gg.groupbuy_uuid and gg.sts=0
+      		left join goods  gd on gd.uuid = gg.goods_uuid
+        where g.sts = 0
+	        <if test="groupSts != null and groupSts.size()>0">
+	        	<foreach collection="groupSts" open=" and g.group_sts in(" separator="," close=")" item="st">#{st}</foreach>
+	        </if>
+	        <if test="receiveMethod != null and receiveMethod.size()>0">
+	        	<foreach collection="receiveMethod" open=" and g.receive_Method in(" separator="," close=")" item="st">#{st}</foreach>
+	        </if>
+	        <if test="storeType != null and storeType.size()>0">
+	        	<foreach collection="storeType" open=" and s.store_type in(" separator="," close=")" item="st">#{st}</foreach>
+	        </if>
+	        <if test="userUuid !=null and userUuid !=''">and g.user_Uuid = #{userUuid}</if>
+	        <if test="storeUuid !=null and storeUuid !=''">and g.store_Uuid = #{storeUuid}</if>
+	        <if test="storeCityUuid !=null and storeCityUuid !=''">and s.company_address_city = #{storeCityUuid}</if>
+	        <if test="storeCountyUuid !=null and storeCountyUuid !=''">and s.company_address_county = #{storeCountyUuid}</if>
+	        <if test="vehicleBrand !=null and vehicleBrand !=''">and gd.vehicle_brand = #{vehicleBrand}</if>
+	        <if test="parentType !=null and parentType !=''">and gd.parent_Type = #{parentType}</if>
+	        <if test="subType !=null and subType !=''">and gd.sub_Type = #{subType}</if>
+	        <if test="maxDistance !=null  and latitude !=null and longitude !=null">
+	        	and s.latitude is not null and s.longitude is not null
+	        	and #{maxDistance} >= lat_lng_distance(s.latitude,s.longitude ,#{latitude},#{longitude})
+	        </if>
+        order by 
+        	<if test="storeScoreDesc !=null">
+        		s.score <if  test="storeScoreDesc ==1"> desc </if>,
+        	</if>
+        	<if test="distanceDesc !=null and latitude !=null and longitude !=null">
+        		lat_lng_distance(s.latitude,s.longitude ,#{latitude},#{longitude}) <if  test="distanceDesc ==1"> desc </if>,
+        	</if>
+        	g.group_sts,g.start_time,g.created_time desc
+    </select>
+
+
+	 <update id="updateStartGroup">
+	  	update groupbuy 
+	  		set group_sts=1 
+	  	where group_sts=0 
+	  		and now()>=start_time
+	 </update>
+</mapper>

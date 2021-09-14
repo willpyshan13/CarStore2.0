@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.car.account.web.mapper.message.MessageMapper">
+
+    <select id="selectByCondition" resultType="com.car.account.client.response.message.MessageRes">
+        select
+            *
+        from message
+        <where>
+            and sts = 0
+            <if test="uuid != null">
+                and uuid = #{uuid,jdbcType=VARCHAR}
+            </if>
+            <if test="content != null">
+                and content = #{content,jdbcType=VARCHAR}
+            </if>
+            <if test="type != null">
+                and type = #{type,jdbcType=BIT}
+            </if>
+            <if test="status != null">
+                and status = #{status,jdbcType=BIT}
+            </if>
+            <if test="technicianUuid != null">
+                and technician_uuid = #{technicianUuid,jdbcType=VARCHAR}
+            </if>
+            <if test="clientType != null">
+                and client_type = #{clientType,jdbcType=BIT}
+            </if>
+            <if test="createdTime != null">
+                and created_time = #{createdTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="lastUpdatedTime != null">
+                and last_updated_time = #{lastUpdatedTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="createdBy != null">
+                and created_by = #{createdBy,jdbcType=VARCHAR}
+            </if>
+            <if test="lastUpdatedBy != null">
+                and last_updated_by = #{lastUpdatedBy,jdbcType=VARCHAR}
+            </if>
+        </where>
+        order by created_time desc
+    </select>
+
+    <update id="updateMessageStatus" >
+       UPDATE message SET status = #{status} WHERE technician_uuid = #{userUuid}
+    </update>
+
+    <select id="selectmesssageTypeNumber" resultType="java.lang.Integer">
+        SELECT count(uuid) from message where technician_uuid=#{userUuid} and type=#{type} and sts = 0
+    </select>
+
+
+
+</mapper>

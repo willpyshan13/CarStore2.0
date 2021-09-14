@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.car.account.web.mapper.coupon.CouponMapper">
+    <select id="queryCouponList" resultType="com.car.account.client.response.coupon.QueryCouponRes">
+        select  * from  coupon
+        <where>
+            sts = 0
+            <if test="cname != null and cname != ''">
+                and cname LIKE CONCAT('%',#{cname},'%')
+            </if>
+            <if test="couponSts != null and couponSts != ''">
+                and coupon_sts = #{couponSts}
+            </if>
+            <if test="orderType != null and orderType != ''">
+                and order_type in (#{orderType})
+            </if>
+        </where>
+    </select>
+
+</mapper>

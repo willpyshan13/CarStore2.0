@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="popup_window_filtrate_height">300dp</dimen>
+    <dimen name="popup_window_filtrate_width">240dp</dimen>
+    <dimen name="quiz_dialog_filtrate_height">240dp</dimen>
+    <dimen name="quiz_dialog_filtrate_width">240dp</dimen>
+</resources>

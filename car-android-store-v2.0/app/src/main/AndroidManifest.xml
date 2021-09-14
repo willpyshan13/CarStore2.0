@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.yanxin.store">
+    <!--    商户端-->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <!--用于进行网络定位-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"></uses-permission>
+    <!--用于访问GPS定位-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
+    <!--用于获取运营商信息，用于支持提供运营商信息相关的接口-->
+    <!--用于获取wifi的获取权限，wifi信息会用来进行网络定位-->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"></uses-permission>
+    <!--用于读取手机当前的状态-->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
+    <!--用于申请调用A-GPS模块-->
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"></uses-permission>
+    <!--如果设置了target >= 28 如果需要启动后台定位则必须声明这个权限-->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <!--如果您的应用需要后台定位权限，且有可能运行在Android Q设备上,并且设置了target>28，必须增加这个权限声明-->
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+
+    <application
+        android:name="com.yanxin.store.MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/icon_logo"
+        android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:requestLegacyExternalStorage="true"
+        android:resizeableActivity="true"
+        android:roundIcon="@mipmap/icon_logo"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Design.Light.NoActionBar">
+        <activity android:name="com.yanxin.store.activity.LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.yanxin.store.activity.MainActivity" />
+        <activity android:name="com.yanxin.store.activity.AgreementActivity" />
+        <activity
+            android:name="com.yanxin.store.activity.StoreRegisterActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name="com.yanxin.store.activity.TechnicianRegisterActivity" />
+        <activity android:name=".activity.BrandActivity" />
+        <activity
+            android:name=".activity.AskEveryoneActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.PushCaseActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".activity.MyCaseActivity" />
+        <activity android:name=".activity.CaseDetailActivity" />
+        <activity android:name=".activity.RushDetailActivity" />
+        <activity android:name=".activity.DtcAddActivity" />
+        <activity android:name=".activity.DtcMyBuyActivity" />
+        <activity android:name=".activity.DtcDetailActivity" />
+        <activity android:name=".activity.MapActivity" />
+        <activity android:name=".mvvm.ui.activity.StoreOrderReportActivity" />
+        <activity
+            android:name=".mvvm.ui.activity.MineInfoActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".mvvm.ui.activity.MineInfoTechActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".mvvm.ui.activity.MineWalletActivity" />
+        <activity android:name=".mvvm.ui.activity.MineWorkOrderActivity" />
+        <activity android:name=".mvvm.ui.activity.MineOrderActivity" />
+        <activity android:name=".mvvm.ui.activity.NowOrderReportActivity" />
+        <activity android:name=".mvvm.ui.activity.OnSiteSupportActivity" />
+        <activity android:name=".mvvm.ui.activity.AboutActivity" />
+        <activity android:name=".activity.PayActivity" />
+        <activity
+            android:name=".activity.CreateMaintenanceProposalActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".activity.MySiteGrabOrderActivity" />
+        <activity android:name=".activity.MyPlaceOrderActivity" />
+        <activity android:name=".activity.GotoConfirmActivity" />
+        <activity android:name=".activity.ImageActivity" />
+        <activity android:name=".activity.AskDetailActivity" />
+        <activity android:name=".activity.RushOrderActivity" />
+        <activity android:name=".activity.MyBuyCaseActivity" />
+        <activity android:name=".activity.subactivity.SubAccountActivity" />
+        <activity android:name=".activity.MyRushOrderActivity" />
+        <activity android:name=".activity.BuyOrderListActivity" />
+        <activity android:name=".activity.MallDetailActivity" />
+        <activity android:name=".activity.WebActivity" />
+
+        <activity
+            android:name=".activity.MallGoodsCreateActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.AddSiteOrderActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".activity.PayStatusActivity" />
+        <activity android:name=".activity.CreateStatusActivity" />
+        <activity android:name=".activity.GrabOrderDetailActivity" />
+        <activity android:name=".activity.CaseOrderDetailActivity" />
+        <activity android:name=".activity.SquareContentActivity" />
+        <activity android:name=".activity.PDFActivity" />
+        <activity android:name=".activity.MallGroupCreateActivity" />
+        <activity android:name=".activity.MallGroupDetailCreateActivity" />
+        <activity
+            android:name=".activity.VideoActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityTranslucent" />
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:taskAffinity="com.yanxin.store"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <activity
+            android:name=".wxapi.WXPayEntryActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:taskAffinity="com.yanxin.store"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <service
+            android:name=".service.JPushService"
+            android:enabled="true"
+            android:exported="false"
+            android:process=":pushcore">
+            <intent-filter>
+                <action android:name="cn.jiguang.user.service.action" />
+            </intent-filter>
+        </service>
+
+        <receiver
+            android:name=".receiver.PushReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <!-- Required 用户注册SDK的intent -->
+                <action android:name="cn.jpush.android.intent.REGISTRATION" />
+                <!-- Required 用户接收SDK消息的intent -->
+                <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" />
+                <!-- Required 用户接收SDK通知栏信息的intent -->
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" />
+                <!-- Required 用户打开自定义通知栏的intent -->
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" />
+                <!-- 接收网络变化 连接/断开 since 1.6.3 -->
+                <action android:name="cn.jpush.android.intent.CONNECTION" />
+                <category android:name="${JPUSH_PKGNAME}" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".receiver.JPushReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.RECEIVE_MESSAGE" />
+                <category android:name="${JPUSH_PKGNAME}" />
+            </intent-filter>
+        </receiver>
+
+
+        <!--适配华为（huawei）刘海屏-->
+        <meta-data
+            android:name="android.notch_support"
+            android:value="true" />
+        <!--适配小米（xiaomi）刘海屏-->
+        <meta-data
+            android:name="notch.config"
+            android:value="portrait|landscape" />
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+        <service android:name="com.amap.api.location.APSService" />
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="85f619bf583786d987a61ccd03a5682f" />
+    </application>
+    <!--        // 在应用的AndroidManifest.xml添加如下<queries>标签-->
+    <queries>
+        <package android:name="com.tencent.mm" />
+    </queries>
+</manifest>

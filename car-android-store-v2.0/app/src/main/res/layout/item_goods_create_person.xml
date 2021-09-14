@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="top"
+    android:layout_marginTop="12dp"
+    android:background="@drawable/shape_register_item_white_bg"
+    android:gravity="center_vertical"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="时间段"
+            android:textColor="#ff424242"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/item_start_time"
+            android:layout_width="0dp"
+            android:layout_height="28dp"
+            android:layout_marginLeft="48dp"
+            android:layout_weight="4"
+            android:background="@drawable/shape_quiz_dialog_type"
+            android:gravity="center_vertical"
+            android:hint="开始时间"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textColor="#333333"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="28dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="－"
+            android:textColor="#333333"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/item_end_time"
+            android:layout_width="0dp"
+            android:layout_height="28dp"
+            android:layout_weight="3"
+            android:background="@drawable/shape_quiz_dialog_type"
+            android:gravity="center_vertical"
+            android:hint="结束时间"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textColor="#333333"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="预约人数"
+            android:textColor="#ff424242"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/item_num_person"
+            android:layout_width="60dp"
+            android:layout_height="28dp"
+            android:layout_marginLeft="32dp"
+            android:background="@drawable/shape_quiz_dialog_type"
+            android:gravity="center_vertical"
+            android:hint="人数"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textColor="#333333"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="28dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:paddingLeft="5dp"
+            android:text="人"
+            android:textColor="#333333"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:id="@+id/item_add"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="15dp"
+            android:src="@drawable/btn_add" />
+    </LinearLayout>
+</LinearLayout>

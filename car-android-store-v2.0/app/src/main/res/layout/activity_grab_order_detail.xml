@@ -1,0 +1,1041 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/status_bar"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/white" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/white"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="服务订单详情"
+            android:textColor="#130903"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:onClick="onBackFinish"
+            android:scaleType="center"
+            android:src="@drawable/store_button_back_pressed" />
+    </RelativeLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <ImageView
+                    android:id="@+id/grab_status_icon"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:src="@drawable/wait_icon" />
+
+                <TextView
+                    android:id="@+id/grab_status_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:text="抢单中"
+                    android:textColor="#FF0000"
+                    android:textSize="17sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="84dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/shape_register_item_white_bg"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
+
+                <ImageView
+                    android:id="@+id/grab_avatar"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/case_default_icon" />
+
+                <TextView
+                    android:id="@+id/grab_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="15dp"
+                    android:gravity="center_vertical"
+                    android:textColor="#424242"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/shape_register_item_white_bg"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <com.yanxin.store.ui.OptionalEditLayout
+                    android:id="@+id/grab_serving_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    app:content_text="-"
+                    app:content_tv_color="#09AFFF"
+                    app:desc_content="服务时间"
+                    app:desc_tv_color="#333333"
+                    app:is_content_center_gravity="true"
+                    app:is_input_type="textile"
+                    app:is_mandatory="false"
+                    app:is_more_show="false" />
+
+                <com.yanxin.store.ui.OptionalEditLayout
+                    android:id="@+id/grab_serving_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    app:content_text="-"
+                    app:content_tv_color="#333333"
+                    app:desc_content="服务地点"
+                    app:desc_tv_color="#333333"
+                    app:is_content_center_gravity="true"
+                    app:is_input_type="textile"
+                    app:is_mandatory="false"
+                    app:is_more_show="false" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/shape_register_item_white_bg"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <com.yanxin.store.ui.OptionalEditLayout
+                    android:id="@+id/grab_brand"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    app:content_tv_color="#333333"
+                    app:desc_content="品牌"
+                    app:desc_tv_color="#333333"
+                    app:is_content_center_gravity="true"
+                    app:is_input_type="textile"
+                    app:is_mandatory="false"
+                    app:is_more_show="false" />
+
+                <com.yanxin.store.ui.OptionalEditLayout
+                    android:id="@+id/grab_model"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    app:content_tv_color="#333333"
+                    app:desc_content="车型"
+                    app:desc_tv_color="#333333"
+                    app:is_content_center_gravity="true"
+                    app:is_input_type="textile"
+                    app:is_mandatory="false"
+                    app:is_more_show="false" />
+
+                <com.yanxin.store.ui.OptionalEditLayout
+                    android:id="@+id/grab_year"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    app:content_tv_color="#333333"
+                    app:desc_content="年款"
+                    app:desc_tv_color="#333333"
+                    app:is_content_center_gravity="true"
+                    app:is_input_type="textile"
+                    app:is_mandatory="false"
+                    app:is_more_show="false" />
+
+                <com.yanxin.store.ui.OptionalEditLayout
+                    android:id="@+id/grab_vin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    app:content_tv_color="#333333"
+                    app:desc_content="VIN"
+                    app:desc_tv_color="#333333"
+                    app:is_content_center_gravity="true"
+                    app:is_input_type="textile"
+                    app:is_mandatory="false"
+                    app:is_more_show="false" />
+
+                <com.yanxin.store.ui.OptionalEditLayout
+                    android:id="@+id/grab_transmission"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    app:content_tv_color="#333333"
+                    app:desc_content="变速器"
+                    app:desc_tv_color="#333333"
+                    app:is_content_center_gravity="true"
+                    app:is_input_type="textile"
+                    app:is_mandatory="false"
+                    app:is_more_show="false" />
+
+                <com.yanxin.store.ui.OptionalEditLayout
+                    android:id="@+id/grab_driving"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    app:content_tv_color="#333333"
+                    app:desc_content="驱动方式"
+                    app:desc_tv_color="#333333"
+                    app:is_content_center_gravity="true"
+                    app:is_input_type="textile"
+                    app:is_mandatory="false"
+                    app:is_more_show="false" />
+
+                <com.yanxin.store.ui.OptionalEditLayout
+                    android:id="@+id/grab_booster"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    app:content_tv_color="#333333"
+                    app:desc_content="增压系统"
+                    app:desc_tv_color="#333333"
+                    app:is_content_center_gravity="true"
+                    app:is_input_type="textile"
+                    app:is_mandatory="false"
+                    app:is_more_show="false" />
+
+                <com.yanxin.store.ui.OptionalEditLayout
+                    android:id="@+id/grab_warranty_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    app:content_tv_color="#333333"
+                    app:desc_content="保修状态"
+                    app:desc_tv_color="#333333"
+                    app:is_content_center_gravity="true"
+                    app:is_input_type="textile"
+                    app:is_mandatory="false"
+                    app:is_more_show="false" />
+
+                <com.yanxin.store.ui.OptionalEditLayout
+                    android:id="@+id/grab_other_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    app:content_tv_color="#333333"
+                    app:desc_content="其它状态"
+                    app:desc_tv_color="#333333"
+                    app:is_content_center_gravity="true"
+                    app:is_input_type="textile"
+                    app:is_mandatory="false"
+                    app:is_more_show="false" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/shape_register_item_white_bg"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:text="故障描述"
+                    android:textColor="#333333" />
+
+                <TextView
+                    android:id="@+id/grab_fault_desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:textColor="#999999"
+                    android:textSize="11sp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/grab_fault_img"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:spanCount="3" />
+            </LinearLayout>
+
+            <com.yanxin.store.ui.OptionalEditLayout
+                android:id="@+id/grab_maintain_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/shape_register_item_white_bg"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                app:content_tv_color="#333333"
+                app:desc_content="维修类型"
+                app:desc_tv_color="#333333"
+                app:is_content_center_gravity="true"
+                app:is_input_type="textile"
+                app:is_mandatory="false"
+                app:is_more_show="false" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/shape_register_item_white_bg"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:text="已检过程"
+                    android:textColor="#333333" />
+
+                <TextView
+                    android:id="@+id/grab_inspection_process"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:textColor="#999999"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/shape_register_item_white_bg"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:text="是否有DTC故障"
+                    android:textColor="#333333" />
+
+                <TextView
+                    android:id="@+id/grab_dtc_desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:textColor="#999999"
+                    android:textSize="11sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/shape_register_item_white_bg"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:text="DTC图片"
+                    android:textColor="#333333" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/grab_dtc_img"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:spanCount="3" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/shape_register_item_white_bg"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <com.yanxin.store.ui.OptionalEditLayout
+                    android:id="@+id/grab_maintain_amount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_register_item_white_bg"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    app:content_tv_color="#FF0000"
+                    app:desc_content="基础上门费用:"
+                    app:desc_tv_color="#333333"
+                    app:is_content_center_gravity="true"
+                    app:is_input_type="textile"
+                    app:is_mandatory="false"
+                    app:is_more_show="false" />
+
+                <com.yanxin.store.ui.OptionalEditLayout
+                    android:id="@+id/grab_maintain_service_amount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_register_item_white_bg"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    app:content_tv_color="#FF0000"
+                    app:desc_content="包含平台服务费:"
+                    app:desc_tv_color="#333333"
+                    app:is_content_center_gravity="true"
+                    app:is_input_type="textile"
+                    app:is_mandatory="false"
+                    app:is_more_show="false" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:gravity="center_vertical"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:text="此费用为技师预约费用和简单检查费用, 现场实际维修费请与技师洽谈, 您确认及时到达现场后, 基础上门费用将结算, 无法退还"
+                    android:textColor="#999999"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+            <com.yanxin.store.ui.OptionalEditLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/shape_register_item_white_bg"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                app:content_text="现场确定"
+                app:content_tv_color="#333333"
+                app:desc_content="维修费用"
+                app:desc_tv_color="#333333"
+                app:is_content_center_gravity="true"
+                app:is_input_type="textile"
+                app:is_mandatory="false"
+                app:is_more_show="false" />
+
+            <com.yanxin.store.ui.OptionalEditLayout
+                android:id="@+id/grab_create_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/shape_register_item_white_bg"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                app:content_tv_color="#09AFFF"
+                app:desc_content="下单时间"
+                app:desc_tv_color="#333333"
+                app:is_content_center_gravity="true"
+                app:is_input_type="textile"
+                app:is_mandatory="false"
+                app:is_more_show="false" />
+
+            <com.yanxin.store.ui.OptionalEditLayout
+                android:id="@+id/grab_order_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/shape_register_item_white_bg"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:visibility="gone"
+                app:content_tv_color="#09AFFF"
+                app:desc_content="抢单时间"
+                app:desc_tv_color="#333333"
+                app:is_content_center_gravity="true"
+                app:is_input_type="textile"
+                app:is_mandatory="false"
+                app:is_more_show="false" />
+
+            <ImageView
+                android:id="@+id/grab_shangmen_hf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/grab_shangmen_hf"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/grab_basic_amount_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/shape_register_item_white_bg"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <com.yanxin.store.ui.OptionalEditLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_register_item_white_bg"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    app:content_tv_color="#333333"
+                    app:desc_content="基础上门费支付"
+                    app:desc_tv_color="#333333"
+                    app:is_content_center_gravity="true"
+                    app:is_input_type="textile"
+                    app:is_mandatory="false"
+                    app:is_more_show="false" />
+
+                <com.yanxin.store.ui.OptionalEditLayout
+                    android:id="@+id/grab_pay_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_register_item_white_bg"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    app:content_tv_color="#333333"
+                    app:desc_content="支付时间"
+                    app:desc_tv_color="#333333"
+                    app:is_content_center_gravity="true"
+                    app:is_input_type="textile"
+                    app:is_mandatory="false"
+                    app:is_more_show="false" />
+
+                <com.yanxin.store.ui.OptionalEditLayout
+                    android:id="@+id/grab_pay_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_register_item_white_bg"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    app:content_tv_color="#FF0000"
+                    app:desc_content="支付方式"
+                    app:desc_tv_color="#333333"
+                    app:is_content_center_gravity="true"
+                    app:is_input_type="textile"
+                    app:is_mandatory="false"
+                    app:is_more_show="false" />
+
+                <com.yanxin.store.ui.OptionalEditLayout
+                    android:id="@+id/grab_pay_amount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_register_item_white_bg"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    app:content_tv_color="#FF0000"
+                    app:desc_content="实付金额"
+                    app:desc_tv_color="#333333"
+                    app:is_content_center_gravity="true"
+                    app:is_input_type="textile"
+                    app:is_mandatory="false"
+                    app:is_more_show="false" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/grab_technician_maintenance_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/shape_register_item_white_bg"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:paddingBottom="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:text="技师上门说明"
+                    android:textColor="#333333"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/grab_technician_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:textColor="#999999"
+                    android:textSize="13sp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/grab_technician_rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:spanCount="3" />
+
+            </LinearLayout>
+
+            <com.yanxin.store.ui.OptionalEditLayout
+                android:id="@+id/grab_daoda_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/shape_register_item_white_bg"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:visibility="gone"
+                app:content_tv_color="#09AFFF"
+                app:desc_content="提交到达时间"
+                app:desc_tv_color="#333333"
+                app:is_content_center_gravity="true"
+                app:is_input_type="textile"
+                app:is_mandatory="false"
+                app:is_more_show="false" />
+
+
+            <com.yanxin.store.ui.OptionalEditLayout
+                android:id="@+id/grab_qr_daoda_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/shape_register_item_white_bg"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:visibility="gone"
+                app:content_tv_color="#09AFFF"
+                app:desc_content="确认到达时间"
+                app:desc_tv_color="#333333"
+                app:is_content_center_gravity="true"
+                app:is_input_type="textile"
+                app:is_mandatory="false"
+                app:is_more_show="false" />
+
+            <ImageView
+                android:id="@+id/grab_weixiu_hf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/grab_weixiu_hf"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/grab_scene_order_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/shape_register_item_white_bg"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:paddingBottom="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:text="维修方案"
+                    android:textColor="#333333"
+                    android:textSize="19sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:text="现场检查情况描述"
+                    android:textColor="#333333"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/grab_fault_technician_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:text="-"
+                    android:textColor="#999999"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:text="检查数据"
+                    android:textColor="#333333"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/grab_inspect_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:text="-"
+                    android:textColor="#999999"
+                    android:textSize="15sp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/grab_inspect_rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:spanCount="3" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="15dp"
+                    android:text="建议维修方案"
+                    android:textColor="#333333"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/grab_fault_technician_solve"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:text="-"
+                    android:textColor="#999999"
+                    android:textSize="15sp" />
+
+                <com.yanxin.store.ui.OptionalEditLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_register_item_white_bg"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    app:content_tv_color="#333333"
+                    app:desc_content="维修费用:"
+                    app:desc_tv_color="#333333"
+                    app:is_content_center_gravity="true"
+                    app:is_desc_bold="true"
+                    app:is_input_type="textile"
+                    app:is_mandatory="false"
+                    app:is_more_show="false" />
+
+                <com.yanxin.store.ui.OptionalEditLayout
+                    android:id="@+id/grab_basic_amount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_register_item_white_bg"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    app:content_tv_color="#FF0000"
+                    app:desc_content="检查费用"
+                    app:desc_tv_color="#333333"
+                    app:is_content_center_gravity="true"
+                    app:is_input_type="textile"
+                    app:is_mandatory="false"
+                    app:is_more_show="false" />
+
+
+                <com.yanxin.store.ui.OptionalEditLayout
+                    android:id="@+id/grab_repair_amount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_register_item_white_bg"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    app:content_tv_color="#FF0000"
+                    app:desc_content="修复费用"
+                    app:desc_tv_color="#333333"
+                    app:is_content_center_gravity="true"
+                    app:is_input_type="textile"
+                    app:is_mandatory="false"
+                    app:is_more_show="false" />
+
+                <com.yanxin.store.ui.OptionalEditLayout
+                    android:id="@+id/grab_other_amount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_register_item_white_bg"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    app:content_tv_color="#FF0000"
+                    app:desc_content="其他费用"
+                    app:desc_tv_color="#333333"
+                    app:is_content_center_gravity="true"
+                    app:is_input_type="textile"
+                    app:is_mandatory="false"
+                    app:is_more_show="false" />
+
+
+                <com.yanxin.store.ui.OptionalEditLayout
+                    android:id="@+id/grab_all_amount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_register_item_white_bg"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    app:content_tv_color="#FF0000"
+                    app:desc_content="总支付费用"
+                    app:desc_tv_color="#333333"
+                    app:is_content_center_gravity="true"
+                    app:is_input_type="textile"
+                    app:is_mandatory="false"
+                    app:is_more_show="false" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:text="维修费用支付后，技师开始服务，任务结束后，需要您确认完成，
+您确认完成后，订单结束，平台与技师结算维修费用，届时无法在申请退款。"
+                    android:textColor="#999999"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <com.yanxin.store.ui.OptionalEditLayout
+                android:id="@+id/grab_weixiu_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/shape_register_item_white_bg"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:visibility="gone"
+                app:content_tv_color="#09AFFF"
+                app:desc_content="提交维修方案时间"
+                app:desc_tv_color="#333333"
+                app:is_content_center_gravity="true"
+                app:is_input_type="textile"
+                app:is_mandatory="false"
+                app:is_more_show="false" />
+
+
+            <com.yanxin.store.ui.OptionalEditLayout
+                android:id="@+id/grab_qr_weixiu_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/shape_register_item_white_bg"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:visibility="gone"
+                app:content_tv_color="#09AFFF"
+                app:desc_content="确认维修方案时间"
+                app:desc_tv_color="#333333"
+                app:is_content_center_gravity="true"
+                app:is_input_type="textile"
+                app:is_mandatory="false"
+                app:is_more_show="false" />
+
+            <LinearLayout
+                android:id="@+id/grab_confirm_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/shape_register_item_white_bg"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:paddingBottom="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:text="完成服务说明"
+                    android:textColor="#333333"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/grab_confirm_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:textColor="#999999"
+                    android:textSize="13sp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/grab_confirm_rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:spanCount="3" />
+
+            </LinearLayout>
+
+
+            <com.yanxin.store.ui.OptionalEditLayout
+                android:id="@+id/grab_wangong_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/shape_register_item_white_bg"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:visibility="gone"
+                app:content_tv_color="#09AFFF"
+                app:desc_content="提交完工数据时间"
+                app:desc_tv_color="#333333"
+                app:is_content_center_gravity="true"
+                app:is_input_type="textile"
+                app:is_mandatory="false"
+                app:is_more_show="false" />
+
+
+            <com.yanxin.store.ui.OptionalEditLayout
+                android:id="@+id/grab_qr_wangong_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/shape_register_item_white_bg"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:visibility="gone"
+                app:content_tv_color="#09AFFF"
+                app:desc_content="确认完工数据时间"
+                app:desc_tv_color="#333333"
+                app:is_content_center_gravity="true"
+                app:is_input_type="textile"
+                app:is_mandatory="false"
+                app:is_more_show="false" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <Button
+        android:id="@+id/grab_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/shape_grab_detail_btn_bg"
+        android:stateListAnimator="@null"
+        android:text="去支付"
+        android:textColor="@color/select_login_submit_text_color"
+        android:textSize="17sp"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/grab_submit"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/shape_grab_detail_btn_bg"
+        android:stateListAnimator="@null"
+        android:text="取消订单"
+        android:textColor="@color/select_login_submit_text_color"
+        android:textSize="17sp"
+        android:visibility="gone" />
+</LinearLayout>

@@ -1,0 +1,4 @@
+include ':app'
+rootProject.name = "CarStoreProject"
+include ':common_res'
+include ':base_module:mvvmwill'

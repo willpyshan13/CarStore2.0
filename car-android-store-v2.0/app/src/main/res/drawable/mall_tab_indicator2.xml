@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 若不设置 gravity，则 Indicator 宽度会填满整个 item -->
+    <item android:gravity="center_horizontal">
+        <shape>
+            <corners android:radius="12dp" />
+            <solid android:color="@color/color_0091ff"/>
+        </shape>
+    </item>
+</layer-list>

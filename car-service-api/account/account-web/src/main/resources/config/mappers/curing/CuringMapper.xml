@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.car.account.web.mapper.curing.CuringMapper">
+
+    <select id="queryCuringList" resultType="com.car.account.client.response.curing.QueryCuringRes">
+        select * from curing
+        where sts = 0
+        <if test="title != null and title != ''">
+            and title LIKE CONCAT('%',#{title},'%')
+        </if>
+        <if test="belongingSystemUuid != null and belongingSystemUuid != ''">
+            and belonging_system_uuid = #{belongingSystemUuid}
+        </if>
+        <if test="vehicleBrandUuid != null and vehicleBrandUuid != ''">
+            and vehicle_brand_uuid = #{vehicleBrandUuid}
+        </if>
+        <if test="vehicleModelUuid != null and vehicleModelUuid != ''">
+            and vehicle_model_uuid = #{vehicleModelUuid}
+        </if>
+        <if test="checkSts != null">
+            and check_sts = #{checkSts}
+        </if>
+        order by created_time desc
+    </select>
+
+</mapper>

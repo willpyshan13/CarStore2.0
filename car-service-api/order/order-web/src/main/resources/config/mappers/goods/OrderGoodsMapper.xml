@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.car.order.web.mapper.goods.OrderGoodsMapper">
+
+	<select id="queryReserveNum" parameterType="map" resultType="com.car.order.client.response.order.goods.OrderGoodsReserveRes">
+		select  sum(amOccupy) as amOccupy,
+				sum(pmOccupy) as pmOccupy,
+				sum(nmOccupy) as nmOccupy
+		from (		
+			SELECT  ifnull(sum(if(reserve_part_type=0,1,0)),0) AS amOccupy,
+				 ifnull(sum(if(reserve_part_type=1,1,0)),0) AS pmOccupy,
+				 ifnull(sum(if(reserve_part_type=2,1,0)),0) AS nmOccupy
+			FROM order_goods 
+			WHERE reserve_part_type IS NOT NULL
+				AND order_sts = 1
+				AND after_sale_sts = 2 
+				AND reserve_service_date = #{reserveServiceDate}
+				AND goods_uuid =#{goodsUuid}
+				
+			UNION ALL	
+			
+			SELECT sum(if(o.reserve_part_type=0,1,0)),
+				sum(if(o.reserve_part_type=1,1,0)),
+				sum(if(o.reserve_part_type=2,1,0)) 
+			FROM order_groupbuy o
+				left join groupbuy_goods gg on gg.groupbuy_uuid = o.groupbuy_uuid and gg.sts=0
+			WHERE o.reserve_part_type IS NOT NULL
+				AND o.order_sts = 7
+				AND o.after_sale_sts = 2 
+				AND o.reserve_service_date = #{reserveServiceDate}
+				AND gg.goods_uuid = #{goodsUuid}
+			)k	
+	</select>
+
+    <select id="queryOrderGoodsList" resultType="com.car.order.client.response.order.goods.OrderGoodsListRes">
+        SELECT og.*,
+               ogd.goods_name,
+               ogd.goods_num,
+               ogd.goods_img_url,
+               ogd.man_hour_cost,
+               ogd.materials_expenses,
+               oi.evaluate_sts
+        FROM order_goods og
+	        LEFT JOIN order_goods_detail ogd on og.uuid = ogd.order_uuid
+	        left join store_user su on su.store_uuid = og.store_uuid
+	        left join goods g on g.uuid=og.goods_uuid
+        	left join order_info oi on oi.order_uuid = og.uuid and oi.order_type=5
+        WHERE og.sts = 0
+        <if test="goodsName != null and goodsName !=''">
+            AND ogd.goods_name LIKE CONCAT('%',#{goodsName},'%')
+        </if>
+        <if test="storeUserUuid != null and storeUserUuid !=''">
+            AND su.uuid = #{storeUserUuid}
+        </if>
+
+        <if test="startDate != null and startDate != ''">
+            <![CDATA[ AND og.created_time  >= #{startDate} ]]>
+        </if>
+
+        <if test="endDate != null and endDate != ''">
+            <![CDATA[ AND og.created_time  <= #{endDate} ]]>
+        </if>
+
+        <if test="orderSts != null and orderSts.size()>0">
+        	<foreach collection="orderSts" open="and og.order_sts in(" separator="," close=")" item="st">#{st}</foreach>
+        </if>
+        <if test="station != null">
+        	 <if test="station ==0">and g.parent_type != '1006'</if>
+        	 <if test="station ==1">and g.parent_type = '1006'</if>
+        </if>
+        <if test="userUuid != null and userUuid !=''">
+            AND og.user_uuid  = #{userUuid}
+        </if>
+
+        <if test="afterSaleSts != null and afterSaleSts.size()>0">
+        	<foreach collection="afterSaleSts" open=" AND og.after_sale_sts in (" separator="," close=")" item="st">#{st}</foreach>
+        </if>
+
+        <if test="evaluateSts != null and evaluateSts.size()>0">
+        	<foreach collection="evaluateSts" open=" AND og.evaluate_sts  in(" separator="," close=")" item="st">#{st}</foreach>
+        </if>
+
+        <if test="orderNum != null and orderNum !=''">
+            AND og.order_num LIKE CONCAT('%',#{orderNum},'%')
+        </if>
+
+        <if test="contacts != null and contacts !=''">
+            AND og.contacts LIKE CONCAT('%',#{contacts},'%')
+        </if>
+
+        <if test="mobile != null and mobile !=''">
+            AND og.mobile LIKE CONCAT('%',#{mobile},'%')
+        </if>
+        <if test="receiveMethod !=null and receiveMethod.size()>0">
+        	<foreach collection="receiveMethod" open="and og.receive_Method in(" separator="," close=")" item="st">#{st}</foreach>
+        </if>
+        order by og.created_time desc
+    </select>
+
+
+    <select id="queryOrderGoods" resultMap="queryOrderGoodsDetail">
+        SELECT og.*,
+        	   oi.evaluate_sts
+        FROM order_goods og
+        	left join order_info oi on oi.order_uuid = og.uuid and oi.order_type=5
+        where og.sts = 0 and og.uuid = #{uuid}
+    </select>
+
+    <resultMap id="queryOrderGoodsDetail" type="com.car.order.client.response.order.goods.OrderGoodsRes">
+        <id column="uuid" property="uuid"/>
+        <collection property="orderGoodsDetailListRes" column="uuid" select="queryOrderGoodsDetailList" />
+    </resultMap>
+
+    <select id="queryOrderGoodsDetailList" resultType="com.car.order.client.response.order.goods.OrderGoodsDetailRes">
+        select ogd.*
+        from order_goods_detail ogd
+        where ogd.order_uuid = #{uuid} and ogd.sts = 0
+        order by ogd.created_time desc
+    </select>
+    <update id="updateGoodsOrder">
+        update order_goods
+        <set>
+            <if test="req.technicianUuid != null and req.technicianUuid != ''">
+                technician_uuid = #{req.technicianUuid},
+            </if>
+
+            <if test="req.technicianName != null and req.technicianName != ''">
+                technician_name = #{req.technicianName},
+            </if>
+
+            <if test="req.technicianMobile != null and req.technicianMobile != ''">
+                technician_mobile = #{req.technicianMobile},
+            </if>
+
+            <if test="req.carInMileage != null and req.carInMileage != ''">
+                car_in_mileage = #{req.carInMileage},
+            </if>
+
+            <if test="req.carOutMileage != null and req.carOutMileage != ''">
+                car_out_mileage = #{req.carOutMileage},
+            </if>
+
+            <if test="req.orderRemark != null and req.orderRemark != ''">
+                order_remark = #{req.orderRemark},
+            </if>
+            last_updated_time = now(),
+            last_updated_by = #{userName}
+        </set>
+        WHERE uuid = #{req.orderUuid}
+    </update>
+
+    <update id="updateGoodsDeliveryOrder">
+        update order_goods
+        <set>
+            <if test="req.contacts != null and req.contacts != ''">
+                contacts = #{req.contacts},
+            </if>
+
+            <if test="req.mobile != null and req.mobile != ''">
+                mobile = #{req.mobile},
+            </if>
+
+            <if test="req.deliveryAddress != null and req.deliveryAddress != ''">
+                delivery_address = #{req.deliveryAddress},
+            </if>
+
+            <if test="req.orderRemark != null and req.orderRemark != ''">
+                order_remark = #{req.orderRemark},
+            </if>
+
+            last_updated_time = now(),
+            last_updated_by = #{userName}
+        </set>
+        WHERE uuid = #{req.orderUuid}
+    </update>
+    
+    <select id="queryGoodsGroupCount" resultType="com.car.order.client.response.order.goods.OrderGoodsGroupRes">
+    	select 
+	    	(select count(1)
+	    		from order_goods o
+	    		left join goods g on g.uuid = o.goods_uuid
+	    		left join goods_parent gp on gp.uuid = g.parent_type 
+	    		where  o.sts=0 and o.store_uuid = s.store_uuid 
+	    			<if test="start !=null">
+	    				and o.created_time >= #{start}
+	    			</if>
+	    			<if test="end !=null">
+					    and #{end}>o.created_time
+	    			</if>
+	    			and o.order_sts=6 and gp.uuid='1006' 
+	    		) as stationTotal,
+	    	(select count(1)
+	    		from order_goods o
+	    		left join goods g on g.uuid = o.goods_uuid
+	    		left join goods_parent gp on gp.uuid = g.parent_type 
+	    		where  o.sts=0 and o.store_uuid = s.store_uuid 
+	    			<if test="start !=null">
+	    				and o.created_time >= #{start}
+	    			</if>
+	    			<if test="end !=null">
+					    and #{end}>o.created_time
+	    			</if>
+	    			and o.order_sts=6 and gp.uuid!='1006' 
+	    		) as goodsTotal,
+	    	(select count(1)
+	    		from order_groupbuy o 
+	    		left join groupbuy g on g.uuid = o.groupbuy_uuid
+	    		where  o.sts=0 and o.order_sts=9
+		    		<if test="start !=null">
+	    				and o.created_time >= #{start}
+	    			</if>
+	    			<if test="end !=null">
+					    and #{end}>o.created_time
+	    			</if>
+	    			and g.user_uuid = #{storeUserUuid}    		
+	    		) as groupbuyTotal
+      from store_user s
+      where s.uuid=#{storeUserUuid}
+    </select>
+    
+    <select id="queryGoodsGroupAmount" resultType="com.car.order.client.response.order.goods.OrderGoodsGroupRes">
+        select 
+	    	(select ifnull(sum(o.actual_amount),0)
+	    		from order_goods o
+	    		left join goods g on g.uuid = o.goods_uuid
+	    		left join goods_parent gp on gp.uuid = g.parent_type 
+	    		where  o.sts=0 and o.store_uuid = s.store_uuid 
+	    			and o.created_time >= #{start} and #{end}>o.created_time
+	    			and o.order_sts=6 and gp.uuid='1006' 
+	    		) as stationTotal,
+	    	(select ifnull(sum(o.actual_amount),0)
+	    		from order_goods o
+	    		left join goods g on g.uuid = o.goods_uuid
+	    		left join goods_parent gp on gp.uuid = g.parent_type 
+	    		where  o.sts=0 and o.store_uuid = s.store_uuid 
+	    			and o.created_time >= #{start} and #{end}>o.created_time
+	    			and o.order_sts=6 and gp.uuid!='1006' 
+	    		) as goodsTotal,
+	    	(select ifnull(sum(o.pay_fee),0)
+	    		from order_groupbuy o 
+	    		left join groupbuy g on g.uuid = o.groupbuy_uuid
+	    		where  o.sts=0 and o.order_sts=9 and o.created_time >= #{start} and #{end}>o.created_time 
+	    			and g.user_uuid = #{storeUserUuid}    		
+	    		) as groupbuyTotal
+      from store_user s
+      where s.uuid=#{storeUserUuid}
+    </select>
+</mapper>

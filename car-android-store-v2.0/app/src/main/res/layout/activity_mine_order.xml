@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.yanxin.store.mvvm.viewmodel.MineOrderViewModel" />
+        <import type="android.view.View"/>
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/color_F3F3F3"
+            android:orientation="vertical">
+
+            <View
+                android:id="@+id/mine_top_bg"
+                android:layout_width="wrap_content"
+                android:layout_height="185dp"
+                android:background="@drawable/shape_mine_top_bg"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <RelativeLayout
+                android:id="@+id/order_title"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_marginTop="@dimen/dp30"
+                android:gravity="center_vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="我的订单"
+                    android:textColor="@color/color_FFFFFF"
+                    android:textSize="@dimen/sp17"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    app:onClickCommand="@{viewModel.backOnClick}"
+                    android:scaleType="center"
+                    android:src="@drawable/store_button_back_pressed" />
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/mine_wallet_bg"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp500"
+                android:layout_margin="10dp"
+                android:layout_marginTop="@dimen/dp60"
+                android:background="@drawable/shape_mine_item_bg"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/order_title" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/order_id_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp54"
+                android:layout_marginTop="@dimen/dp40"
+                android:drawableTop="@mipmap/icon_mine_example"
+                android:text="技术案例"
+                app:onClickCommand="@{viewModel.exampleClick}"
+                android:textColor="@color/color_333333"
+                app:layout_constraintStart_toStartOf="@+id/mine_wallet_bg"
+                app:layout_constraintTop_toTopOf="@+id/mine_wallet_bg" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/order_id_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp40"
+                android:layout_marginEnd="@dimen/dp54"
+                android:drawableTop="@mipmap/icon_mine_dtc"
+                android:text="DTC查询"
+                app:onClickCommand="@{viewModel.dtcClick}"
+                android:textColor="@color/color_333333"
+                app:layout_constraintEnd_toEndOf="@+id/mine_wallet_bg"
+                app:layout_constraintTop_toTopOf="@+id/mine_wallet_bg" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/order_id_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp60"
+                android:drawableTop="@mipmap/icon_mine_answer"
+                android:text="知识问答"
+                app:onClickCommand="@{viewModel.askClick}"
+                android:textColor="@color/color_333333"
+                app:layout_constraintEnd_toEndOf="@+id/order_id_1"
+                app:layout_constraintStart_toStartOf="@+id/order_id_1"
+                app:layout_constraintTop_toBottomOf="@+id/order_id_1" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/order_id_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp60"
+                android:drawableTop="@mipmap/icon_mine_service_order"
+                android:text="商品订单"
+                android:visibility="@{viewModel.showShop?View.VISIBLE:View.INVISIBLE}"
+                app:onClickCommand="@{viewModel.storeOrderClick}"
+                android:textColor="@color/color_333333"
+                app:layout_constraintStart_toStartOf="@+id/order_id_2"
+                app:layout_constraintEnd_toEndOf="@+id/order_id_2"
+                app:layout_constraintTop_toBottomOf="@+id/order_id_2" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/order_id_9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp60"
+                android:drawableTop="@mipmap/icon_mine_order_tech"
+                android:text="共享技师订单"
+                android:visibility="@{viewModel.showShop?View.GONE:View.VISIBLE}"
+                app:onClickCommand="@{viewModel.goodsOrderClick}"
+                android:textColor="@color/color_333333"
+                app:layout_constraintStart_toStartOf="@+id/order_id_2"
+                app:layout_constraintEnd_toEndOf="@+id/order_id_2"
+                app:layout_constraintTop_toBottomOf="@+id/order_id_2" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/order_id_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp60"
+                android:drawableTop="@mipmap/icon_mine_service_now"
+                android:text="现场支持下单"
+                app:onClickCommand="@{viewModel.orderNowClick}"
+                android:textColor="@color/color_333333"
+                app:layout_constraintEnd_toEndOf="@+id/order_id_1"
+                app:layout_constraintStart_toStartOf="@+id/order_id_1"
+                app:layout_constraintTop_toBottomOf="@+id/order_id_3" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/order_id_6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp60"
+                android:drawableTop="@mipmap/icon_mine_service_order_now"
+                android:text="现场支持抢单"
+                app:onClickCommand="@{viewModel.orderNow1Click}"
+                android:textColor="@color/color_333333"
+                app:layout_constraintStart_toStartOf="@+id/order_id_2"
+                app:layout_constraintEnd_toEndOf="@+id/order_id_2"
+                app:layout_constraintTop_toBottomOf="@+id/order_id_4" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/order_id_7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp60"
+                android:drawableTop="@mipmap/icon_mine_service_now"
+                android:text="拼团订单"
+                android:visibility="@{viewModel.showShop?View.VISIBLE:View.GONE}"
+                app:onClickCommand="@{viewModel.groupClick}"
+                android:textColor="@color/color_333333"
+                app:layout_constraintEnd_toEndOf="@+id/order_id_1"
+                app:layout_constraintStart_toStartOf="@+id/order_id_1"
+                app:layout_constraintTop_toBottomOf="@+id/order_id_5" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/order_id_8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@mipmap/icon_mine_order_location"
+                android:text="工位订单"
+                android:visibility="@{viewModel.showShop?View.VISIBLE:View.GONE}"
+                app:onClickCommand="@{viewModel.workOrderClick}"
+                android:textColor="@color/color_333333"
+                app:layout_constraintEnd_toEndOf="@+id/order_id_2"
+                app:layout_constraintStart_toStartOf="@+id/order_id_2"
+                app:layout_constraintTop_toTopOf="@+id/order_id_7" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>

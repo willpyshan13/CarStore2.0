@@ -1,0 +1,11 @@
+platform:ios,'10.0'
+target 'CarStoreProject' do
+# use_frameworks!
+pod 'AFNetworking'
+pod 'MJRefresh','~>3.4.3'
+pod 'SDWebImage','~>5.8.0'
+pod 'MJExtension','~>3.0.17'
+pod 'SDCycleScrollView','~>1.80'
+pod 'SVProgressHUD','~>2.0.3'
+pod 'WechatOpenSDK'
+end

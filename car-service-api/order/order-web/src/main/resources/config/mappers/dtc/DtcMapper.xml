@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.car.order.web.mapper.dtc.DtcMapper">
+
+    <!--配置类型 1：车辆类型 2：车辆品牌 3：车辆型号-->
+    <select id="getById" resultType="com.car.order.client.response.dtc.QueryDtcInfoRes">
+        select
+        d.uuid,
+        d.dtc_issuer_uuid,
+        d.dtc_code,
+        d.dtc_code2,
+        d.dtc_code3,
+        d.dtc_type,
+        d.dtc_definition,
+        d.dtc_brand_uuid,       
+        vc.config_name as dtcBrandUuidName ,
+        d.dtc_model_uuid,
+        vc2.config_name as dtcModelUuidName, 
+        d.dtc_amount,
+        d.sts,
+        d.created_time,
+        d.created_by,
+        d.dtc_check_sts,
+        d.dtc_remarks,
+        dc.uuid as dtcContentUuid,
+        dc.dtc_explain,
+        dc.dtc_reasons,
+        dc.dtc_diagnose,
+        vc.config_name,
+        sd.lable_desc as dtcTypeName
+        from
+        dtc d
+        left join dtc_content dc on d.uuid = dc.dtc_uuid
+        left join vehicle_config vc on d.dtc_brand_uuid = vc.uuid
+        left join vehicle_config vc2 on d.dtc_model_uuid = vc2.uuid
+        left join sys_dict sd on d.dtc_type = sd.uuid and sd.sts = 0
+        where d.uuid = #{uuid} and d.sts = 0
+    </select>
+
+    <update id="deleteDtcInfo">
+        update dtc set sts = 1, last_updated_time = now(), last_updated_by = #{userName} where uuid = #{uuid}
+    </update>
+
+    <select id="queryDtcList" resultType="com.car.order.client.response.dtc.QueryDtcListRes">
+        select
+        d.uuid,
+        d.dtc_issuer_uuid,
+        d.dtc_code,
+        d.dtc_code2,
+        d.dtc_code3,
+        d.dtc_definition,
+        d.dtc_type,
+        d.dtc_brand_uuid,       
+        vc.config_name as dtcBrandUuidName ,
+        d.dtc_model_uuid,
+        vc2.config_name as dtcModelUuidName, 
+        d.dtc_amount,
+        d.created_time,
+        d.created_by,
+        d.dtc_check_sts,
+        d.dtc_remarks,
+        vc.config_name,
+        sd.lable_desc as dtcTypeName
+        from
+        dtc d
+        left join vehicle_config vc on d.dtc_brand_uuid = vc.uuid 
+        left join vehicle_config vc2 on d.dtc_model_uuid = vc2.uuid
+        left join sys_dict sd on d.dtc_type = sd.uuid and sd.sts = 0
+        where d.sts = 0
+        and d.dtc_issuer_uuid!=#{req.userId}
+        <if test="req.dtcCode != null and req.dtcCode != ''">
+            AND d.dtc_code LIKE CONCAT('%',#{req.dtcCode},'%')
+        </if>
+        <if test="req.dtcCode2 != null and req.dtcCode2 != ''">
+            AND d.dtc_code2 LIKE CONCAT('%',#{req.dtcCode2},'%')
+        </if>
+        <if test="req.dtcCode3 != null and req.dtcCode3 != ''">
+            AND d.dtc_code3 LIKE CONCAT('%',#{req.dtcCode3},'%')
+        </if>
+        <if test="req.dtcCheckSts != null and req.dtcCheckSts != ''">
+            AND d.dtc_check_sts = #{req.dtcCheckSts}
+        </if>
+        <if test="req.dtcBrandUuid != null and req.dtcBrandUuid != ''">
+            AND d.dtc_brand_uuid = #{req.dtcBrandUuid}
+        </if>
+      order by d.created_time desc
+    </select>
+</mapper>

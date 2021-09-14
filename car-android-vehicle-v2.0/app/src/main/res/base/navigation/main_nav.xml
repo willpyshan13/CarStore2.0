@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/findFragment">
+
+    <fragment
+        android:id="@+id/mallFragment"
+        android:name="com.car.cartechnicianproject.bizz.mall.MallFragment"
+        android:label="fragment_mall"
+        tools:layout="@layout/fragment_mall" />
+    <fragment
+        android:id="@+id/mineFragment"
+        android:name="com.car.cartechnicianproject.bizz.mine.MineFragment"
+        android:label="fragment_mine"
+        tools:layout="@layout/fragment_mine" />
+    <fragment
+        android:id="@+id/findFragment"
+        android:name="com.car.cartechnicianproject.bizz.find.FindFragment"
+        android:label="fragment_find"
+        tools:layout="@layout/fragment_find" />
+    <fragment
+        android:id="@+id/msgFragment"
+        android:name="com.car.cartechnicianproject.bizz.msg.MsgFragment"
+        android:label="fragment_msg"
+        tools:layout="@layout/fragment_msg" />
+    <fragment
+        android:id="@+id/servingFragment"
+        android:name="com.car.cartechnicianproject.bizz.serving.ServingFragment"
+        android:label="fragment_serving"
+        tools:layout="@layout/fragment_serving" />
+</navigation>

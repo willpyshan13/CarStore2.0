@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.yanxin.store.mvvm.viewmodel.StoreOrderReportViewModel" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_F9F9F9"
+        android:orientation="vertical">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@mipmap/icon_mine_report_order"
+                        android:drawablePadding="10dp"
+                        android:gravity="center_vertical"
+                        android:text="订单"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/mine_order_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.countTotal}"
+                        android:textColor="@color/color_0091ff"
+                        android:textSize="@dimen/sp12"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="总订单："
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/mine_order_text"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:background="@drawable/shape_mine_item_bg"
+                    android:layout_height="@dimen/dp240">
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp10"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:background="@drawable/mine_select_btn_bg"
+                        android:drawableEnd="@mipmap/icon_arrow_down"
+                        android:drawablePadding="@dimen/dp10"
+                        android:paddingStart="@dimen/dp10"
+                        app:onClickCommand="@{viewModel.countClick}"
+                        android:layout_marginTop="@dimen/dp10"
+                        android:paddingTop="@dimen/dp2"
+                        android:paddingEnd="@dimen/dp10"
+                        android:paddingBottom="@dimen/dp2"
+                        android:text="@{viewModel.countDate}" />
+                    <com.github.mikephil.charting.charts.PieChart
+                        android:id="@+id/chart_order"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_marginStart="@dimen/dp10"
+                        android:layout_marginEnd="@dimen/dp10"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp120" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@mipmap/icon_mine_income"
+                        android:drawablePadding="10dp"
+                        android:gravity="center_vertical"
+                        android:text="收入"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/mine_order_income_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.amountTotal}"
+                        android:textColor="@color/color_0091ff"
+                        android:textSize="@dimen/sp12"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="总收入："
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/mine_order_income_text"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:background="@drawable/shape_mine_item_bg"
+                    android:layout_height="@dimen/dp240">
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp10"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:background="@drawable/mine_select_btn_bg"
+                        android:drawableEnd="@mipmap/icon_arrow_down"
+                        android:drawablePadding="@dimen/dp10"
+                        android:paddingStart="@dimen/dp10"
+                        app:onClickCommand="@{viewModel.amountTimeClick}"
+                        android:layout_marginTop="@dimen/dp10"
+                        android:paddingTop="@dimen/dp2"
+                        android:paddingEnd="@dimen/dp10"
+                        android:paddingBottom="@dimen/dp2"
+                        android:text="@{viewModel.amountDate}" />
+                    <com.github.mikephil.charting.charts.PieChart
+                        android:id="@+id/chart_income"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_marginStart="@dimen/dp10"
+                        android:layout_marginEnd="@dimen/dp10"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp120" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+</layout>

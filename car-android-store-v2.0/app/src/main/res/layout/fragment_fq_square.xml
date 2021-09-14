@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <RadioGroup
+        android:id="@+id/square_tab"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/square_all"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/select_fa_square_tab_radiogroup_left"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:text="广场"
+            android:textColor="@color/select_fq_square_tab_radiobuttom_text_color"
+            android:textSize="14sp" />
+
+        <RadioButton
+            android:id="@+id/square_owned"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/select_fa_square_tab_radiogroup_right"
+            android:button="@null"
+            android:gravity="center"
+            android:text="已旁听"
+            android:textColor="@color/select_fq_square_tab_radiobuttom_text_color"
+            android:textSize="14sp" />
+    </RadioGroup>
+
+    <com.yanxin.store.ui.NoScrollViewPager
+        android:id="@+id/square_vp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/status_bar"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/white" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        android:background="@color/white"
+        android:gravity="center_vertical">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/sub_avatar"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/case_default_icon" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/store_name"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/user_name"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/sub_exit"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_marginRight="20dp"
+            android:scaleType="center"
+            android:src="@drawable/sub_exit" />
+
+    </LinearLayout>
+
+    <RadioGroup
+        android:id="@+id/serving_tab"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <RadioButton
+            android:id="@+id/wait_scene"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/select_fa_square_tab_radiogroup_left"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:text="现场支持订单"
+            android:textColor="@color/select_fq_square_tab_radiobuttom_text_color"
+            android:textSize="14sp" />
+
+        <RadioButton
+            android:id="@+id/wait_sustain"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/select_fa_square_tab_radiogroup_center"
+            android:button="@null"
+            android:gravity="center"
+            android:text="现场支持下单"
+            android:textColor="@color/select_fq_square_tab_radiobuttom_text_color"
+            android:textSize="14sp" />
+
+        <RadioButton
+            android:id="@+id/enter_scene"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/select_fa_square_tab_radiogroup_right"
+            android:button="@null"
+            android:gravity="center"
+            android:text="商城上门订单"
+            android:textColor="@color/select_fq_square_tab_radiobuttom_text_color"
+            android:textSize="14sp" />
+    </RadioGroup>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.yanxin.store.ui.NoScrollViewPager
+            android:id="@+id/sub_vp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <com.yanxin.store.ui.TouchLayout
+            android:id="@+id/case_touch_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/mall_tab_add_flow"
+            android:elevation="4dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingTop="10dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="10dp">
+
+            <ImageView
+                android:id="@+id/add_case"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:src="@drawable/add_case" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="新增现场\n支持下单"
+                android:textColor="#222222"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+        </com.yanxin.store.ui.TouchLayout>
+    </RelativeLayout>
+</LinearLayout>

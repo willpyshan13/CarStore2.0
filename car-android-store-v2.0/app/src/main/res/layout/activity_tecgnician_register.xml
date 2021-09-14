@@ -1,0 +1,728 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/parent_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/status_bar"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/white" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/white"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="技师注册"
+            android:textColor="#130903"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:onClick="onBackFinish"
+            android:scaleType="center"
+            android:src="@drawable/store_button_back_pressed" />
+    </RelativeLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/audit_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/shape_register_item_white_bg"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:id="@+id/audit_error_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="驳回理由"
+                        android:textColor="#333333"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/audit_error_hint"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="驳回理由"
+                        android:textColor="#999999"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/audit_status_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/wait_icon" />
+
+                    <TextView
+                        android:id="@+id/audit_status_content"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="审核未通过"
+                        android:textColor="#333333"
+                        android:textSize="16sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:text="基础信息"
+                android:textColor="#424242"
+                android:textSize="15sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/shape_register_item_white_bg"
+                android:orientation="vertical">
+
+                <com.yanxin.store.ui.OptionalEditLayout
+                    android:id="@+id/reg_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    app:content_hint="请输入姓名"
+                    app:content_tv_color="#424242"
+                    app:desc_content="姓名"
+                    app:is_content_center_gravity="true"
+                    app:is_input_type="edition"
+                    app:is_more_show="false"
+                    app:singleLine="true" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="#CCCCCC" />
+
+                <com.yanxin.store.ui.OptionalEditLayout
+                    android:id="@+id/reg_mobile"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    app:content_hint="请输入手机号"
+                    app:content_tv_color="#424242"
+                    app:desc_content="登录手机号码"
+                    app:input_type="phone"
+                    app:is_content_center_gravity="true"
+                    app:is_input_type="edition"
+                    app:is_more_show="false"
+                    app:singleLine="true" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="#CCCCCC" />
+
+                <com.yanxin.store.ui.OptionalEditLayout
+                    android:id="@+id/reg_card_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    app:content_hint="身份证"
+                    app:content_tv_color="#424242"
+                    app:desc_content="证件类型"
+                    app:is_content_center_gravity="true"
+                    app:is_input_type="textile"
+                    app:is_mandatory="false"
+                    app:is_more_show="false" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="#CCCCCC" />
+
+                <EditText
+                    android:id="@+id/reg_card_num"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:background="@null"
+                    android:digits="1234567890x"
+                    android:gravity="center_vertical|right"
+                    android:hint="请输入您的证件号码"
+                    android:paddingRight="23dp"
+                    android:singleLine="true"
+                    android:textColor="#424242"
+                    android:textSize="14sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="#CCCCCC" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:text="身份证上传"
+                    android:textColor="#424242"
+                    android:textSize="15sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="110dp"
+                        android:layout_height="110dp"
+                        android:layout_marginLeft="10dp">
+
+                        <ImageView
+                            android:id="@+id/reg_card_positive"
+                            android:layout_width="90dp"
+                            android:layout_height="90dp"
+                            android:layout_centerInParent="true"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/pic_card_upload_positive" />
+
+                        <ImageView
+                            android:id="@+id/reg_card_positive_clear"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_alignParentRight="true"
+                            android:padding="5dp"
+                            android:src="@drawable/pic_clear"
+                            android:visibility="invisible" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="110dp"
+                        android:layout_height="110dp"
+                        android:layout_marginLeft="20dp"
+                        android:background="@drawable/shape_register_item_white_bg">
+
+                        <ImageView
+                            android:id="@+id/pic_card_negative"
+                            android:layout_width="90dp"
+                            android:layout_height="90dp"
+                            android:layout_centerInParent="true"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/pic_card_upload_negative" />
+
+                        <ImageView
+                            android:id="@+id/pic_card_negative_clear"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_alignParentRight="true"
+                            android:padding="5dp"
+                            android:src="@drawable/pic_clear"
+                            android:visibility="invisible" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <com.yanxin.store.ui.OptionalEditLayout
+                    android:id="@+id/reg_city"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    app:content_hint="请选择工作地区"
+                    app:content_tv_color="#424242"
+                    app:desc_content="选择地区"
+                    app:is_content_center_gravity="true"
+                    app:is_input_type="textile"
+                    app:singleLine="true" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="#CCCCCC" />
+
+                <EditText
+                    android:id="@+id/reg_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:background="@null"
+                    android:gravity="center_vertical|right"
+                    android:hint="请输入工作地区详细地址"
+                    android:paddingRight="23dp"
+                    android:singleLine="true"
+                    android:textColor="#424242"
+                    android:textSize="14sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="#CCCCCC" />
+
+                <com.yanxin.store.ui.OptionalEditLayout
+                    android:id="@+id/reg_urgent_mobile"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    app:content_hint="请输入紧急联系人手机号"
+                    app:content_tv_color="#424242"
+                    app:desc_content="紧急联系人"
+                    app:is_content_center_gravity="true"
+                    app:is_input_type="edition"
+                    app:is_mandatory="false"
+                    app:is_more_show="false"
+                    app:singleLine="true" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:text="资质信息"
+                android:textColor="#424242"
+                android:textSize="15sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/shape_register_item_white_bg"
+                android:orientation="vertical">
+
+                <com.yanxin.store.ui.OptionalEditLayout
+                    android:id="@+id/reg_year"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    app:content_hint="请输入您的工龄"
+                    app:content_tv_color="#424242"
+                    app:desc_content="工龄"
+                    app:input_type="number"
+                    app:is_content_center_gravity="true"
+                    app:is_input_type="edition"
+                    app:is_more_show="false" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="#CCCCCC" />
+
+                <com.yanxin.store.ui.OptionalEditLayout
+                    android:id="@+id/repair_brand"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    app:content_hint="请选择汽车品牌"
+                    app:content_tv_color="#424242"
+                    app:desc_content="维修品牌"
+                    app:is_content_center_gravity="true"
+                    app:is_input_type="textile" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="#CCCCCC" />
+
+
+                <com.yanxin.store.ui.OptionalEditLayout
+                    android:id="@+id/technology_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    app:content_tv_color="#424242"
+                    app:desc_content="技术类型"
+                    app:is_content_center_gravity="true"
+                    app:is_input_type="textile" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="#CCCCCC" />
+
+                <com.yanxin.store.ui.OptionalEditLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    app:content_tv_color="#424242"
+                    app:desc_content="国家技能鉴定（二选一）"
+                    app:is_input_type="textile"
+                    app:is_more_show="false" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="110dp"
+                        android:layout_height="110dp"
+                        android:layout_marginLeft="10dp">
+
+                        <ImageView
+                            android:id="@+id/skills_pic"
+                            android:layout_width="90dp"
+                            android:layout_height="90dp"
+                            android:layout_centerInParent="true"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/pic_upload_pic" />
+
+                        <ImageView
+                            android:id="@+id/skills_pic_clear"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_alignParentRight="true"
+                            android:padding="5dp"
+                            android:src="@drawable/pic_clear"
+                            android:visibility="invisible" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="#CCCCCC" />
+
+                <com.yanxin.store.ui.OptionalEditLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    app:content_tv_color="#424242"
+                    app:desc_content="主机厂认证（二选一）"
+                    app:is_input_type="textile"
+                    app:is_more_show="false" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="110dp"
+                        android:layout_height="110dp"
+                        android:layout_marginLeft="10dp">
+
+                        <ImageView
+                            android:id="@+id/oem_pic"
+                            android:layout_width="90dp"
+                            android:layout_height="90dp"
+                            android:layout_centerInParent="true"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/pic_upload_pic" />
+
+                        <ImageView
+                            android:id="@+id/oem_pic_clear"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_alignParentRight="true"
+                            android:padding="5dp"
+                            android:src="@drawable/pic_clear"
+                            android:visibility="invisible" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="#CCCCCC" />
+
+                <com.yanxin.store.ui.OptionalEditLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    app:content_tv_color="#424242"
+                    app:desc_content="低压电工证认证"
+                    app:is_input_type="textile"
+                    app:is_mandatory="false"
+                    app:is_more_show="false" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:layout_width="110dp"
+                            android:layout_height="110dp"
+                            android:layout_marginLeft="10dp">
+
+                            <ImageView
+                                android:id="@+id/diangong_positive_pic"
+                                android:layout_width="90dp"
+                                android:layout_height="90dp"
+                                android:layout_centerInParent="true"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/pic_card_upload_positive" />
+
+                            <ImageView
+                                android:id="@+id/diangong_positive_pic_clear"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_alignParentRight="true"
+                                android:padding="5dp"
+                                android:src="@drawable/pic_clear"
+                                android:visibility="invisible" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="110dp"
+                            android:layout_height="110dp"
+                            android:layout_marginLeft="20dp"
+                            android:background="@drawable/shape_register_item_white_bg">
+
+                            <ImageView
+                                android:id="@+id/diangong_negative_pic"
+                                android:layout_width="90dp"
+                                android:layout_height="90dp"
+                                android:layout_centerInParent="true"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/pic_card_upload_negative" />
+
+                            <ImageView
+                                android:id="@+id/diangong_negative_pic_clear"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_alignParentRight="true"
+                                android:padding="5dp"
+                                android:src="@drawable/pic_clear"
+                                android:visibility="invisible" />
+                        </RelativeLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="#CCCCCC" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:text="驾驶证上传"
+                    android:textColor="#424242"
+                    android:textSize="15sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="110dp"
+                        android:layout_height="110dp"
+                        android:layout_marginLeft="10dp">
+
+                        <ImageView
+                            android:id="@+id/driver_positive_pic"
+                            android:layout_width="90dp"
+                            android:layout_height="90dp"
+                            android:layout_centerInParent="true"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/pic_card_upload_positive" />
+
+                        <ImageView
+                            android:id="@+id/driver_positive_pic_clear"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_alignParentRight="true"
+                            android:padding="5dp"
+                            android:src="@drawable/pic_clear"
+                            android:visibility="invisible" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="110dp"
+                        android:layout_height="110dp"
+                        android:layout_marginLeft="20dp"
+                        android:background="@drawable/shape_register_item_white_bg">
+
+                        <ImageView
+                            android:id="@+id/driver_negative_pic"
+                            android:layout_width="90dp"
+                            android:layout_height="90dp"
+                            android:layout_centerInParent="true"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/pic_card_upload_negative" />
+
+                        <ImageView
+                            android:id="@+id/driver_negative_pic_clear"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_alignParentRight="true"
+                            android:padding="5dp"
+                            android:src="@drawable/pic_clear"
+                            android:visibility="invisible" />
+                    </RelativeLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:text="收款信息"
+                android:textColor="#424242"
+                android:textSize="15sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/shape_register_item_white_bg"
+                android:orientation="vertical">
+
+                <com.yanxin.store.ui.OptionalEditLayout
+                    android:id="@+id/receiving_account"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    app:content_hint="请输入您的收款账号"
+                    app:content_tv_color="#424242"
+                    app:desc_content="银行卡账号"
+                    app:input_type="number"
+                    app:is_content_center_gravity="true"
+                    app:is_input_type="edition"
+                    app:is_more_show="false" />
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="#CCCCCC" />
+
+                <com.yanxin.store.ui.OptionalEditLayout
+                    android:id="@+id/bank_account"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    app:content_hint="请选择开户行"
+                    app:content_tv_color="#424242"
+                    app:desc_content="开户行"
+                    app:is_content_center_gravity="true"
+                    app:is_input_type="textile" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="#CCCCCC" />
+
+                <com.yanxin.store.ui.OptionalEditLayout
+                    android:id="@+id/wx_account"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    app:content_hint="请输入微信账号"
+                    app:content_tv_color="#424242"
+                    app:desc_content="微信账号"
+                    app:is_content_center_gravity="true"
+                    app:is_input_type="edition"
+                    app:is_mandatory="false"
+                    app:is_more_show="false"
+                    app:singleLine="true" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="#CCCCCC" />
+
+                <com.yanxin.store.ui.OptionalEditLayout
+                    android:id="@+id/alipay_account"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    app:content_hint="请输入支付宝账号"
+                    app:content_tv_color="#424242"
+                    app:desc_content="支付宝账号"
+                    app:is_content_center_gravity="true"
+                    app:is_input_type="edition"
+                    app:is_mandatory="false"
+                    app:is_more_show="false"
+                    app:singleLine="true" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/submit"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/select_login_submit_bg"
+                android:stateListAnimator="@null"
+                android:text="提交审核"
+                android:textColor="@color/select_login_submit_text_color"
+                android:textSize="17sp" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

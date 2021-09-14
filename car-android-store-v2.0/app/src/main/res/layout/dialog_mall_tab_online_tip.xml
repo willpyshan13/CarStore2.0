@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="264dp"
+    android:layout_height="204dp"
+    android:layout_marginLeft="2dp"
+    android:layout_marginRight="2dp"
+    android:layout_marginBottom="@dimen/dp_10"
+    android:orientation="horizontal"
+    app:cardCornerRadius="10dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/message"
+            android:layout_width="244dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:text="确定要上架这个商品吗?上架后不可编辑！"
+            android:textColor="#ff000000"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toTopOf="@+id/negtive"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/negtive"
+            android:layout_width="101dp"
+            android:layout_height="38dp"
+            android:layout_marginLeft="22dp"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginBottom="27dp"
+            android:background="@drawable/mall_tab_item_btn_hollow"
+            android:gravity="center"
+            android:text="取消"
+            android:textColor="#0091ff"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent" />
+
+        <TextView
+            android:id="@+id/positive"
+            android:layout_width="101dp"
+            android:layout_height="38dp"
+            android:layout_marginLeft="22dp"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginRight="22dp"
+            android:layout_marginBottom="27dp"
+            android:background="@drawable/mall_tab_item_btn"
+            android:gravity="center"
+            android:text="编 辑"
+            android:textColor="#fff"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.cardview.widget.CardView>

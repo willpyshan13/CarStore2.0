@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.car.account.web.mapper.goods.GoodsMapper">
+
+	<sql id="fromSql">
+	 	from goods g  
+	 	 left join store s on g.store_uuid = s.uuid
+        where g.sts = 0
+        <if test="goodsName != null and goodsName !=''">
+            AND g.goods_name LIKE CONCAT('%',#{goodsName},'%')
+        </if>
+        <if test="goodsType != null and goodsType !=''">
+            AND g.goods_type = #{goodsType}
+        </if>
+        <if test="vehicleBrand != null and vehicleBrand !=''">
+            AND g.vehicle_Brand = #{vehicleBrand}
+        </if>
+        <if test="storeCityUuid != null and storeCityUuid !=''">
+            AND s.company_address_city = #{storeCityUuid}
+        </if>
+        <if test="storeCountyUuid != null and storeCountyUuid !=''">
+            AND s.company_address_county = #{storeCountyUuid}
+        </if>
+        <if test="parentType != null and parentType != ''">
+            AND g.parent_type = #{parentType}
+        </if>
+        <if test="subType != null and subType != ''">
+            AND g.sub_Type = #{subType} 
+        </if>
+        <if test="storeType != null and storeType.size() >=0">
+        	<foreach collection="storeType" open="and s.store_type in (" separator="," close=")" item="st">#{st}</foreach>
+        </if>
+        <if test="storeName != null and storeName !=''">
+            AND s.store_name LIKE CONCAT('%',#{storeName},'%')
+        </if>
+        <if test="null != sellSts">
+            AND g.sell_sts = #{sellSts}
+        </if>
+        <if test="null != minPlatformSubsidy">
+            AND g.platform_subsidy >= #{minPlatformSubsidy}
+        </if>
+        <if test="storeUuid != null and storeUuid !=''">
+            AND  g.store_uuid = #{storeUuid}
+        </if>
+        <if test="maxSalesNum != null and maxSalesNum !=''">
+            <![CDATA[  AND g.sales_num <= #{maxSalesNum} ]]>
+        </if>
+        <if test="minSalesNum != null and minSalesNum !=''">
+            <![CDATA[  AND g.sales_num >= #{minSalesNum} ]]>
+        </if>
+        <if test="maxPrice != null and maxPrice !=''">
+            <![CDATA[  AND g.materials_expenses <= #{maxPrice} ]]>
+        </if>
+        <if test="minPrice != null and minPrice !=''">
+            <![CDATA[  AND g.materials_expenses >= #{minPrice} ]]>
+        </if>
+        <if test="distanceDesc !=null and latitude !=null and longitude !=null">
+        	and s.latitude is not null and s.longitude is not null
+        </if>
+        <if test="maxDistance !=null  and latitude !=null and longitude !=null">
+        	and s.latitude is not null and s.longitude is not null
+        	and #{maxDistance} >= lat_lng_distance(s.latitude,s.longitude ,#{latitude},#{longitude})
+        </if>
+        <if test="checkSts !=null and checkSts.size()>0">
+        	<foreach collection="checkSts" open="and g.check_Sts in(" separator="," close=")" item="st">#{st}</foreach>
+        </if>
+        order by
+        	<if test="subsidyDesc !=null">
+        		g.platform_subsidy <if  test="subsidyDesc ==1"> desc </if>,
+        	</if>
+        	<if test="storeScoreDesc !=null">
+        		s.score <if  test="storeScoreDesc ==1"> desc </if>,
+        	</if>
+        	<if test="distanceDesc !=null and latitude !=null and longitude !=null">
+        		lat_lng_distance(s.latitude,s.longitude ,#{latitude},#{longitude}) <if  test="distanceDesc ==1"> desc </if>,
+        	</if>
+         g.created_time desc
+	</sql>
+	
+	<select id="queryStoreList" parameterType="com.car.account.client.request.goods.QueryGoodsListReq" resultType="com.car.account.client.response.store.QueryStoreListRes">
+		 select DISTINCT * 
+		 from (select  s.* <include refid="fromSql"/>)k
+	</select>
+	
+    <select id="queryGoodsList" parameterType="com.car.account.client.request.goods.QueryGoodsListReq" resultType="com.car.account.client.response.goods.GoodsRes">
+        select g.*,
+               s.store_name as storeName,
+               s.uuid as storeUuid,
+              (select ifnull(convert(AVG(score_star),DECIMAL(10,2)),0.0) as avgScore from score_info where sts = 0 and relation_uuid = g.uuid) as score,
+              (SELECT COUNT(1) FROM comment_info WHERE sts = 0 AND check_sts = 1 AND relation_uuid = g.uuid) as commentNum
+       <include refid="fromSql"/>
+    </select>
+
+    <select id="queryGoodsClassify" parameterType="com.car.account.client.request.goods.QueryGoodsClassifyReq" resultType="com.car.account.web.model.goods.Goods">
+        SELECT * FROM `goods` G WHERE G.`sts` = 0
+        <if test="null != areaUuid and areaUuid != ''">
+            AND G.`store_uuid` IN (
+              SELECT S.`uuid` FROM store S WHERE S.`sts` = 0 AND S.company_address_city = #{areaUuid}
+            )
+        </if>
+        <if test="null != brandUuid and brandUuid != ''">
+            AND G.`store_uuid` IN (
+              SELECT S.`uuid` FROM store S WHERE S.`sts` = 0 AND S.`brand` = #{brandUuid}
+            )
+        </if>
+        <if test="null != levelOneUuid and levelOneUuid != ''">
+            AND G.parent_type = #{levelOneUuid}
+        </if>
+        <if test="null != levelTwoUuid and levelTwoUuid != ''">
+            AND G.sub_type = #{levelTwoUuid}
+        </if>
+        <if test="null != storeUuid and storeUuid != ''">
+            and G.store_uuid = #{storeUuid}
+        </if>
+    </select>
+
+    <select id="selectClassifyByStoreUuid" resultType="java.lang.String">
+        SELECT DISTINCT g.`parent_type` as parentType FROM `goods` g WHERE g.sts = 0 AND g.`store_uuid` = #{storeUuid}
+    </select>
+</mapper>

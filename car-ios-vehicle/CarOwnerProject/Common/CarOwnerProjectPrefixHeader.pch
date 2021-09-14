@@ -1,0 +1,17 @@
+//
+//  CarOwnerProjectPrefixHeader.pch
+//  CarOwnerProject
+//
+//  Created by apple on 2021/1/25.
+//
+
+#ifndef CarOwnerProjectPrefixHeader_pch
+#define CarOwnerProjectPrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+#import "Constants.h"
+#import "CommonColors.h"
+#import "HTTPHeader.h"
+
+#endif /* CarOwnerProjectPrefixHeader_pch */

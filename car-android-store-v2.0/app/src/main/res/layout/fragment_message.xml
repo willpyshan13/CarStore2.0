@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.yanxin.store.mvvm.viewmodel.FragmentMessageViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_F9F9F9"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp110"
+            android:background="@color/color_FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp30"
+            android:layout_marginEnd="@dimen/dp20"
+            android:text="一键已读"
+            android:textColor="@color/color_0091FF"
+            android:textSize="@dimen/sp14"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:onClickCommand="@{viewModel.readClick}" />
+
+        <HorizontalScrollView
+            android:id="@+id/order_radio"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp60"
+            android:scrollbars="none"
+            app:layout_constraintEnd_toStartOf="@+id/message_unread"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toTopOf="parent"
+                app:onCheckedChangedCommand="@{viewModel.onCheckChange}">
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/order_1"
+                    android:layout_width="@dimen/dp80"
+                    android:layout_height="@dimen/dp30"
+                    android:layout_marginStart="@dimen/dp10"
+                    android:layout_marginEnd="@dimen/dp10"
+                    android:background="@drawable/radio_bg"
+                    android:button="@null"
+                    android:checked="true"
+                    android:gravity="center"
+                    android:paddingTop="@dimen/dp5"
+                    android:paddingBottom="@dimen/dp5"
+                    android:text="全部"
+                    android:textColor="@color/select_fragment_message_check"
+                    android:textSize="@dimen/sp15" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/order_2"
+                    android:layout_width="@dimen/dp80"
+                    android:layout_height="@dimen/dp30"
+                    android:layout_marginStart="@dimen/dp10"
+                    android:layout_marginEnd="@dimen/dp10"
+                    android:background="@drawable/radio_bg"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:paddingTop="@dimen/dp5"
+                    android:paddingBottom="@dimen/dp5"
+                    android:text="工位通知"
+                    android:textColor="@color/select_fragment_message_check"
+                    android:textSize="@dimen/sp15" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/order_3"
+                    android:layout_width="@dimen/dp80"
+                    android:layout_height="@dimen/dp30"
+                    android:layout_marginStart="@dimen/dp10"
+                    android:layout_marginEnd="@dimen/dp10"
+                    android:background="@drawable/radio_bg"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:paddingTop="@dimen/dp5"
+                    android:paddingBottom="@dimen/dp5"
+                    android:text="发现消息"
+                    android:textColor="@color/select_fragment_message_check"
+                    android:textSize="@dimen/sp15" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/order_4"
+                    android:layout_width="@dimen/dp80"
+                    android:layout_height="@dimen/dp30"
+                    android:layout_marginStart="@dimen/dp10"
+                    android:layout_marginEnd="@dimen/dp10"
+                    android:background="@drawable/radio_bg"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:paddingTop="@dimen/dp5"
+                    android:paddingBottom="@dimen/dp5"
+                    android:text="现场支持"
+                    android:textColor="@color/select_fragment_message_check"
+                    android:textSize="@dimen/sp15" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/order_5"
+                    android:layout_width="@dimen/dp80"
+                    android:layout_height="@dimen/dp30"
+                    android:layout_marginStart="@dimen/dp10"
+                    android:layout_marginEnd="@dimen/dp10"
+                    android:background="@drawable/radio_bg"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:paddingTop="@dimen/dp5"
+                    android:paddingBottom="@dimen/dp5"
+                    android:text="商城消息"
+                    android:textColor="@color/select_fragment_message_check"
+                    android:textSize="@dimen/sp15" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/order_6"
+                    android:layout_width="@dimen/dp80"
+                    android:layout_height="@dimen/dp30"
+                    android:layout_marginStart="@dimen/dp10"
+                    android:layout_marginEnd="@dimen/dp10"
+                    android:background="@drawable/radio_bg"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:paddingTop="@dimen/dp5"
+                    android:paddingBottom="@dimen/dp5"
+                    android:text="钱包消息"
+                    android:textColor="@color/select_fragment_message_check"
+                    android:textSize="@dimen/sp15" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/order_7"
+                    android:layout_width="@dimen/dp80"
+                    android:layout_height="@dimen/dp30"
+                    android:layout_marginStart="@dimen/dp10"
+                    android:layout_marginEnd="@dimen/dp10"
+                    android:background="@drawable/radio_bg"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:paddingTop="@dimen/dp5"
+                    android:paddingBottom="@dimen/dp5"
+                    android:text="账户信息"
+                    android:textColor="@color/select_fragment_message_check"
+                    android:textSize="@dimen/sp15" />
+            </RadioGroup>
+        </HorizontalScrollView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/message_unread"
+            android:layout_width="@dimen/dp72"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp10"
+            android:layout_marginEnd="@dimen/dp10"
+            android:background="@null"
+            android:button="@null"
+            android:drawableEnd="@mipmap/icon_arrow_down"
+            android:gravity="center"
+            android:paddingTop="@dimen/dp5"
+            android:paddingBottom="@dimen/dp5"
+            android:text="@{viewModel.messageFilterText}"
+            android:textSize="@dimen/sp15"
+            app:layout_constraintBottom_toBottomOf="@+id/order_radio"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/order_radio"
+            app:onClickCommand="@{viewModel.filterClick}" />
+
+        <com.scwang.smart.refresh.layout.SmartRefreshLayout
+            android:id="@+id/home_sui_list_refresh"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/dp20"
+            app:enableLoadMore="@{viewModel.enableLoadMore}"
+            app:enableRefresh="@{viewModel.enableRefresh}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/order_radio"
+            app:loadStatus="@={viewModel.loadStatus}"
+            app:onLoadMoreCommand="@{viewModel.onLoadMoreCommand}"
+            app:onRefreshCommand="@{viewModel.onRefreshCommand}"
+            app:refreshStatus="@={viewModel.refreshStatus}">
+            <com.scwang.smart.refresh.header.ClassicsHeader
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <com.yanxin.store.widget.SwipeRecyclerViewSupport
+                android:id="@+id/home_scan_wifi_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:closeCommand="@{viewModel.closeListener}"
+                app:itemBinding="@{viewModel.itemBinding}"
+                app:items="@{viewModel.items}"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+        </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

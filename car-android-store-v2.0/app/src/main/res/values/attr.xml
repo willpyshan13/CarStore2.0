@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="OptionalEditLayout">
+        <attr name="is_mandatory" format="boolean" />
+        <attr name="is_more_show" format="boolean" />
+        <attr name="desc_content" format="string" />
+        <attr name="content_text" format="string" />
+        <attr name="content_hint" format="string" />
+        <attr name="desc_tv_size" format="float" />
+        <attr name="content_hint_tv_size" format="float" />
+        <attr name="content_tv_color" format="color" />
+        <attr name="desc_tv_color" format="color" />
+        <attr name="desc_weight" format="float" />
+        <attr name="is_input_type">
+            <enum name="textile" value="0" />
+            <enum name="edition" value="1" />
+        </attr>
+        <attr name="input_type">
+            <enum name="number" value="0" />
+            <enum name="text" value="1" />
+            <enum name="password" value="2" />
+            <enum name="phone" value="3" />
+        </attr>
+        <attr name="singleLine" format="boolean" />
+        <attr name="is_desc_center_gravity" format="boolean" />
+        <attr name="is_content_center_gravity" format="boolean" />
+        <attr name="is_desc_bold" format="boolean" />
+    </declare-styleable>
+    <declare-styleable name="SwipeLayout">
+        <attr name="drag_edge">
+            <flag name="left" value="1" />
+            <flag name="right" value="2" />
+            <flag name="top" value="4" />
+            <flag name="bottom" value="8" />
+        </attr>
+        <attr name="leftEdgeSwipeOffset" format="dimension" />
+        <attr name="rightEdgeSwipeOffset" format="dimension" />
+        <attr name="topEdgeSwipeOffset" format="dimension" />
+        <attr name="bottomEdgeSwipeOffset" format="dimension" />
+        <attr name="show_mode" format="enum">
+            <enum name="lay_down" value="0" />
+            <enum name="pull_out" value="1" />
+        </attr>
+        <attr name="clickToClose" format="boolean" />
+    </declare-styleable>
+</resources>

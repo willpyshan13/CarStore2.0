@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/findFragment"
+        android:icon="@drawable/select_main_btn_find"
+        android:title="发现" />
+
+    <item
+        android:id="@+id/servingFragment"
+        android:icon="@drawable/select_main_btn_serving"
+        android:title="服务" />
+
+    <item
+        android:id="@+id/mallFragment"
+        android:icon="@drawable/select_main_btn_mall"
+        android:title="商城" />
+    <item
+        android:id="@+id/msgFragment"
+        android:icon="@drawable/select_main_btn_msg"
+        android:title="消息" />
+    <item
+        android:id="@+id/mineFragment"
+        android:icon="@drawable/select_main_btn_mine"
+        android:title="我的" />
+
+
+</menu>

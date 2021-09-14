@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingLeft="10dp"
+        android:paddingTop="5dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="5dp"
+        android:text="鉴于线下的不可控因素，平台只提供线上业务的链接，线下的任何服务由下 单用户和现场接单服务对象/主体双方自行保障，平台不承担任何线下责任，特此公告"
+        android:textColor="#FF9B37"
+        android:textSize="11sp" />
+
+    <RadioGroup
+        android:id="@+id/serving_tab"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/wait_scene"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/select_fa_square_tab_radiogroup_left"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:text="待抢单"
+            android:textColor="@color/select_fq_square_tab_radiobuttom_text_color"
+            android:textSize="14sp" />
+
+        <RadioButton
+            android:id="@+id/wait_sustain"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/select_fa_square_tab_radiogroup_center"
+            android:button="@null"
+            android:gravity="center"
+            android:text="现场支持下单"
+            android:textColor="@color/select_fq_square_tab_radiobuttom_text_color"
+            android:textSize="14sp" />
+
+        <RadioButton
+            android:id="@+id/enter_scene"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/select_fa_square_tab_radiogroup_right"
+            android:button="@null"
+            android:gravity="center"
+            android:text="已抢单"
+            android:textColor="@color/select_fq_square_tab_radiobuttom_text_color"
+            android:textSize="14sp" />
+    </RadioGroup>
+
+    <com.yanxin.store.ui.NoScrollViewPager
+        android:id="@+id/serving_vp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>

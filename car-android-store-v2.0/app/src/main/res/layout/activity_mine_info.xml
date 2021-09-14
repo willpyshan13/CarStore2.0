@@ -1,0 +1,631 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.yanxin.store.mvvm.viewmodel.MineInfoViewModel" />
+
+        <import type="com.yanxin.store.R" />
+
+        <import type="androidx.core.content.ContextCompat" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/parent_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="1dp"
+            android:layout_weight="1">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/mine_wallet_bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp110"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:background="@drawable/shape_mine_item_bg">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/mine_header"
+                        android:layout_width="@dimen/dp80"
+                        android:layout_height="@dimen/dp80"
+                        android:layout_marginStart="@dimen/dp20"
+                        android:layout_marginTop="@dimen/dp15"
+                        app:imagePlaceholder="@{ContextCompat.getDrawable(context, R.mipmap.icon_logo)}"
+                        app:imageUrl="@{viewModel.headerUrl}"
+                        app:isCircle="@{true}"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:onClickCommand="@{viewModel.headClick}" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/mine_info_role"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp24"
+                        android:layout_marginTop="@dimen/dp8"
+                        android:text="身份"
+                        android:textColor="@color/color_999999"
+                        android:textSize="@dimen/sp14"
+                        app:layout_constraintStart_toEndOf="@+id/mine_header"
+                        app:layout_constraintTop_toTopOf="@+id/mine_header" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/mine_info_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp24"
+                        android:layout_marginTop="@dimen/dp8"
+                        android:text="店铺类型"
+                        android:textColor="@color/color_999999"
+                        android:textSize="@dimen/sp14"
+                        app:layout_constraintStart_toEndOf="@+id/mine_header"
+                        app:layout_constraintTop_toBottomOf="@+id/mine_info_role" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/mine_info_score"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp24"
+                        android:layout_marginTop="@dimen/dp8"
+                        android:text="服务评分"
+                        android:textColor="@color/color_999999"
+                        android:textSize="@dimen/sp14"
+                        app:layout_constraintStart_toEndOf="@+id/mine_header"
+                        app:layout_constraintTop_toBottomOf="@+id/mine_info_type" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/mine_info_role_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp30"
+                        android:layout_marginTop="@dimen/dp8"
+                        android:text="@{viewModel.storeRole}"
+                        android:textColor="@color/color_333333"
+                        android:textSize="@dimen/sp14"
+                        app:layout_constraintStart_toEndOf="@+id/mine_info_score"
+                        app:layout_constraintTop_toTopOf="@+id/mine_header"
+                        tools:text="店铺" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/mine_info_type_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp30"
+                        android:layout_marginTop="@dimen/dp8"
+                        android:text="@{viewModel.storeType}"
+                        android:textColor="@color/color_333333"
+                        android:textSize="@dimen/sp14"
+                        app:layout_constraintStart_toEndOf="@+id/mine_info_score"
+                        app:layout_constraintTop_toBottomOf="@+id/mine_info_role_value"
+                        tools:text="4s店" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/mine_info_score_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp30"
+                        android:layout_marginTop="@dimen/dp8"
+                        android:text="5分"
+                        android:textColor="@color/color_333333"
+                        android:textSize="@dimen/sp14"
+                        app:layout_constraintStart_toEndOf="@+id/mine_info_score"
+                        app:layout_constraintTop_toBottomOf="@+id/mine_info_type_value" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/mine_info_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp36"
+                        android:layout_marginTop="@dimen/dp8"
+                        android:text="@{viewModel.storeStatus}"
+                        android:textColor="@color/color_0091ff"
+                        android:textSize="@dimen/sp14"
+                        app:layout_constraintStart_toEndOf="@+id/mine_info_role_value"
+                        app:layout_constraintTop_toTopOf="@+id/mine_header"
+                        tools:text="审核通过" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp20"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:text="账号信息"
+                    android:textColor="@color/color_333333"
+                    android:textSize="@dimen/sp15"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/mine_info_score"
+                    app:layout_constraintTop_toBottomOf="@+id/mine_info_type_value" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp150"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:background="@drawable/shape_mine_item_bg">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/mine_info_info_tel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/dp20"
+                        android:text="登录手机号"
+                        android:textColor="@color/color_999999"
+                        android:textSize="@dimen/sp14"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/mine_info_store_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="店铺名称"
+                        android:textColor="@color/color_999999"
+                        android:textSize="@dimen/sp14"
+                        app:layout_constraintBottom_toBottomOf="@+id/mine_info_name_value"
+                        app:layout_constraintStart_toStartOf="@+id/mine_info_info_tel"
+                        app:layout_constraintTop_toTopOf="@+id/mine_info_name_value" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/mine_info_brand"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="维修品牌"
+                        android:textColor="@color/color_999999"
+                        android:textSize="@dimen/sp14"
+                        app:layout_constraintBottom_toBottomOf="@+id/brand_value"
+                        app:layout_constraintStart_toStartOf="@+id/mine_info_info_tel"
+                        app:layout_constraintTop_toTopOf="@+id/brand_value" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/mine_info_tel_value"
+                        android:layout_width="@dimen/dp250"
+                        android:layout_height="@dimen/dp30"
+                        android:layout_marginEnd="@dimen/dp40"
+                        android:background="@null"
+                        android:gravity="end|center_vertical"
+                        android:text="@{viewModel.storePhone}"
+                        android:textColor="@color/color_999999"
+                        android:textSize="@dimen/sp14"
+                        app:layout_constraintBottom_toBottomOf="@+id/mine_info_info_tel"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/mine_info_info_tel"
+                        tools:text="188888888888" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/mine_info_name_value"
+                        android:layout_width="@dimen/dp250"
+                        android:layout_height="@dimen/dp30"
+                        android:layout_marginTop="@dimen/dp10"
+                        android:background="@null"
+                        android:gravity="end|center_vertical"
+                        android:text="@{viewModel.storeName}"
+                        android:textColor="@color/color_333333"
+                        android:textSize="@dimen/sp14"
+                        app:layout_constraintEnd_toEndOf="@+id/mine_info_tel_value"
+                        app:layout_constraintTop_toBottomOf="@+id/mine_info_tel_value"
+                        tools:text="4s店" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/brand_value"
+                        android:layout_width="@dimen/dp270"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp25"
+                        android:gravity="end|center_vertical"
+                        android:layout_marginEnd="@dimen/dp20"
+                        android:drawableEnd="@drawable/register_more"
+                        android:drawablePadding="@dimen/dp10"
+                        android:text="@{viewModel.brandName}"
+                        android:textColor="@color/color_333333"
+                        android:textSize="@dimen/sp14"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/mine_info_name_value"
+                        app:onClickCommand="@{viewModel.brandClick}" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp20"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:text="企业信息"
+                    android:textColor="@color/color_333333"
+                    android:textSize="@dimen/sp15"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/mine_info_score"
+                    app:layout_constraintTop_toBottomOf="@+id/mine_info_type_value" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp455"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:background="@drawable/shape_mine_item_bg"
+                    android:orientation="vertical">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/mine_info_company_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/dp20"
+                            android:text="公司名称"
+                            android:textColor="@color/color_999999"
+                            android:textSize="@dimen/sp14"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/mine_info_company_1_value"
+                            android:layout_width="@dimen/dp250"
+                            android:layout_height="@dimen/dp30"
+                            android:layout_marginEnd="@dimen/dp40"
+                            android:background="@null"
+                            android:gravity="end|center_vertical"
+                            android:text="@={viewModel.storeCompany}"
+                            android:textColor="@color/color_999999"
+                            android:textSize="@dimen/sp14"
+                            app:layout_constraintBottom_toBottomOf="@+id/mine_info_company_1"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/mine_info_company_1"
+                            tools:text="dd" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/mine_info_company_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/dp20"
+                            android:text="公司地址"
+                            android:textColor="@color/color_999999"
+                            android:textSize="@dimen/sp14"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/mine_info_company_2_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dp8"
+                            android:layout_marginEnd="@dimen/dp20"
+                            android:drawableEnd="@drawable/register_more"
+                            android:drawablePadding="@dimen/dp10"
+                            android:text="@{viewModel.storeAddress}"
+                            android:textColor="@color/color_333333"
+                            android:textSize="@dimen/sp14"
+                            app:layout_constraintBottom_toBottomOf="@+id/mine_info_company_2"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/mine_info_company_2"
+                            app:onClickCommand="@{viewModel.areaClick}"
+                            tools:text="dd" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/mine_info_company_3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/dp20"
+                            android:text="详细地址"
+                            android:textColor="@color/color_999999"
+                            android:textSize="@dimen/sp14"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/mine_info_company_3_value"
+                            android:layout_width="@dimen/dp250"
+                            android:layout_height="@dimen/dp30"
+                            android:layout_marginEnd="@dimen/dp40"
+                            android:background="@null"
+                            android:gravity="end|center_vertical"
+                            android:text="@={viewModel.storeDetailAddress}"
+                            android:textColor="@color/color_333333"
+                            android:textSize="@dimen/sp14"
+                            app:layout_constraintBottom_toBottomOf="@+id/mine_info_company_3"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/mine_info_company_3"
+                            tools:text="3333333" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/mine_info_company_4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/dp20"
+                            android:text="开户行"
+                            android:textColor="@color/color_999999"
+                            android:textSize="@dimen/sp14"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/mine_info_company_4_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dp8"
+                            android:layout_marginEnd="@dimen/dp20"
+                            android:drawableEnd="@drawable/register_more"
+                            android:drawablePadding="@dimen/dp10"
+                            android:text="@{viewModel.storeBank}"
+                            android:textColor="@color/color_333333"
+                            android:textSize="@dimen/sp14"
+                            app:layout_constraintBottom_toBottomOf="@+id/mine_info_company_4"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/mine_info_company_4"
+                            app:onClickCommand="@{viewModel.bankClick}" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/mine_info_company_5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/dp20"
+                            android:text="收款账号"
+                            android:textColor="@color/color_999999"
+                            android:textSize="@dimen/sp14"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/mine_info_company_5_value"
+                            android:layout_width="@dimen/dp250"
+                            android:layout_height="@dimen/dp30"
+                            android:layout_marginEnd="@dimen/dp40"
+                            android:background="@null"
+                            android:gravity="end|center_vertical"
+                            android:text="@={viewModel.storeAccount}"
+                            android:textColor="@color/color_333333"
+                            android:textSize="@dimen/sp14"
+                            app:layout_constraintBottom_toBottomOf="@+id/mine_info_company_5"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/mine_info_company_5"
+                            tools:text="ddddddd" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/mine_info_company_6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/dp20"
+                            android:text="微信账号"
+                            android:textColor="@color/color_999999"
+                            android:textSize="@dimen/sp14"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/mine_info_company_6_value"
+                            android:layout_width="@dimen/dp250"
+                            android:layout_height="@dimen/dp30"
+                            android:layout_marginEnd="@dimen/dp40"
+                            android:background="@null"
+                            android:gravity="end|center_vertical"
+                            android:text="@={viewModel.storeWechat}"
+                            android:textColor="@color/color_333333"
+                            android:textSize="@dimen/sp14"
+                            app:layout_constraintBottom_toBottomOf="@+id/mine_info_company_6"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/mine_info_company_6"
+                            tools:text="ddddddd" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/mine_info_company_7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/dp20"
+                            android:text="支付宝账号"
+                            android:textColor="@color/color_999999"
+                            android:textSize="@dimen/sp14"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/mine_info_company_7_value"
+                            android:layout_width="@dimen/dp250"
+                            android:layout_height="@dimen/dp30"
+                            android:layout_marginEnd="@dimen/dp40"
+                            android:background="@null"
+                            android:gravity="end|center_vertical"
+                            android:text="@={viewModel.storeAlipay}"
+                            android:textColor="@color/color_333333"
+                            android:textSize="@dimen/sp14"
+                            app:layout_constraintBottom_toBottomOf="@+id/mine_info_company_7"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/mine_info_company_7"
+                            tools:text="ddddddd" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/mine_info_company_8"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/dp20"
+                            android:text="营业执照"
+                            android:textColor="@color/color_999999"
+                            android:textSize="@dimen/sp14"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/mine_info_company_8_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dp8"
+                            android:layout_marginEnd="@dimen/dp40"
+                            android:text="@{viewModel.storeLicense}"
+                            android:textColor="@color/color_999999"
+                            android:textSize="@dimen/sp14"
+                            app:layout_constraintBottom_toBottomOf="@+id/mine_info_company_8"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/mine_info_company_8" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/mine_info_company_9"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/dp20"
+                            android:text="店铺照片"
+                            android:textColor="@color/color_999999"
+                            android:textSize="@dimen/sp14"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/mine_info_company_9_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dp8"
+                            android:layout_marginEnd="@dimen/dp40"
+                            android:text="@{viewModel.storePic}"
+                            android:textColor="@color/color_999999"
+                            android:textSize="@dimen/sp14"
+                            app:layout_constraintBottom_toBottomOf="@+id/mine_info_company_9"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/mine_info_company_9" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/mine_info_company_10"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/dp20"
+                            android:text="法人身份证（正反面）"
+                            android:textColor="@color/color_999999"
+                            android:textSize="@dimen/sp14"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/mine_info_company_10_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dp8"
+                            android:layout_marginEnd="@dimen/dp40"
+                            android:text="@{viewModel.storeHolderLicense}"
+                            android:textColor="@color/color_999999"
+                            android:textSize="@dimen/sp14"
+                            app:layout_constraintBottom_toBottomOf="@+id/mine_info_company_10"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/mine_info_company_10" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp20"
+                        android:layout_marginTop="@dimen/dp10"
+                        android:text="联系人信息"
+                        android:textColor="@color/color_333333"
+                        android:textSize="@dimen/sp15"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp10"
+                        android:layout_marginEnd="@dimen/dp20"
+                        android:src="@mipmap/icon_info_add"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:onClickCommand="@{viewModel.addInfoClick}" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:itemBinding="@{viewModel.infoItemsBinding}"
+                    app:items="@{viewModel.infoItems}"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.core.widget.NestedScrollView>
+
+        <Button
+            android:id="@+id/brand_submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/register_submit"
+            android:stateListAnimator="@null"
+            android:text="提交审核"
+            android:textColor="@color/select_login_submit_text_color"
+            android:textSize="17sp"
+            app:onClickCommand="@{viewModel.submitClick}" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

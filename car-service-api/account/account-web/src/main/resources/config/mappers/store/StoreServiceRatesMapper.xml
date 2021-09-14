@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.car.account.web.mapper.store.StroeServiceRatesMapper">
+  <resultMap id="BaseResultMap" type="com.car.account.web.model.store.StoreServiceRates">
+    <id column="uuid" jdbcType="VARCHAR" property="uuid" />
+    <result column="uuid" jdbcType="VARCHAR" property="uuid" />
+    <result column="store_uuid" jdbcType="VARCHAR" property="storeUuid" />
+    <result column="service_type" jdbcType="BIT" property="serviceType" />
+    <result column="service_rates" jdbcType="DOUBLE" property="serviceRates" />
+    <result column="goods_parent_uuid" jdbcType="VARCHAR" property="goodsParentUuid" />
+    <result column="subsidies_rates" jdbcType="DOUBLE" property="subsidiesRates" />
+    <result column="status" jdbcType="BIT" property="status" />
+    <result column="created_time" jdbcType="TIMESTAMP" property="createdTime" />
+    <result column="last_updated_time" jdbcType="TIMESTAMP" property="lastUpdatedTime" />
+    <result column="created_by" jdbcType="VARCHAR" property="createdBy" />
+    <result column="last_updated_by" jdbcType="VARCHAR" property="lastUpdatedBy" />
+    <result column="sts" jdbcType="BIT" property="sts" />
+  </resultMap>
+  <sql id="Base_Column_List">
+      uuid,store_uuid,service_type,service_rates,goods_parent_uuid,subsidies_rates,status,created_time,last_updated_time,created_by,last_updated_by,sts
+  </sql>
+
+    <select id="queryStoreServiceRates" resultType="com.car.account.client.response.store.StoreServiceRatesRes">
+        SELECT
+            *
+        FROM
+            store_service_rates
+        WHERE
+            goods_parent_uuid = #{goodsParentUuid}
+            AND store_uuid = #{storeUuid}
+    </select>
+
+
+
+</mapper>

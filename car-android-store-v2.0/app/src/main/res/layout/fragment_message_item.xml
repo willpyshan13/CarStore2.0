@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.yanxin.store.mvvm.viewmodel.FragmentMessageItem" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp10"
+        app:cardCornerRadius="@dimen/dp10"
+        app:cardElevation="@dimen/dp1">
+
+        <com.yanxin.store.widget.SwipeLayout
+            app:closeCurrentSwipe="@{viewModel.closeSwipe}"
+            app:clickToClose="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="@dimen/dp60"
+                android:layout_height="match_parent">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/red"
+                    android:gravity="center"
+                    android:text="删除"
+                    android:textColor="@color/color_FFFFFF"
+                    android:textSize="@dimen/sp14"
+                    app:onClickCommand="@{viewModel.onItemDel}" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/dp15"
+                app:onClickCommand="@{viewModel.onItemCollect}">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/work_order_item_way"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dp20"
+                    android:layout_marginEnd="@dimen/dp15"
+                    android:text="@{viewModel.data.createdTime}"
+                    android:textColor="@color/color_999999"
+                    android:textSize="@dimen/sp12"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="2020-10-23  11:20:20" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="@dimen/dp14"
+                    android:layout_height="@dimen/dp14"
+                    android:layout_margin="@dimen/dp20"
+                    android:background="@drawable/shape_round_ff0000"
+                    android:visibility="@{viewModel.showReadView}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/work_order_item_consume_id"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp20"
+                    android:layout_marginEnd="@dimen/dp20"
+                    android:ellipsize="end"
+                    android:lines="2"
+                    android:text="@{viewModel.data.content}"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/work_order_item_way"
+                    app:layout_constraintTop_toBottomOf="@+id/work_order_item_way"
+                    tools:text="由中央网信办主办的中国正能量2021“五个一百”网络精品征集评选展播活动启动..." />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.yanxin.store.widget.SwipeLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>

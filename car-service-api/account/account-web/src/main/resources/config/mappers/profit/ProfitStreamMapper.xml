@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.car.account.web.mapper.profit.ProfitStreamMapper">
+  <resultMap id="BaseResultMap" type="com.car.account.web.model.profit.ProfitStream">
+    <result column="user_uuid" jdbcType="VARCHAR" property="userUuid" />
+    <result column="user_type" jdbcType="SMALLINT" property="userType" />
+    <result column="order_uuid" jdbcType="VARCHAR" property="orderUuid" />
+    <result column="amt" jdbcType="DECIMAL" property="amt" />
+    <result column="stream_type" jdbcType="SMALLINT" property="streamType" />
+    <result column="classify" jdbcType="SMALLINT" property="classify" />
+    <result column="remarks" jdbcType="LONGVARCHAR" property="remarks" />
+  </resultMap>
+
+  <select id="staticsClassifyProfitAmt" resultType="com.car.account.web.dto.profit.ClassifyProfitDto">
+    SELECT s.`classify`,SUM(s.`amt`) AS totalAmt FROM `profit_stream` s WHERE s.sts = 0 and s.stream_type = #{streamType} and s.`user_uuid` = #{userUuid} AND s.`user_type` = #{userType} GROUP BY s.`classify`
+  </select>
+
+  <select id="statisticsAmountByTypeList" resultType="java.util.Map">
+      SELECT DAY
+          ( tbl._date ) AS dayTime,
+          IFNULL( tbr.total_amount, 0 ) AS totalAmount
+      FROM
+          (
+      SELECT
+          @s := @s + 1 AS _index,
+          DATE( DATE_SUB( CURRENT_DATE, INTERVAL @s DAY ) ) AS _date
+      FROM
+          information_schema.TABLES,
+          mysql.help_topic,
+          ( SELECT @s := - 1 ) temp
+      ORDER BY
+          _date DESC
+          ) AS tbl
+          LEFT JOIN (
+      SELECT
+          sum( amt ) AS total_amount,
+          DATE( created_time ) createdate
+      FROM
+          profit_stream
+      WHERE
+          user_uuid = #{userUuId}
+          AND stream_type = 0
+          AND classify IN ( 9, 11 )
+          AND sts = 0
+      GROUP BY
+          createdate
+          ) AS tbr ON tbl._date = tbr.createdate
+      WHERE
+          YEAR ( _date ) = #{year}
+          AND MONTH ( _date ) = #{month}
+  </select>
+
+  <select id="statisticsAmount" resultType="java.math.BigDecimal">
+      SELECT
+         IFNULL( sum( amt ), 0 )  AS total_amount
+      FROM
+          profit_stream
+      WHERE
+          user_uuid = #{userUuId}
+          AND stream_type = #{streamType}
+          AND classify IN ( ${classify} )
+          AND sts = 0
+          <if test="year!=null">
+             AND YEAR ( created_time ) = #{year}
+          </if>
+          <if test="month!=null">
+            AND MONTH ( created_time ) = #{month}
+          </if>
+  </select>
+
+    <select id="selectNoCashSts" resultType="com.car.account.web.model.profit.ProfitStream">
+        SELECT
+        *
+        FROM
+        `profit_stream`
+        WHERE
+        cash_sts = 0
+        AND sts = 0
+        AND DATE_ADD( created_time, INTERVAL 7 DAY ) &lt; NOW()
+    </select>
+</mapper>

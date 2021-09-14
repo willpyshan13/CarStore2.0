@@ -1,0 +1,113 @@
+ext {
+    gradle_version = '4.2.2'
+    kotlin_version = '1.5.20'
+    kotlin_ktx_version = '1.5.0'
+    //android开发版本配置
+    android = [
+            compileSdkVersion   : 30,
+            buildToolsVersion   : "30.0.3",
+            minSdkVersion       : 21,
+            targetSdkVersion    : 25,
+            versionCode         : 1,
+            versionName         : "1.0.0.0",
+    ]
+    //version配置
+    versions = [
+            "support-version"  : "1.0.0",
+            "junit-version"    : "4.12",
+            "binding-version"  : "4.0.0",
+            "navigation"       : "2.3.5",
+            "room"             : "2.4.0-alpha02",
+            "android-lifecycle": "2.3.1",
+            "paging"           : "3.0.0",
+    ]
+    //support配置
+    support = [
+            'support-v4'              : "androidx.legacy:legacy-support-v4:${versions["support-version"]}",
+            'appcompat-v7'            : "androidx.appcompat:appcompat:1.3.0",
+            'recyclerview-v7'         : "androidx.recyclerview:recyclerview:1.2.1",
+            'support-v13'             : "androidx.legacy:legacy-support-v13:${versions["support-version"]}",
+            'activity'                : "androidx.activity:activity:1.2.3",
+            'activity-ktx'            : "androidx.activity:activity-ktx:1.2.3",
+            'design'                  : "com.google.android.material:material:1.3.0",
+            'animated-vector-drawable': "androidx.vectordrawable:vectordrawable-animated:${versions["support-version"]}",
+            'junit'                   : "junit:junit:${versions["junit-version"]}",
+            "constraint-layout"       : 'androidx.constraintlayout:constraintlayout:2.0.4',
+    ]
+    dependencies = [
+            "rxbinding"                            : "com.jakewharton.rxbinding4:rxbinding:4.0.0",
+            //network
+            "okhttp"                               : "com.squareup.okhttp3:okhttp:4.9.1",
+            "retrofit"                             : "com.squareup.retrofit2:retrofit:2.9.0",
+            "converter-gson"                       : "com.squareup.retrofit2:converter-gson:2.9.0",
+            //glide图片加载
+            "glide"                                : "com.github.bumptech.glide:glide:4.11.0",
+            "glide-compiler"                       : "com.github.bumptech.glide:compiler:4.11.0",
+            //json解析
+            "gson"                                 : "com.google.code.gson:gson:2.8.5",
+            //material-dialogs
+            "material-dialogs-core"                : "com.afollestad.material-dialogs:core:0.9.4.5",
+            "material-dialogs-commons"             : "com.afollestad.material-dialogs:commons:0.9.4.5",
+            //recyclerview的databinding套装
+            "bindingcollectionadapter"             : "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:${versions["binding-version"]}",
+            "bindingcollectionadapter-recyclerview": "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:${versions["binding-version"]}",
+            "bindingcollectionadapter-paging"      : "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-paging:${versions["binding-version"]}",
+            //Google AAC
+            "lifecycle-process"                    : "androidx.lifecycle:lifecycle-process:${versions["android-lifecycle"]}",
+            "lifecycle-compiler"                   : "androidx.lifecycle:lifecycle-compiler:${versions["android-lifecycle"]}",
+            "lifecycle-service"                    : "androidx.lifecycle:lifecycle-service:${versions["android-lifecycle"]}",
+            "lifecycle-viewmodel-ktx"              : "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions["android-lifecycle"]}",
+            "lifecycle-livedata-ktx"               : "androidx.lifecycle:lifecycle-livedata-ktx:${versions["android-lifecycle"]}",
+            "fragment-ktx"                         : "androidx.fragment:fragment-ktx:1.3.4",
+
+            "paging"                               : "androidx.paging:paging-runtime:${versions["paging"]}",
+
+            //jetpack
+            "navigation-fragment"                  : "androidx.navigation:navigation-fragment-ktx:${versions["navigation"]}",
+            "navigation-ui"                        : "androidx.navigation:navigation-ui-ktx:${versions["navigation"]}",
+
+            "smart-refresh"                        : "com.scwang.smart:refresh-layout-kernel:2.0.3",
+            "smart-header"                         : "com.scwang.smart:refresh-header-classics:2.0.3",
+
+            //沉浸式布局
+            "immersionbar"                         : "com.gyf.immersionbar:immersionbar:3.0.0",
+            "immersionbar-ktx"                     : "com.gyf.immersionbar:immersionbar-ktx:3.0.0",
+
+            "coroutines-android"                   : "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.7",
+
+            "magic-indicator"                      : "com.github.hackware1993:MagicIndicator:1.5.0",
+            "PickerView"                           : "com.contrarywind:Android-PickerView:4.1.9",
+            "utilcode"                             : "com.blankj:utilcodex:1.30.6",
+            "jiaozivideoplayer"                    : "cn.jzvd:jiaozivideoplayer:7.4.2",
+            "ijkplayer-java"                       : "tv.danmaku.ijk.media:ijkplayer-java:0.8.8",
+            "ijkplayer-arm64"                      : "tv.danmaku.ijk.media:ijkplayer-arm64:0.8.4",
+            "exoplayer"                            : "com.google.android.exoplayer:exoplayer:2.14.1",
+
+            "wifimanager"                          : "com.thanosfisherman.wifiutils:wifiutils:1.6.5",
+            "zxing"                                : "com.google.zxing:core:3.3.0",
+
+            "logan"                                : "com.dianping.android.sdk:logan:1.2.4",
+
+            "material"                             : "com.google.android.material:material:1.2.1",
+
+            //bugly
+            "bugly"                                : "com.tencent.bugly:crashreport:3.3.3",
+            "bugly-native"                         : "com.tencent.bugly:nativecrashreport:3.7.7",
+
+            "skeleton"                             : "com.facebook.shimmer:shimmer:0.5.0",
+
+            "leakcanary-android"                   : "com.squareup.leakcanary:leakcanary-android:2.3",
+            "leakcanary-support-fragment"          : "com.squareup.leakcanary:leakcanary-support-fragment:1.6.3",
+
+            "multidex"                             : "com.android.support:multidex:1.0.3",
+            "kotlin-stdlib-jdk7"                   : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
+            "core-ktx"                             : "androidx.core:core-ktx:$kotlin_ktx_version",
+            "junit"                                : "junit:junit:4.13.2",
+            "junit-ext"                            : "androidx.test.ext:junit:1.1.2",
+            "espresso-core"                        : "androidx.test.espresso:espresso-core:3.3.0",
+            "utilcode"                             : "com.blankj:utilcodex:1.30.6",
+    ]
+    //依赖第三方配置
+}
+
+

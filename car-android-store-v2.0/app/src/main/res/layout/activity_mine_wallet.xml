@@ -1,0 +1,677 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.yanxin.store.mvvm.viewmodel.MineWalletViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_F3F3F3"
+        android:orientation="vertical">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp175"
+                    android:layout_margin="@dimen/dp10"
+                    android:background="@drawable/shape_mine_item_bg">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/account_money_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp80"
+                        android:layout_marginTop="@dimen/dp20"
+                        android:text="账户余额"
+                        android:textColor="@color/color_999999"
+                        android:textSize="@dimen/sp12"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp14"
+                        android:text="@{viewModel.walletMoney}"
+                        android:textColor="#0091FF"
+                        android:textSize="@dimen/sp22"
+                        app:layout_constraintEnd_toEndOf="@+id/account_money_title"
+                        app:layout_constraintStart_toStartOf="@+id/account_money_title"
+                        app:layout_constraintTop_toBottomOf="@+id/account_money_title" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/account_with_draw"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp20"
+                        android:layout_marginEnd="@dimen/dp80"
+                        android:text="已提现"
+                        android:textColor="@color/color_999999"
+                        android:textSize="@dimen/sp12"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/account_with_draw_money"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp14"
+                        android:text="@{viewModel.withDrawMoney}"
+                        android:textColor="#0091FF"
+                        android:textSize="@dimen/sp22"
+                        app:layout_constraintEnd_toEndOf="@+id/account_with_draw"
+                        app:layout_constraintStart_toStartOf="@+id/account_with_draw"
+                        app:layout_constraintTop_toBottomOf="@+id/account_with_draw" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="@dimen/dp40"
+                        android:layout_marginEnd="@dimen/dp40"
+                        android:background="@color/color_F2F2F2"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/account_with_draw" />
+
+                    <View
+                        android:id="@+id/divider_line"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="@dimen/dp40"
+                        android:layout_marginTop="@dimen/dp10"
+                        android:layout_marginEnd="@dimen/dp40"
+                        android:background="@color/color_F2F2F2"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/account_with_draw_money" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/title1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp15"
+                        android:text="可提现"
+                        android:textColor="@color/color_333333"
+                        android:textSize="@dimen/sp12"
+                        app:layout_constraintStart_toStartOf="@+id/divider_line"
+                        app:layout_constraintTop_toBottomOf="@+id/divider_line" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="提现金额将在2个工作日到账"
+                        android:textColor="@color/color_999999"
+                        android:textSize="@dimen/sp10"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/title1"
+                        app:layout_constraintStart_toEndOf="@+id/title1" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/title2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp20"
+                        android:text="提现中"
+                        android:textColor="@color/color_333333"
+                        android:textSize="@dimen/sp12"
+                        app:layout_constraintStart_toStartOf="@+id/divider_line"
+                        app:layout_constraintTop_toBottomOf="@+id/title1" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.waitMoney}"
+                        android:textColor="@color/color_333333"
+                        android:textSize="@dimen/sp15"
+                        android:layout_marginEnd="@dimen/dp10"
+                        tools:text="10000"
+                        app:layout_constraintEnd_toStartOf="@+id/with_draw_btn"
+                        app:layout_constraintTop_toTopOf="@+id/title1" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/with_draw_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/dp10"
+                        android:background="@drawable/shape_round_0091ff"
+                        android:paddingStart="@dimen/dp10"
+                        android:paddingTop="@dimen/dp6"
+                        android:paddingEnd="@dimen/dp10"
+                        android:paddingBottom="@dimen/dp6"
+                        android:text="可提现 >"
+                        app:onClickCommand="@{viewModel.withDrawClick}"
+                        android:textColor="@color/color_0091ff"
+                        android:textSize="@dimen/sp15"
+                        app:layout_constraintBottom_toBottomOf="@+id/title1"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/title1" />
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="@dimen/dp10"
+                        android:gravity="center"
+                        android:text="@{viewModel.frozenMoney}"
+                        android:textColor="@color/color_333333"
+                        android:textSize="@dimen/sp15"
+                        app:layout_constraintStart_toStartOf="@+id/account_with_draw_money"
+                        app:layout_constraintTop_toTopOf="@+id/title2" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/income"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp20"
+                        android:layout_marginTop="@dimen/dp10"
+                        android:drawableStart="@mipmap/icon_mine_income"
+                        android:gravity="center"
+                        android:text="收入"
+                        android:textColor="@color/color_333333"
+                        android:textSize="@dimen/sp15"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/dp20"
+                        android:text="@{viewModel.withDrawTotal}"
+                        android:textColor="#0091FF"
+                        android:textSize="@dimen/sp18"
+                        app:layout_constraintBottom_toBottomOf="@+id/income"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/income" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:background="@drawable/shape_mine_item_bg"
+                    android:layout_height="@dimen/dp250">
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/month_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp10"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:onClickCommand="@{viewModel.payTimeClick}"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:background="@drawable/mine_select_btn_bg"
+                        android:drawableEnd="@mipmap/icon_arrow_down"
+                        android:drawablePadding="@dimen/dp10"
+                        android:paddingStart="@dimen/dp10"
+                        android:layout_marginTop="@dimen/dp10"
+                        android:paddingTop="@dimen/dp2"
+                        android:paddingEnd="@dimen/dp10"
+                        android:text="@{viewModel.payText}"
+                        android:paddingBottom="@dimen/dp2"
+                        tools:text="2021年8月" />
+                    <com.github.mikephil.charting.charts.PieChart
+                        android:id="@+id/chart_order"
+                        android:layout_marginTop="@dimen/dp30"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_marginStart="@dimen/dp40"
+                        android:layout_marginEnd="@dimen/dp10"
+                        android:layout_width="@dimen/dp170"
+                        android:layout_height="@dimen/dp120" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/total"
+                        android:layout_width="wrap_content"
+                        android:text="收入渠道/总收入"
+                        android:textColor="@color/color_666666"
+                        app:layout_constraintTop_toTopOf="@+id/month_title"
+                        app:layout_constraintStart_toEndOf="@+id/chart_order"
+                        android:textSize="@dimen/sp10"
+                        android:layout_height="wrap_content"/>
+
+                    <View
+                        android:id="@+id/total_1"
+                        app:layout_constraintStart_toStartOf="@+id/total"
+                        android:layout_marginTop="@dimen/dp30"
+                        app:layout_constraintTop_toBottomOf="@+id/total"
+                        android:background="#FF366FEF"
+                        android:layout_width="@dimen/dp10"
+                        android:layout_height="@dimen/dp10"/>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/total_1_title"
+                        android:textColor="@color/color_999999"
+                        app:layout_constraintTop_toTopOf="@+id/total_1"
+                        app:layout_constraintBottom_toBottomOf="@+id/total_1"
+                        app:layout_constraintStart_toEndOf="@+id/total_1"
+                        android:text="商城订单"
+                        android:includeFontPadding="false"
+                        android:textSize="@dimen/sp12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:textColor="@color/color_333333"
+                        app:layout_constraintTop_toTopOf="@+id/total_1_title"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/total_1_title"
+                        android:text="@{viewModel.total_1}"
+                        tools:text="10000"
+                        android:textSize="@dimen/sp12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:textColor="@color/color_333333"
+                        android:layout_marginTop="@dimen/dp6"
+                        app:layout_constraintTop_toBottomOf="@+id/total_1"
+                        app:layout_constraintStart_toEndOf="@+id/money"
+                        app:layout_constraintEnd_toStartOf="@+id/money"
+                        android:text="@{viewModel.withDraw_1}"
+                        android:textSize="@dimen/sp12"
+                        android:visibility="gone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <View
+                        android:id="@+id/total_2"
+                        app:layout_constraintStart_toStartOf="@+id/total"
+                        android:layout_marginTop="@dimen/dp40"
+                        app:layout_constraintTop_toBottomOf="@+id/total_1"
+                        android:background="#FF64D695"
+                        android:layout_width="@dimen/dp10"
+                        android:layout_height="@dimen/dp10"/>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/total_2_title"
+                        android:textColor="@color/color_999999"
+                        app:layout_constraintTop_toTopOf="@+id/total_2"
+                        app:layout_constraintBottom_toBottomOf="@+id/total_2"
+                        app:layout_constraintStart_toEndOf="@+id/total_2"
+                        android:text="案例收入"
+                        android:includeFontPadding="false"
+                        android:textSize="@dimen/sp12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:textColor="@color/color_333333"
+                        app:layout_constraintTop_toTopOf="@+id/total_2_title"
+                        app:layout_constraintStart_toEndOf="@+id/total_2_title"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:text="@{viewModel.total_2}"
+                        tools:text="10000"
+                        android:textSize="@dimen/sp12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:textColor="@color/color_333333"
+                        android:layout_marginTop="@dimen/dp6"
+                        app:layout_constraintTop_toBottomOf="@+id/total_2"
+                        app:layout_constraintStart_toEndOf="@+id/money"
+                        app:layout_constraintEnd_toStartOf="@+id/money"
+                        android:text="@{viewModel.withDraw_1}"
+                        android:textSize="@dimen/sp12"
+                        android:visibility="gone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <View
+                        android:id="@+id/total_3"
+                        app:layout_constraintStart_toStartOf="@+id/total"
+                        android:layout_marginTop="@dimen/dp40"
+                        app:layout_constraintTop_toBottomOf="@+id/total_2"
+                        android:background="#FFEAAB40"
+                        android:layout_width="@dimen/dp10"
+                        android:layout_height="@dimen/dp10"/>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/total_3_title"
+                        android:textColor="@color/color_999999"
+                        app:layout_constraintTop_toTopOf="@+id/total_3"
+                        app:layout_constraintBottom_toBottomOf="@id/total_3"
+                        app:layout_constraintStart_toEndOf="@+id/total_3"
+                        android:text="回答收入"
+                        android:includeFontPadding="false"
+                        android:textSize="@dimen/sp12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:textColor="@color/color_333333"
+                        app:layout_constraintTop_toTopOf="@+id/total_3_title"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/total_3_title"
+                        android:text="@{viewModel.total_3}"
+                        android:textSize="@dimen/sp12"
+                        tools:text="10000"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:textColor="@color/color_333333"
+                        android:layout_marginTop="@dimen/dp6"
+                        app:layout_constraintTop_toBottomOf="@+id/total_3"
+                        app:layout_constraintStart_toEndOf="@+id/money"
+                        app:layout_constraintEnd_toStartOf="@+id/money"
+                        android:text="@{viewModel.withDraw_1}"
+                        android:textSize="@dimen/sp12"
+                        android:visibility="gone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <View
+                        android:id="@+id/total_4"
+                        app:layout_constraintStart_toStartOf="@+id/total"
+                        android:layout_marginTop="@dimen/dp40"
+                        app:layout_constraintTop_toBottomOf="@+id/total_3"
+                        android:background="#FFE52E7E"
+                        android:layout_width="@dimen/dp10"
+                        android:layout_height="@dimen/dp10"/>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/total_4_title"
+                        android:textColor="@color/color_999999"
+                        app:layout_constraintTop_toTopOf="@+id/total_4"
+                        app:layout_constraintStart_toEndOf="@+id/total_4"
+                        android:text="现场支持"
+                        app:layout_constraintBottom_toBottomOf="@id/total_4"
+                        android:includeFontPadding="false"
+                        android:textSize="@dimen/sp12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:textColor="@color/color_333333"
+                        app:layout_constraintTop_toTopOf="@+id/total_4_title"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/total_4_title"
+                        android:text="@{viewModel.total_4}"
+                        android:textSize="@dimen/sp12"
+                        tools:text="10000"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:textColor="@color/color_333333"
+                        android:layout_marginTop="@dimen/dp6"
+                        app:layout_constraintTop_toBottomOf="@+id/total_4"
+                        app:layout_constraintStart_toEndOf="@+id/money"
+                        app:layout_constraintEnd_toStartOf="@+id/money"
+                        android:text="@{viewModel.withDraw_1}"
+                        android:visibility="gone"
+                        android:textSize="@dimen/sp12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/money"
+                        android:layout_width="wrap_content"
+                        android:text="可提现"
+                        android:visibility="gone"
+                        android:textColor="@color/color_666666"
+                        android:layout_marginStart="@dimen/dp55"
+                        app:layout_constraintTop_toTopOf="@+id/month_title"
+                        app:layout_constraintStart_toEndOf="@+id/total"
+                        android:textSize="@dimen/sp10"
+                        android:layout_height="wrap_content"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/outcome"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp20"
+                        android:layout_marginTop="@dimen/dp10"
+                        android:drawableStart="@mipmap/icon_mine_out"
+                        android:gravity="center"
+                        android:text="支出"
+                        android:textColor="@color/color_333333"
+                        android:textSize="@dimen/sp15"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/dp20"
+                        android:text="@{viewModel.outTotal}"
+                        android:textColor="#0091FF"
+                        android:textSize="@dimen/sp18"
+                        app:layout_constraintBottom_toBottomOf="@+id/outcome"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/outcome" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:background="@drawable/shape_mine_item_bg"
+                    android:layout_height="@dimen/dp250">
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp10"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:background="@drawable/mine_select_btn_bg"
+                        android:drawableEnd="@mipmap/icon_arrow_down"
+                        android:drawablePadding="@dimen/dp10"
+                        android:paddingStart="@dimen/dp10"
+                        app:onClickCommand="@{viewModel.outcomeTimeClick}"
+                        android:layout_marginTop="@dimen/dp10"
+                        android:paddingTop="@dimen/dp2"
+                        android:paddingEnd="@dimen/dp10"
+                        android:text="@{viewModel.incomeText}"
+                        android:paddingBottom="@dimen/dp2"
+                        tools:text="2021年8月" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/out_total"
+                        android:layout_width="wrap_content"
+                        android:text="支出渠道"
+                        android:layout_marginStart="@dimen/dp20"
+                        android:layout_marginTop="@dimen/dp60"
+                        android:textColor="@color/color_666666"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:textSize="@dimen/sp10"
+                        android:layout_height="wrap_content"/>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/out_money_title"
+                        android:layout_width="wrap_content"
+                        android:text="支出金额"
+                        android:layout_marginEnd="@dimen/dp20"
+                        android:layout_marginTop="@dimen/dp60"
+                        android:textColor="@color/color_666666"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:textSize="@dimen/sp10"
+                        android:layout_height="wrap_content"/>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/out_total_1"
+                        android:textColor="@color/color_999999"
+                        app:layout_constraintTop_toBottomOf="@+id/out_total"
+                        app:layout_constraintStart_toStartOf="@+id/out_total"
+                        android:text="提问"
+                        android:layout_marginTop="@dimen/dp22"
+                        android:includeFontPadding="false"
+                        android:textSize="@dimen/sp12"
+                        android:layout_width="@dimen/dp78"
+                        android:layout_height="wrap_content"/>
+                    
+                    <ProgressBar
+                        android:progressDrawable="@drawable/wallet_question_drawable"
+                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                        app:layout_constraintTop_toTopOf="@+id/account_money_title_1"
+                        app:layout_constraintStart_toEndOf="@+id/out_total_1"
+                        app:layout_constraintEnd_toStartOf="@+id/account_money_title_1"
+                        android:layout_width="0dp"
+                        android:layout_marginEnd="@dimen/dp20"
+                        android:thumb="@null"
+                        android:max="100"
+                        android:progress="@{viewModel.money_1_progress}"
+                        android:layout_height="@dimen/dp10"/>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/account_money_title_1"
+                        android:textColor="@color/color_999999"
+                        app:layout_constraintTop_toBottomOf="@+id/out_money_title"
+                        app:layout_constraintStart_toStartOf="@+id/out_money_title"
+                        app:layout_constraintEnd_toEndOf="@id/out_money_title"
+                        android:text="@{viewModel.money_1}"
+                        android:layout_marginTop="@dimen/dp22"
+                        android:includeFontPadding="false"
+                        android:textSize="@dimen/sp12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/out_total_2"
+                        android:textColor="@color/color_999999"
+                        app:layout_constraintTop_toBottomOf="@+id/out_total_1"
+                        app:layout_constraintStart_toStartOf="@+id/out_total"
+                        android:text="购买案例"
+                        android:layout_marginTop="@dimen/dp22"
+                        android:includeFontPadding="false"
+                        android:textSize="@dimen/sp12"
+                        android:layout_width="@dimen/dp78"
+                        android:layout_height="wrap_content"/>
+
+                    <ProgressBar
+                        android:progressDrawable="@drawable/wallet_question_drawable_2"
+                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                        app:layout_constraintTop_toTopOf="@+id/account_money_title_2"
+                        app:layout_constraintStart_toEndOf="@+id/out_total_2"
+                        app:layout_constraintEnd_toStartOf="@+id/account_money_title_2"
+                        android:layout_width="0dp"
+                        android:layout_marginEnd="@dimen/dp20"
+                        android:thumb="@null"
+                        android:max="100"
+                        android:progress="@{viewModel.money_2_progress}"
+                        android:layout_height="@dimen/dp10"/>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/account_money_title_2"
+                        android:textColor="@color/color_999999"
+                        app:layout_constraintTop_toBottomOf="@+id/account_money_title_1"
+                        app:layout_constraintStart_toStartOf="@+id/out_money_title"
+                        app:layout_constraintEnd_toEndOf="@id/out_money_title"
+                        android:text="@{viewModel.money_2}"
+                        android:layout_marginTop="@dimen/dp22"
+                        android:includeFontPadding="false"
+                        android:textSize="@dimen/sp12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/out_total_3"
+                        android:textColor="@color/color_999999"
+                        app:layout_constraintTop_toBottomOf="@+id/out_total_2"
+                        app:layout_constraintStart_toStartOf="@+id/out_total"
+                        android:text="DTC查询"
+                        android:layout_marginTop="@dimen/dp22"
+                        android:includeFontPadding="false"
+                        android:textSize="@dimen/sp12"
+                        android:layout_width="@dimen/dp78"
+                        android:layout_height="wrap_content"/>
+
+                    <ProgressBar
+                        android:progressDrawable="@drawable/wallet_question_drawable_3"
+                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                        app:layout_constraintTop_toTopOf="@+id/account_money_title_3"
+                        app:layout_constraintStart_toEndOf="@+id/out_total_3"
+                        app:layout_constraintEnd_toStartOf="@+id/account_money_title_3"
+                        android:layout_width="0dp"
+                        android:max="100"
+                        android:progress="@{viewModel.money_3_progress}"
+                        android:layout_marginEnd="@dimen/dp20"
+                        android:thumb="@null"
+                        android:layout_height="@dimen/dp10"/>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/account_money_title_3"
+                        android:textColor="@color/color_999999"
+                        app:layout_constraintTop_toBottomOf="@+id/account_money_title_2"
+                        app:layout_constraintStart_toStartOf="@+id/out_money_title"
+                        app:layout_constraintEnd_toEndOf="@id/out_money_title"
+                        android:text="@{viewModel.money_3}"
+                        android:layout_marginTop="@dimen/dp22"
+                        android:includeFontPadding="false"
+                        android:textSize="@dimen/sp12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/out_total_4"
+                        android:textColor="@color/color_999999"
+                        app:layout_constraintTop_toBottomOf="@+id/out_total_3"
+                        app:layout_constraintStart_toStartOf="@+id/out_total"
+                        android:text="寻求现场支持"
+                        android:layout_marginTop="@dimen/dp22"
+                        android:includeFontPadding="false"
+                        android:textSize="@dimen/sp12"
+                        android:layout_width="@dimen/dp78"
+                        android:layout_height="wrap_content"/>
+
+                    <ProgressBar
+                        android:progressDrawable="@drawable/wallet_question_drawable_4"
+                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                        app:layout_constraintTop_toTopOf="@+id/account_money_title_4"
+                        app:layout_constraintStart_toEndOf="@+id/out_total_4"
+                        app:layout_constraintEnd_toStartOf="@+id/account_money_title_4"
+                        android:layout_width="0dp"
+                        android:progress="@{viewModel.money_4_progress}"
+                        android:max="100"
+                        android:layout_marginEnd="@dimen/dp20"
+                        android:thumb="@null"
+                        android:layout_height="@dimen/dp10"/>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/account_money_title_4"
+                        android:textColor="@color/color_999999"
+                        app:layout_constraintTop_toBottomOf="@+id/account_money_title_3"
+                        app:layout_constraintStart_toStartOf="@+id/out_money_title"
+                        app:layout_constraintEnd_toEndOf="@id/out_money_title"
+                        android:text="@{viewModel.money_4}"
+                        android:layout_marginTop="@dimen/dp22"
+                        android:includeFontPadding="false"
+                        android:textSize="@dimen/sp12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

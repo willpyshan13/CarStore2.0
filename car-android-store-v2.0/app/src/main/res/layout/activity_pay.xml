@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/status_bar"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/white" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/white"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/case_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="订单支付"
+            android:textColor="#130903"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:onClick="onBackFinish"
+            android:scaleType="center"
+            android:src="@drawable/store_button_back_pressed" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/pay_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FE0000"
+            android:textSize="30sp" />
+    </LinearLayout>
+
+    <com.allen.library.SuperTextView
+        android:id="@+id/pay_wx"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        app:sBackgroundDrawableRes="@color/white"
+        app:sIsChecked="true"
+        app:sLeftTextGravity="center"
+        app:sLeftTextString="微信支付"
+        app:sLeftTvDrawableHeight="30dp"
+        app:sLeftTvDrawableLeft="@drawable/wx_pay_icon"
+        app:sLeftTvDrawableWidth="30dp"
+        app:sRightCheckBoxRes="@drawable/select_check"
+        app:sRightViewType="checkbox"
+        app:sSwitchIsChecked="true" />
+
+    <com.allen.library.SuperTextView
+        android:id="@+id/pay_ali"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        app:sBackgroundDrawableRes="@color/white"
+        app:sLeftTextGravity="center"
+        app:sLeftTextString="支付宝支付"
+        app:sLeftTvDrawableHeight="30dp"
+        app:sLeftTvDrawableLeft="@drawable/ali_pay_icon"
+        app:sLeftTvDrawableWidth="30dp"
+        app:sRightCheckBoxRes="@drawable/select_check"
+        app:sRightViewType="checkbox" />
+
+    <Button
+        android:id="@+id/submit_pay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/register_submit"
+        android:stateListAnimator="@null"
+        android:text="确认支付"
+        android:textColor="@color/select_login_submit_text_color"
+        android:textSize="17sp" />
+</LinearLayout>

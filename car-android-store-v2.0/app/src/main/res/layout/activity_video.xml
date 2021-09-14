@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#CC000000"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <cn.jzvd.JzvdStd
+        android:id="@+id/jz_video"
+        android:layout_width="match_parent"
+        android:layout_height="220dp" />
+
+    <ImageView
+        android:id="@+id/jz_close"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:scaleType="center"
+        android:src="@drawable/jpush_ic_action_close2" />
+</LinearLayout>

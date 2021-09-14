@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.yanxin.store.mvvm.viewmodel.OnSiteSupportViewModel" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/dp20"
+                android:layout_marginEnd="@dimen/dp20"
+                android:orientation="vertical">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/mine_wallet_bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="@dimen/dp20"
+                    android:background="@drawable/shape_mine_item_bg">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/order_num_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp38"
+                        android:layout_marginTop="@dimen/dp20"
+                        android:text="总订单数"
+                        android:textColor="@color/color_999999"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp10"
+                        android:text="@{viewModel.totalOrder}"
+                        android:textColor="@color/color_C59E5E"
+                        android:textSize="@dimen/sp20"
+                        app:layout_constraintEnd_toEndOf="@+id/order_num_text"
+                        app:layout_constraintStart_toStartOf="@+id/order_num_text"
+                        app:layout_constraintTop_toBottomOf="@+id/order_num_text" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/order_num_income_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="90dp"
+                        android:text="总收入"
+                        android:textColor="@color/color_999999"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="@{viewModel.totalAmount}"
+                        android:textColor="@color/color_C59E5E"
+                        android:textSize="@dimen/sp20"
+                        app:layout_constraintEnd_toEndOf="@+id/order_num_income_text"
+                        app:layout_constraintStart_toStartOf="@+id/order_num_income_text"
+                        app:layout_constraintTop_toBottomOf="@+id/order_num_text" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/mine_select_btn_bg"
+                    android:drawableEnd="@mipmap/icon_arrow_down"
+                    android:drawablePadding="@dimen/dp10"
+                    android:paddingStart="@dimen/dp10"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:paddingTop="@dimen/dp2"
+                    android:paddingEnd="@dimen/dp10"
+                    app:onClickCommand="@{viewModel.countClick}"
+                    android:paddingBottom="@dimen/dp2"
+                    android:text="@{viewModel.countDate}" />
+
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/chart1"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp260"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:background="@drawable/shape_mine_item_bg" />
+
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/chart2"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp260"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:background="@drawable/shape_mine_item_bg" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.core.widget.NestedScrollView>
+
+
+    </LinearLayout>
+</layout>

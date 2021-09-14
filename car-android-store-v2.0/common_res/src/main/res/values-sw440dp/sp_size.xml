@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- current base width is 375 -->
+<resources>
+<dimen name="sp1">1.17sp</dimen>
+<dimen name="sp2">2.35sp</dimen>
+<dimen name="sp3">3.52sp</dimen>
+<dimen name="sp4">4.69sp</dimen>
+<dimen name="sp5">5.87sp</dimen>
+<dimen name="sp6">7.04sp</dimen>
+<dimen name="sp7">8.21sp</dimen>
+<dimen name="sp8">9.39sp</dimen>
+<dimen name="sp9">10.56sp</dimen>
+<dimen name="sp10">11.73sp</dimen>
+<dimen name="sp11">12.91sp</dimen>
+<dimen name="sp12">14.08sp</dimen>
+<dimen name="sp13">15.25sp</dimen>
+<dimen name="sp14">16.43sp</dimen>
+<dimen name="sp15">17.60sp</dimen>
+<dimen name="sp16">18.77sp</dimen>
+<dimen name="sp17">19.95sp</dimen>
+<dimen name="sp18">21.12sp</dimen>
+<dimen name="sp19">22.29sp</dimen>
+<dimen name="sp20">23.47sp</dimen>
+<dimen name="sp21">24.64sp</dimen>
+<dimen name="sp22">25.81sp</dimen>
+<dimen name="sp23">26.99sp</dimen>
+<dimen name="sp24">28.16sp</dimen>
+<dimen name="sp25">29.33sp</dimen>
+<dimen name="sp26">30.51sp</dimen>
+<dimen name="sp27">31.68sp</dimen>
+<dimen name="sp28">32.85sp</dimen>
+<dimen name="sp29">34.03sp</dimen>
+<dimen name="sp30">35.20sp</dimen>
+<dimen name="sp31">36.37sp</dimen>
+<dimen name="sp32">37.55sp</dimen>
+<dimen name="sp33">38.72sp</dimen>
+<dimen name="sp34">39.89sp</dimen>
+<dimen name="sp35">41.07sp</dimen>
+<dimen name="sp36">42.24sp</dimen>
+<dimen name="sp37">43.41sp</dimen>
+</resources>

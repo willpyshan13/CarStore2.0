@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ShareTableViewCell" rowHeight="81" id="KGk-i7-Jjw" customClass="ShareTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="331" height="81"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="331" height="81"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Njl-6n-M8Q">
+                        <rect key="frame" x="10" y="10" width="311" height="61"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z8N-lG-zaC">
+                                <rect key="frame" x="85" y="15" width="141" height="31"/>
+                                <state key="normal" title="   分享嘟一家" image="my_share_icon">
+                                    <color key="titleColor" red="0.59993284940000002" green="0.60003870729999997" blue="0.59992617370000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="shareBtnClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="aVi-VC-rIs"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="my_arrow_right" translatesAutoresizingMaskIntoConstraints="NO" id="TSB-vA-0aa">
+                                <rect key="frame" x="281" y="22.5" width="9" height="16"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="TSB-vA-0aa" firstAttribute="centerY" secondItem="Njl-6n-M8Q" secondAttribute="centerY" id="6BZ-JQ-eDG"/>
+                            <constraint firstAttribute="trailing" secondItem="TSB-vA-0aa" secondAttribute="trailing" constant="21" id="6Yg-6c-s3C"/>
+                            <constraint firstItem="Z8N-lG-zaC" firstAttribute="centerY" secondItem="Njl-6n-M8Q" secondAttribute="centerY" id="SXb-pO-Ads"/>
+                            <constraint firstItem="Z8N-lG-zaC" firstAttribute="centerX" secondItem="Njl-6n-M8Q" secondAttribute="centerX" id="ls5-9L-1lC"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="Njl-6n-M8Q" secondAttribute="trailing" constant="10" id="1qo-sw-fRy"/>
+                    <constraint firstAttribute="bottom" secondItem="Njl-6n-M8Q" secondAttribute="bottom" constant="10" id="GyH-Z1-8V8"/>
+                    <constraint firstItem="Njl-6n-M8Q" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="beJ-X4-1LE"/>
+                    <constraint firstItem="Njl-6n-M8Q" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="feb-aZ-j8J"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <color key="backgroundColor" red="0.92837870119999999" green="0.96052318810000004" blue="0.98549920319999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <connections>
+                <outlet property="bgView" destination="Njl-6n-M8Q" id="lpO-9u-xsT"/>
+                <outlet property="shareBtn" destination="Z8N-lG-zaC" id="mcc-Jt-MsA"/>
+            </connections>
+            <point key="canvasLocation" x="97.826086956521749" y="108.81696428571428"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="my_arrow_right" width="9" height="16"/>
+        <image name="my_share_icon" width="35" height="31"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

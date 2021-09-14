@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="5dp"
+    android:padding="5dp"
+    android:layout_marginBottom="10dp"
+    android:background="#F9F9F9"
+    android:layout_marginTop="5dp"
+    android:gravity="center_vertical">
+
+    <TextView
+        android:id="@+id/chosen_content"
+        android:textSize="12sp"
+        android:text="奥迪"
+        android:textColor="#5A5E66"
+        android:gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <ImageView
+        android:id="@+id/del_chosen"
+        android:layout_width="12dp"
+        android:layout_marginLeft="5dp"
+        android:scaleType="center"
+        android:layout_height="12dp"
+        android:src="@drawable/del_chosen_brand_icon" />
+</LinearLayout>
